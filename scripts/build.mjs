@@ -11,6 +11,8 @@ import { PROJECT_VARIANTS, THUMB_VARIANTS, HOME_VARIANTS, SITE_VARIANTS, OG_SIZE
 import { STYLES, CLIENT_JS, STATIC, IMAGES_MANIFEST, LASTMOD_FILE, DIST, DIST_ASSETS, DIST_IMGS, DIST_JS } from "./paths.mjs";
 
 const SITE_URL = (process.env.SITE_URL || SITE.url).replace(/\/+$/, "");
+// Đường dẫn gốc của website trên máy chủ: "/" khi có tên miền riêng, "/athensholdingjsc/" trên GitHub Pages
+const BASE_PATH = new URL(SITE_URL + "/").pathname;
 const IMAGES = JSON.parse(fs.readFileSync(IMAGES_MANIFEST, "utf8"));
 // Ngày theo giờ Việt Nam (toISOString là UTC → build trước 7h sáng sẽ ra ngày hôm trước)
 const TODAY = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Ho_Chi_Minh" }).format(new Date());
@@ -859,9 +861,9 @@ ${footer(base)}`;
 /* =========================================================
    404 + chuyển hướng trang cũ
    ========================================================= */
-// 404 có thể hiện ở bất kỳ đường dẫn nào → dùng đường dẫn tuyệt đối từ gốc tên miền ("/")
+// 404 có thể hiện ở bất kỳ đường dẫn nào → dùng đường dẫn tuyệt đối từ gốc website (BASE_PATH)
 function build404() {
-    const base = "/";
+    const base = BASE_PATH;
     const html = `${head({ title: `Không tìm thấy trang | ${SITE.name}`, desc: "Trang bạn tìm không tồn tại hoặc đã được chuyển sang địa chỉ mới. Xem các dự án biệt thự, nhà phố, nội thất của Athens Holding JSC.", base, noindex: true })}
 ${header({ base, active: "" })}
     <main id="noi-dung" class="notfound">
@@ -892,15 +894,15 @@ ${footer(base)}`;
 function buildRedirects() {
     const lines = [];
     for (const [old, to] of Object.entries(REDIRECTS)) {
-        const target = to ? `/du-an/${to}.html` : "/#du-an";
-        lines.push(`/du-an/${old}.html ${target} 301`, `/du-an/${old} ${target} 301`);
+        const target = to ? `${BASE_PATH}du-an/${to}.html` : `${BASE_PATH}#du-an`;
+        lines.push(`${BASE_PATH}du-an/${old}.html ${target} 301`, `${BASE_PATH}du-an/${old} ${target} 301`);
         const rel = to ? `./${to}.html` : "../#du-an";
         fs.writeFileSync(
             path.join(DIST, "du-an", `${old}.html`),
-            `<!DOCTYPE html><html lang="vi"><head><meta charset="UTF-8"><title>Đã chuyển trang</title><meta name="robots" content="noindex"><link rel="canonical" href="${SITE_URL}${target}"><meta http-equiv="refresh" content="0;url=${rel}"></head><body><p>Trang đã chuyển: <a href="${rel}">tiếp tục</a></p></body></html>\n`
+            `<!DOCTYPE html><html lang="vi"><head><meta charset="UTF-8"><title>Đã chuyển trang</title><meta name="robots" content="noindex"><link rel="canonical" href="${new URL(SITE_URL).origin}${target}"><meta http-equiv="refresh" content="0;url=${rel}"></head><body><p>Trang đã chuyển: <a href="${rel}">tiếp tục</a></p></body></html>\n`
         );
     }
-    fs.writeFileSync(path.join(DIST, "_redirects"), `# Tự sinh bởi scripts/build.mjs (REDIRECTS trong src/data.mjs)\n/index.html / 301\n${lines.join("\n")}\n`);
+    fs.writeFileSync(path.join(DIST, "_redirects"), `# Tự sinh bởi scripts/build.mjs (REDIRECTS trong src/data.mjs)\n${BASE_PATH}index.html ${BASE_PATH} 301\n${lines.join("\n")}\n`);
 }
 
 /* =========================================================
@@ -946,6 +948,8 @@ ${u.imgs.map((img) => `        <image:image><image:loc>${img}</image:loc></image
     fs.writeFileSync(path.join(DIST, "site.webmanifest"), JSON.stringify(manifest, null, 2) + "\n");
     // Trình duyệt luôn tìm /favicon.ico ở gốc website
     fs.copyFileSync(path.join(DIST_IMGS, "favicon.ico"), path.join(DIST, "favicon.ico"));
+    // GitHub Pages: tắt Jekyll để phục vụ nguyên trạng các file trong dist/
+    fs.writeFileSync(path.join(DIST, ".nojekyll"), "");
     fs.writeFileSync(path.join(DIST, "robots.txt"), `User-agent: *\nAllow: /\n\nSitemap: ${SITE_URL}/sitemap.xml\n`);
 
     // Cache trình duyệt (Cloudflare Pages / Netlify đọc file này; GitHub Pages bỏ qua):

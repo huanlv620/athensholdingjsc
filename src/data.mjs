@@ -8,7 +8,8 @@
 // Trường tuỳ chọn (chỉ hiển thị khi có): location, city, client, area, year.
 
 export const SITE = {
-    url: "https://athensholding.vn", // TODO: thay bằng tên miền thật
+    // Địa chỉ website đang chạy. Có tên miền riêng thì đổi sang (vd "https://athensholding.vn") rồi build lại.
+    url: "https://huanlv620.github.io/athensholdingjsc",
     name: "Athens Holding JSC", // tên thương hiệu (tiêu đề trang, logo)
     legalName: "Công ty TNHH Tư vấn Đầu tư và Xây dựng Athens Việt Nam",
     email: "athensholdingjsc@gmail.com",
@@ -31,7 +32,7 @@ export const SITE = {
     city: "Nghệ An",
     // Tên miền chưa xác nhận → build cảnh báo. Có tên miền thật: sửa `url` ở trên và đặt thành false,
     // hoặc build với biến môi trường SITE_URL=https://ten-mien-that.vn
-    urlPlaceholder: true,
+    urlPlaceholder: false,
     // Form liên hệ: để trống → mở ứng dụng email soạn sẵn nội dung.
     // Muốn nhận thẳng vào hộp thư không cần khách mở email: tạo form miễn phí ở https://formspree.io
     // rồi dán địa chỉ dạng "https://formspree.io/f/xxxxxxx" vào đây.
