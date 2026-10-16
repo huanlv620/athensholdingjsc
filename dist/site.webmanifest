@@ -1,0 +1,24 @@
+{
+  "name": "Athens Holding JSC",
+  "short_name": "Athens",
+  "description": "Thiết kế & thi công trọn gói biệt thự, nhà phố, nội thất",
+  "lang": "vi",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#0a0a0a",
+  "icons": [
+    {
+      "src": "assets/imgs/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/imgs/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

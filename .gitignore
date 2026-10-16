@@ -1,0 +1,6 @@
+# Ảnh/video gốc (1,4 GB) — chỉ giữ trên máy; website dùng bản đã tối ưu trong dist/
+_nguon-anh/
+node_modules/
+# File tạm của script xuất ảnh/video (nếu bị ngắt giữa chừng)
+*.tmp
+*.tmp.mp4

@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="10 120 790 360" fill="none">
+    <!-- Biểu tượng Athens Holding JSC: hai toà tháp, vòng cung và hai mái nhà (vẽ lại từ logo gốc) -->
+    <defs>
+        <linearGradient id="athens-gold" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#f1d27a"/>
+            <stop offset=".5" stop-color="#d4a637"/>
+            <stop offset="1" stop-color="#a87a1e"/>
+        </linearGradient>
+        <mask id="athens-cut" maskUnits="userSpaceOnUse" x="0" y="100" width="820" height="400">
+            <!-- vòng cung hình trăng khuyết: dày ở chân, thon dần lên đỉnh -->
+            <circle cx="436" cy="476" r="250" fill="#fff"/>
+            <circle cx="436" cy="468" r="226" fill="#000"/>
+            <path d="M260 340A196 196 0 0 1 302 290M570 298A196 196 0 0 1 612 352" stroke="#fff" stroke-width="7" fill="none"/>
+            <!-- khe tối quanh tháp -->
+            <path d="M318 166 398 128 456 156V420H318Z M424 194 478 164 548 198V420H424Z" fill="#000" stroke="#000" stroke-width="16" stroke-linejoin="round"/>
+            <g fill="#fff">
+                <!-- tháp trái: mặt sọc + mặt đặc -->
+                <path d="M320 164 398 131 398 139 326 169Z"/>
+                <path d="M320 164h6v260h-6zM337 158h6v266h-6zM352 152h6v272h-6zM367 146h6v278h-6zM382 139h6v285h-6z"/>
+                <path d="M398 131 452 156V424H398Z"/>
+            </g>
+            <path d="M427 194V424" stroke="#000" stroke-width="14"/>
+            <g fill="#fff">
+                <!-- tháp phải: mặt đặc + mặt sọc -->
+                <path d="M427 194 478 168V424H427Z"/>
+                <path d="M478 168 545 200 545 207 478 175Z"/>
+                <path d="M484 171h5v253h-5zM498 178h5v246h-5zM512 184h5v240h-5zM526 191h5v233h-5zM540 198h5v226h-5z"/>
+            </g>
+            <!-- phần dưới mái là nền tối -->
+            <path d="M0 447H60L298 335 470 416 570 360 800 446V500H0Z" fill="#000"/>
+            <path d="M15 447H60L298 335 535 455M470 408 570 352 760 446H795M698 372V400" stroke="#000" stroke-width="40" stroke-linejoin="miter" fill="none"/>
+            <g stroke="#fff" fill="none" stroke-linejoin="miter">
+                <!-- mái lớn + mái nhỏ -->
+                <path d="M15 447H60L298 335 535 455" stroke-width="18"/>
+                <path d="M470 408 570 352 760 446H795" stroke-width="16"/>
+                <path d="M82 461 298 360 532 475M497 419 570 381 742 459" stroke-width="5"/>
+            </g>
+            <g fill="#fff">
+                <!-- ống khói -->
+                <path d="M684 374h28v42l-28-14Z"/>
+                <path d="M677 366h42v9h-42z"/>
+                <!-- cửa sổ -->
+                <path d="M268 387h28v26h-28zM302 387h28v26h-28zM268 417h28v25h-28zM302 417h28v25h-28z"/>
+                <path d="M552 401h18v18h-18zM574 401h18v18h-18zM552 423h18v18h-18zM574 423h18v18h-18z"/>
+            </g>
+        </mask>
+    </defs>
+    <rect x="0" y="100" width="820" height="400" fill="url(#athens-gold)" mask="url(#athens-cut)"/>
+</svg>

@@ -1,0 +1,20 @@
+# Tự sinh bởi scripts/build.mjs (REDIRECTS trong src/data.mjs)
+/index.html / 301
+/du-an/truong-lien-cap-athens.html /#du-an 301
+/du-an/truong-lien-cap-athens /#du-an 301
+/du-an/vuon-truong-athens-kids.html /#du-an 301
+/du-an/vuon-truong-athens-kids /#du-an 301
+/du-an/athens-tower.html /#du-an 301
+/du-an/athens-tower /#du-an 301
+/du-an/cong-vien-athens-riverside.html /du-an/tam-hop-vien.html 301
+/du-an/cong-vien-athens-riverside /du-an/tam-hop-vien.html 301
+/du-an/athens-bay-resort.html /du-an/eco-resort-dong-que.html 301
+/du-an/athens-bay-resort /du-an/eco-resort-dong-que.html 301
+/du-an/athens-hill-retreat.html /du-an/resort-ruong-bac-thang.html 301
+/du-an/athens-hill-retreat /du-an/resort-ruong-bac-thang.html 301
+/du-an/athens-hub.html /du-an/noi-that-go-oc-cho.html 301
+/du-an/athens-hub /du-an/noi-that-go-oc-cho.html 301
+/du-an/athens-residences.html /du-an/nha-pho-gach-thong-gio.html 301
+/du-an/athens-residences /du-an/nha-pho-gach-thong-gio.html 301
+/du-an/biet-thu-ho-tay.html /du-an/villa-nhiet-doi-mat-nuoc.html 301
+/du-an/biet-thu-ho-tay /du-an/villa-nhiet-doi-mat-nuoc.html 301
