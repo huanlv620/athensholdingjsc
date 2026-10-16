@@ -1,5 +1,5 @@
 // Sinh favicon + icon ứng dụng từ biểu tượng vector assets/imgs/logo-mark.svg
-// Dùng: npm run icons   (đọc src/static/imgs/logo-mark.svg, ghi vào dist/assets/imgs/)
+// Dùng: npm run icons   (đọc src/static/imgs/logo-mark.svg, ghi vào assets/imgs/)
 //
 // Kết quả (assets/imgs/):
 //   favicon.svg            — tab trình duyệt (trình duyệt hiện đại)

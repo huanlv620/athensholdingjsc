@@ -1,4 +1,4 @@
-// Máy chủ tĩnh để xem thử website (thư mục dist/) trên máy: npm run preview → mở http://localhost:8080
+// Máy chủ tĩnh để xem thử website (thư mục gốc) trên máy: npm run preview → mở http://localhost:8080
 // Đổi cổng: npm run preview -- 3000
 // Mô phỏng hosting thật: "/" và "/du-an/" trả về index.html, không có file thì trả 404.html.
 import http from "http";

@@ -1,0 +1,10 @@
+# GitHub Pages: website là các file HTML/CSS ở thư mục gốc (index.html, du-an/, assets/…).
+# Chỉ phục vụ website — không đưa mã nguồn, công cụ và tài liệu nội bộ lên web.
+exclude:
+  - src/
+  - scripts/
+  - node_modules/
+  - _nguon-anh/
+  - README.md
+  - package.json
+  - package-lock.json

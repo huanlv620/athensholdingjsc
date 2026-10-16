@@ -1,8 +1,8 @@
 // Nén video cho web + tạo ảnh bìa, theo VIDEOS trong data.mjs
 // Dùng: npm run videos   (thêm -- --force để nén lại toàn bộ) — cần ffmpeg trong PATH
 //
-// Kết quả: dist/assets/videos/<file>.mp4  (H.264 cao 960px, CRF 28, faststart → phát được khi đang tải)
-//          dist/assets/videos/<file>.webp (ảnh bìa giây thứ 3, đã cắt viền đen)
+// Kết quả: assets/videos/<file>.mp4  (H.264 cao 960px, CRF 28, faststart → phát được khi đang tải)
+//          assets/videos/<file>.webp (ảnh bìa giây thứ 3, đã cắt viền đen)
 // Chỉ nén lại khi chưa có file hoặc file gốc mới hơn file đã nén.
 import fs from "fs";
 import path from "path";

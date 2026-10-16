@@ -8,7 +8,7 @@ export const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "
 export const SRC = path.join(ROOT, "src");
 export const STYLES = path.join(SRC, "styles"); // reset.css, base.css, style.css
 export const CLIENT_JS = path.join(SRC, "scripts", "site.client.js");
-export const STATIC = path.join(SRC, "static"); // chép nguyên vào dist/assets/
+export const STATIC = path.join(SRC, "static"); // chép nguyên vào assets/
 
 // 🗂️ Ảnh/video gốc (nặng, không lên git)
 export const MEDIA = path.join(ROOT, "_nguon-anh");
@@ -18,8 +18,9 @@ export const STATE = path.join(ROOT, "scripts", "state");
 export const IMAGES_MANIFEST = path.join(STATE, "images.json"); // kích thước + màu + mã kiểm tra từng ảnh
 export const LASTMOD_FILE = path.join(STATE, "lastmod.json"); // ngày cập nhật từng trang cho sitemap
 
-// 🚀 Website đã build — thư mục để deploy
-export const DIST = path.join(ROOT, "dist");
+// 🚀 Website đã build — xuất thẳng ra thư mục gốc repo (index.html, du-an/, assets/…)
+// để GitHub Pages phục vụ ngay khi push, không cần cấu hình gì thêm
+export const DIST = ROOT;
 export const DIST_ASSETS = path.join(DIST, "assets");
 export const DIST_IMGS = path.join(DIST_ASSETS, "imgs");
 export const DIST_VIDEOS = path.join(DIST_ASSETS, "videos");

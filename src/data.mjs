@@ -89,7 +89,7 @@ export const SITE_PHOTOS = {
 };
 
 /* ---------- Video ---------- */
-// src: file gốc trong _nguon-anh/real-life-media/Video · file: tên file web (dist/assets/videos/<file>.mp4 + .webp ảnh bìa)
+// src: file gốc trong _nguon-anh/real-life-media/Video · file: tên file web (assets/videos/<file>.mp4 + .webp ảnh bìa)
 // Chạy `npm run videos` để nén lại.
 export const VIDEO_SRC_DIR = "real-life-media/Video";
 export const VIDEOS = [

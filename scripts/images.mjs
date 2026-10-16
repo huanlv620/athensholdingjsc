@@ -1,7 +1,7 @@
 // Xuất ảnh web từ ảnh gốc trong _nguon-anh/ theo cấu hình ở data.mjs
 // Dùng: npm run images   (thêm -- --force để xuất lại toàn bộ)
 //
-// Kết quả trong dist/assets/imgs/ (mỗi cỡ có .avif; cỡ ≤ WEBP_MAX_WIDTH có thêm .webp dự phòng — cỡ ở image-sizes.mjs):
+// Kết quả trong assets/imgs/ (mỗi cỡ có .avif; cỡ ≤ WEBP_MAX_WIDTH có thêm .webp dự phòng — cỡ ở image-sizes.mjs):
 //   assets/imgs/projects/<slug>/<n>[-lg|-sm|-xs]   ảnh dự án
 //   assets/imgs/home/<n>[-lg|-sm]                  slider trang chủ
 //   assets/imgs/thi-cong/<n>[-sm]                  ảnh công trường

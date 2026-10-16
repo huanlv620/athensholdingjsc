@@ -1,5 +1,5 @@
-// Sinh toàn bộ website tĩnh vào dist/: index.html, du-an/*.html, 404.html, sitemap.xml, robots.txt,
-// site.webmanifest, _headers, _redirects, assets/js/*.js + chép src/static/ (font, logo) sang dist/assets/
+// Sinh toàn bộ website tĩnh ra thư mục gốc repo: index.html, du-an/*.html, 404.html, sitemap.xml, robots.txt,
+// site.webmanifest, _headers, _redirects, assets/js/*.js + chép src/static/ (font, logo) sang assets/
 // Dùng: npm run build   (chạy npm run images trước để có scripts/state/images.json)
 // Tên miền: SITE.url trong data.mjs, hoặc ghi đè: SITE_URL=https://ten-mien.vn node build.mjs ..
 import fs from "fs";
@@ -948,8 +948,6 @@ ${u.imgs.map((img) => `        <image:image><image:loc>${img}</image:loc></image
     fs.writeFileSync(path.join(DIST, "site.webmanifest"), JSON.stringify(manifest, null, 2) + "\n");
     // Trình duyệt luôn tìm /favicon.ico ở gốc website
     fs.copyFileSync(path.join(DIST_IMGS, "favicon.ico"), path.join(DIST, "favicon.ico"));
-    // GitHub Pages: tắt Jekyll để phục vụ nguyên trạng các file trong dist/
-    fs.writeFileSync(path.join(DIST, ".nojekyll"), "");
     fs.writeFileSync(path.join(DIST, "robots.txt"), `User-agent: *\nAllow: /\n\nSitemap: ${SITE_URL}/sitemap.xml\n`);
 
     // Cache trình duyệt (Cloudflare Pages / Netlify đọc file này; GitHub Pages bỏ qua):
@@ -980,7 +978,7 @@ ${u.imgs.map((img) => `        <image:image><image:loc>${img}</image:loc></image
 }
 
 /* ---------- Chạy ---------- */
-// Font + logo (src/static/) → dist/assets/
+// Font + logo (src/static/) → assets/
 fs.cpSync(STATIC, DIST_ASSETS, { recursive: true });
 const projectDir = path.join(DIST, "du-an");
 fs.mkdirSync(projectDir, { recursive: true });
