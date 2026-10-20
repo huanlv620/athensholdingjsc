@@ -1,7 +1,8 @@
 // Nén video cho web + tạo ảnh bìa, theo VIDEOS trong data.mjs
 // Dùng: npm run videos   (thêm -- --force để nén lại toàn bộ) — cần ffmpeg trong PATH
 //
-// Kết quả: assets/videos/<file>.mp4  (H.264 cao 960px, CRF 28, faststart → phát được khi đang tải)
+// Kết quả: assets/videos/<file>.mp4  (H.264 tối đa 720×1280, 30 fps, CRF 27, đỉnh ~2 Mbps, faststart → phát được khi đang tải)
+//          Đổi thông số nén → chạy `npm run videos -- --force` để nén lại toàn bộ
 //          assets/videos/<file>[-sm].avif|.webp (ảnh bìa giây thứ 3, đã cắt viền đen; cỡ ở POSTER_VARIANTS)
 // Chỉ nén lại khi chưa có file hoặc file gốc mới hơn file đã nén.
 import fs from "fs";
@@ -43,7 +44,17 @@ for (const v of VIDEOS) {
     }
     if (!mp4Fresh || FORCE) {
         const tmp = `${mp4}.tmp.mp4`;
-        ffmpeg("-i", src, "-vf", "scale=-2:960", "-c:v", "libx264", "-preset", "slow", "-crf", "28", "-profile:v", "high", "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "96k", "-ac", "2", "-movflags", "+faststart", tmp);
+        ffmpeg(
+            "-i", src,
+            // fps=30: video điện thoại hay có fps dao động (27,9 / 29,7…) → khung hình đều, không giật trên Android đời thấp/iPhone.
+            // Cao tối đa 1280px (720p dọc) nhưng không phóng to video gốc nhỏ hơn → xem toàn màn hình vẫn nét.
+            "-vf", "fps=30,scale=-2:'min(1280,ih)'",
+            // H.264 High 4.0 + yuv420p: iPhone (Safari) và mọi Android giải mã bằng phần cứng.
+            // maxrate/bufsize: chặn bitrate đỉnh ~2 Mbps → mạng 4G yếu vẫn phát liền mạch; keyframe mỗi 2 giây → tua nhanh.
+            "-c:v", "libx264", "-preset", "slow", "-crf", "27", "-maxrate", "2000k", "-bufsize", "4000k", "-g", "60", "-keyint_min", "30",
+            "-profile:v", "high", "-level", "4.0", "-pix_fmt", "yuv420p",
+            "-c:a", "aac", "-b:a", "96k", "-ac", "2", "-movflags", "+faststart", tmp
+        );
         fs.renameSync(tmp, mp4);
     }
 

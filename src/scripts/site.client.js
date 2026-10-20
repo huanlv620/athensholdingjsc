@@ -112,9 +112,12 @@
         e.preventDefault();
         var poster = link.querySelector("img");
         var video = document.createElement("video");
+        // Điện thoại: thẻ video chỉ ~150px → xem toàn màn hình. iPhone: bỏ playsinline là Safari tự mở trình phát
+        // toàn màn hình của iOS; Android: requestFullscreen ngay trong lần chạm. Máy tính: phát luôn trong thẻ.
+        var phone = window.matchMedia("(max-width: 599px)").matches;
         video.src = link.href;
         video.controls = true;
-        video.playsInline = true;
+        video.playsInline = !phone;
         video.autoplay = true;
         video.preload = "auto";
         if (poster) video.poster = poster.currentSrc || poster.src;
@@ -125,6 +128,16 @@
         video.focus(); // giữ vị trí bàn phím trên trình phát vừa xuất hiện
         var p = video.play();
         if (p && p.catch) p.catch(function () { video.setAttribute("data-blocked", ""); }); // trình duyệt chặn tự phát → người xem bấm play
+        if (phone && video.requestFullscreen && !/iPhone|iPod/.test(navigator.userAgent)) {
+            video.requestFullscreen().catch(function () {}); // không vào được toàn màn hình thì vẫn phát trong thẻ
+        }
+        // Thoát toàn màn hình → dừng video, không chạy tiếp trong thẻ nhỏ
+        if (phone) {
+            video.addEventListener("webkitendfullscreen", function () { video.pause(); }); // iPhone
+            document.addEventListener("fullscreenchange", function () {
+                if (!document.fullscreenElement && !video.paused) video.pause();
+            });
+        }
     });
 
     // Chỉ một video phát tại một thời điểm: bấm phát video khác → video đang phát tự dừng

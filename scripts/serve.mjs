@@ -6,6 +6,12 @@ import fs from "fs";
 import path from "path";
 import zlib from "zlib";
 import { DIST } from "./paths.mjs";
+import { SITE } from "../src/data.mjs";
+
+// Trên GitHub Pages website nằm dưới /athensholdingjsc/ — trang 404 dùng đường dẫn tuyệt đối có tiền tố này
+// (vì nó được trả về ở mọi thư mục) → bỏ tiền tố để xem thử trên máy giống hệt khi lên mạng
+const BASE_PATH = new URL((process.env.SITE_URL || SITE.url).replace(/\/+$/, "") + "/").pathname;
+const stripBase = (p) => (BASE_PATH !== "/" && p.startsWith(BASE_PATH) ? p.slice(BASE_PATH.length - 1) : p);
 
 const ROOT = DIST;
 const PORT = Number(process.argv[2]) || 8080;
@@ -45,9 +51,10 @@ if (fs.existsSync(path.join(ROOT, "_headers"))) {
 const headersFor = (url) => Object.assign({}, ...HEADER_RULES.filter((r) => r.re.test(url)).map((r) => r.headers));
 
 http.createServer((req, res) => {
-    const extra = headersFor(new URL(req.url, "http://x").pathname);
+    const pathname = stripBase(new URL(req.url, "http://x").pathname);
+    const extra = headersFor(pathname);
     for (const [k, v] of Object.entries(extra)) res.setHeader(k, v);
-    let file = path.join(ROOT, decodeURIComponent(new URL(req.url, "http://x").pathname));
+    let file = path.join(ROOT, decodeURIComponent(pathname));
     if (!file.startsWith(ROOT)) return res.writeHead(403).end();
     if (fs.existsSync(file) && fs.statSync(file).isDirectory()) file = path.join(file, "index.html");
     let status = 200;
