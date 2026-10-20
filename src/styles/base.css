@@ -110,7 +110,7 @@
         --surface: #fffdf8;
         --surface-2: #efe8da;
         --line: #e0d6c2;
-        --gold: #8a6a22;
+        --gold: #806320; /* đậm hơn #8a6a22 chút: chữ vàng đạt tương phản ≥ 4,5 (WCAG AA) cả trên nền #efe8da */
         --gold-light: #a5822f;
         --gold-dark: #6f5419;
         --text: #1a1611;
@@ -131,7 +131,7 @@
     --surface: #fffdf8;
     --surface-2: #efe8da;
     --line: #e0d6c2;
-    --gold: #8a6a22;
+    --gold: #806320; /* đậm hơn #8a6a22 chút: chữ vàng đạt tương phản ≥ 4,5 (WCAG AA) cả trên nền #efe8da */
     --gold-light: #a5822f;
     --gold-dark: #6f5419;
     --text: #1a1611;

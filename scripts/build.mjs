@@ -261,9 +261,10 @@ function head({ title, desc, canonical, og, ogType = "website", base, jsonld, pr
 </head>`;
 }
 
-// Logo: biểu tượng vector (assets/imgs/logo-mark.svg) + chữ
-const logo = (base, lazy = false) =>
-    `<img class="logo__mark" src="${base}assets/imgs/logo-mark.svg" alt="" width="88" height="40"${lazy ? ' loading="lazy"' : ""}><span class="logo__text">ATHENS<small>Holding JSC</small></span>`;
+// Logo: biểu tượng vector (assets/imgs/logo-mark.svg) + chữ. Không lazy ở chân trang: cùng file với logo header
+// (đã tải sẵn) nên lazy không tiết kiệm gì, mà trang ngắn (404) còn bị Chrome báo "ảnh lazy trong khung nhìn"
+const logo = (base) =>
+    `<img class="logo__mark" src="${base}assets/imgs/logo-mark.svg" alt="" width="88" height="40"><span class="logo__text">ATHENS<small>Holding JSC</small></span>`;
 
 // base: đường dẫn tới gốc website ("./", "../" hoặc "/"). Link trang chủ trỏ thẳng tới thư mục gốc
 // (khớp canonical "/"), không dùng "index.html" để tránh 2 địa chỉ cho cùng một trang.
@@ -425,8 +426,10 @@ function cta(level = "h2", subject = "", preset = {}) {
                     </div>
                 </div>
 
-                <!-- Form tư vấn: gửi qua formEndpoint (nếu cấu hình) hoặc mở email soạn sẵn — xem site.client.js -->
-                <form class="contact-form" action="mailto:${SITE.email}" method="post" enctype="text/plain" data-contact novalidate>
+                <!-- Form tư vấn: gửi qua formEndpoint (nếu cấu hình) hoặc mở email soạn sẵn — xem site.client.js.
+                     Không dùng action="mailto:": trang HTTPS gửi form tới đích không mã hoá → Chrome báo mixed content.
+                     Chưa có formEndpoint: method="dialog" → tắt JS thì bấm gửi không làm gì (không đưa tên/SĐT lên URL) -->
+                <form class="contact-form" ${SITE.formEndpoint ? `action="${esc(SITE.formEndpoint)}" method="post"` : `method="dialog"`} data-contact novalidate>
                     <div class="contact-form__head">
                         <p class="contact-form__title">Nhận tư vấn miễn phí</p>
                         <p class="contact-form__lead">Chọn nhanh vài thông tin, kiến trúc sư Athens sẽ gọi lại tư vấn phương án và dự toán sơ bộ.</p>
@@ -472,7 +475,7 @@ function footer(base) {
     <!-- ============ FOOTER ============ -->
     <footer class="footer">
         <div class="container footer__inner">
-            <a href="${base}" class="logo logo--sm" aria-label="${SITE.name} – Trang chủ">${logo(base, true)}</a>
+            <a href="${base}" class="logo logo--sm" aria-label="${SITE.name} – Trang chủ">${logo(base)}</a>
             <div class="footer__company">
                 <p class="footer__legal">${SITE.legalName}</p>
                 <p class="footer__copy">${ADDRESS_TEXT} · <a href="tel:${SITE.phoneHref}">${SITE.phone}</a> · <a href="mailto:${SITE.email}">${SITE.email}</a></p>
