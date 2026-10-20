@@ -371,14 +371,15 @@ function fab() {
     </nav>`;
 }
 
-// Form tư vấn: câu hỏi dạng nút bấm chọn (thấy hết lựa chọn, 1 chạm là xong) — chỉ bắt buộc tên + SĐT.
-// Nguồn khách (Facebook, Google…) không hỏi mà tự ghi nhận từ link quảng cáo — xem site.client.js
+// Form tư vấn (3 bước như phiếu đăng ký dự án): ô chọn là <select> gốc → điện thoại mở bánh xe/danh sách quen tay,
+// trình đọc màn hình đọc được. Chỉ bắt buộc tên + SĐT; nguồn khách quảng cáo vẫn tự ghi nhận — xem site.client.js
 const FORM_CHOICES = [
-    { name: "type", q: "Bạn đang quan tâm", opts: ["Biệt thự", "Lâu đài – Tân cổ điển", "Nhà phố", "Nhà vườn", "Nội thất", "Resort – Khách sạn"] },
-    { name: "service", q: "Bạn cần Athens", opts: ["Thiết kế", "Thi công", "Thiết kế + thi công trọn gói", "Cải tạo"] },
-    { name: "budget", q: "Ngân sách dự kiến", opts: ["Dưới 500 triệu", "500 triệu – 1 tỷ", "1 – 2 tỷ", "2 – 3 tỷ", "3 – 5 tỷ", "Trên 5 tỷ", "Chưa rõ"] },
-    { name: "timeline", q: "Dự định bắt đầu", opts: ["Trong 3 tháng", "3 – 6 tháng", "Sau 6 tháng", "Đang tham khảo"] },
+    { name: "type", q: "Loại công trình", opts: ["Biệt thự", "Lâu đài – Tân cổ điển", "Nhà phố", "Nhà vườn", "Nội thất", "Resort – Khách sạn"] },
+    { name: "service", q: "Dịch vụ cần tư vấn", opts: ["Thiết kế", "Thi công", "Thiết kế + thi công trọn gói", "Cải tạo"] },
+    { name: "budget", q: "Mức đầu tư dự kiến", opts: ["Dưới 500 triệu", "500 triệu – 1 tỷ", "1 – 2 tỷ", "2 – 3 tỷ", "3 – 5 tỷ", "Trên 5 tỷ", "Chưa rõ"] },
+    { name: "timeline", q: "Thời gian bắt đầu", opts: ["Trong 3 tháng", "3 – 6 tháng", "Sau 6 tháng", "Đang tham khảo"] },
 ];
+const REFERRAL = { name: "referral", q: "Bạn biết đến Athens từ đâu?", opts: ["Facebook", "TikTok", "Zalo", "Google / tìm kiếm", "Bạn bè, người quen giới thiệu", "Đã xem công trình của Athens", "Khác"] };
 // Trang dự án → chọn sẵn loại công trình tương ứng danh mục
 const CAT_TO_FORM = {
     villa: { type: "Biệt thự" },
@@ -389,20 +390,17 @@ const CAT_TO_FORM = {
     resort: { type: "Resort – Khách sạn" },
 };
 
-// Nhóm nút chọn: radio thật (bàn phím, trình đọc màn hình dùng được) trang trí thành nút bo tròn
-function choiceGroup({ name, q, opts }, picked = "") {
-    return `<fieldset class="choice">
-                        <legend>${q}</legend>
-                        <div class="choice__opts">
-                            ${opts
-                                .map(
-                                    (o) =>
-                                        `<label><input type="radio" name="${name}" value="${esc(o)}"${o === picked ? " checked" : ""}><span>${esc(o)}</span></label>`
-                                )
-                                .join("\n                            ")}
-                        </div>
-                    </fieldset>`;
+// Ô bo tròn, nhãn chữ nhỏ nằm trong ô (như phiếu đăng ký). <select> gốc + mũi tên vẽ bằng SVG
+const CHEVRON = '<svg class="field__chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>';
+function selectField({ name, q, opts }, picked = "", wide = false) {
+    const options = opts.map((o) => `<option${o === picked ? " selected" : ""}>${esc(o)}</option>`).join("");
+    return `<div class="field field--pill field--select${wide ? " field--wide" : ""}">
+                            <label for="cf-${name}">${q}</label>
+                            <select id="cf-${name}" name="${name}"><option value="">Chọn</option>${options}</select>
+                            ${CHEVRON}
+                        </div>`;
 }
+const req = '<span class="field__req" aria-hidden="true">*</span>';
 
 function cta(level = "h2", subject = "", preset = {}) {
     return `        <!-- ============ LIÊN HỆ ============ -->
@@ -432,7 +430,7 @@ function cta(level = "h2", subject = "", preset = {}) {
                 <form class="contact-form" ${SITE.formEndpoint ? `action="${esc(SITE.formEndpoint)}" method="post"` : `method="dialog"`} data-contact novalidate>
                     <div class="contact-form__head">
                         <p class="contact-form__title">Nhận tư vấn miễn phí</p>
-                        <p class="contact-form__lead">Chọn nhanh vài thông tin, kiến trúc sư Athens sẽ gọi lại tư vấn phương án và dự toán sơ bộ.</p>
+                        <p class="contact-form__lead">Để lại vài thông tin, kiến trúc sư Athens sẽ gọi lại tư vấn phương án và dự toán sơ bộ trong thời gian sớm nhất.</p>
                         <ul class="contact-form__perks">
                             <li>Miễn phí</li>
                             <li>Không ràng buộc</li>
@@ -440,31 +438,50 @@ function cta(level = "h2", subject = "", preset = {}) {
                         </ul>
                     </div>
 
-                    ${FORM_CHOICES.map((g) => choiceGroup(g, preset[g.name])).join("\n\n                    ")}
-
-                    <div class="contact-form__contact">
-                        <div class="field">
-                            <label for="cf-name">Họ và tên</label>
-                            <input id="cf-name" name="name" autocomplete="name" placeholder="Nguyễn Văn A" required>
-                        </div>
-                        <div class="field">
-                            <label for="cf-phone">Số điện thoại / Zalo</label>
-                            <input id="cf-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="09xx xxx xxx" pattern="[0-9 .+]{9,15}" required>
-                        </div>
-                        <div class="field field--wide">
-                            <label for="cf-location">Địa điểm xây dựng <small>(không bắt buộc)</small></label>
+                    <fieldset class="cf-step">
+                        <legend class="cf-step__title"><span>1.</span> Thông tin dự án</legend>
+                        <div class="cf-grid">
+                        ${FORM_CHOICES.map((g) => selectField(g, preset[g.name])).join("\n                        ")}
+                        <div class="field field--pill field--wide">
+                            <label for="cf-location">Địa điểm xây dựng</label>
                             <input id="cf-location" name="location" autocomplete="address-level1" placeholder="VD: Quỳnh Lưu, Nghệ An">
                         </div>
-                        <div class="field field--wide">
-                            <label for="cf-msg">Ghi chú <small>(không bắt buộc)</small></label>
-                            <textarea id="cf-msg" name="message" rows="2" placeholder="Diện tích đất, số tầng, phong cách yêu thích…">${esc(subject)}</textarea>
                         </div>
-                    </div>
+                    </fieldset>
+
+                    <fieldset class="cf-step">
+                        <legend class="cf-step__title"><span>2.</span> Thông tin liên hệ</legend>
+                        <div class="cf-grid">
+                        <div class="field field--pill">
+                            <label for="cf-name">Họ và tên ${req}</label>
+                            <input id="cf-name" name="name" autocomplete="name" placeholder="Nguyễn Văn A" required>
+                        </div>
+                        <div class="field field--pill">
+                            <label for="cf-phone">Số điện thoại / Zalo ${req}</label>
+                            <input id="cf-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="09xx xxx xxx" pattern="[0-9 .+]{9,15}" required>
+                        </div>
+                        <div class="field field--pill">
+                            <label for="cf-email">Email</label>
+                            <input id="cf-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="ten@email.com">
+                        </div>
+                        ${selectField(REFERRAL)}
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="cf-step">
+                        <legend class="cf-step__title"><span>3.</span> Ghi chú</legend>
+                        <div class="field field--pill field--area">
+                            <label for="cf-msg">Yêu cầu, sở thích thiết kế</label>
+                            <textarea id="cf-msg" name="message" rows="3" placeholder="Diện tích đất, số tầng, số phòng, phong cách yêu thích…">${esc(subject)}</textarea>
+                        </div>
+                    </fieldset>
                     <input type="hidden" name="source">
 
-                    <button type="submit" class="btn btn--block contact-form__submit">Nhận tư vấn miễn phí <span aria-hidden="true">→</span></button>
+                    <div class="contact-form__foot">
+                        <p class="contact-form__alt"><span aria-hidden="true">*</span> Bắt buộc · Cần gấp? Gọi <a href="tel:${SITE.phoneHref}">${SITE.phone}</a> hoặc <a href="${SITE.zalo}" target="_blank" rel="noopener">nhắn Zalo</a></p>
+                        <button type="submit" class="btn contact-form__submit">Gửi đi <span aria-hidden="true">→</span></button>
+                    </div>
                     <p class="contact-form__status" role="status" aria-live="polite"></p>
-                    <p class="contact-form__alt">Cần gấp? Gọi <a href="tel:${SITE.phoneHref}">${SITE.phone}</a> hoặc <a href="${SITE.zalo}" target="_blank" rel="noopener">nhắn Zalo</a></p>
                 </form>
             </div>
         </section>`;

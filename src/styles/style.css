@@ -1264,106 +1264,127 @@ body,
     color: var(--gold);
 }
 
-/* Câu hỏi dạng nút chọn: thấy hết lựa chọn, 1 chạm là xong (thay cho dropdown) */
-.choice {
+/* Phiếu tư vấn 3 bước: ô bo tròn, nhãn chữ nhỏ nằm trong ô (đỡ chiếm chỗ, vẫn luôn thấy nhãn khi đã gõ).
+   Mọi ô chữ 16px → iPhone không tự phóng to khi gõ */
+.cf-step {
     min-width: 0;
     margin: 0;
     padding: 0;
     border: 0;
 }
 
-.choice legend {
-    margin-bottom: 1rem;
+.cf-step__title {
+    margin-bottom: 1.4rem;
     padding: 0;
     font-size: 1.5rem;
     font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
     color: var(--text);
 }
 
-.choice__opts {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.8rem;
+.cf-step__title span {
+    color: var(--gold);
 }
 
-.choice label {
-    position: relative;
-    cursor: pointer;
-}
-
-/* Radio thật vẫn nằm đó (bàn phím, trình đọc màn hình) — chỉ ẩn hình */
-.choice input {
-    position: absolute;
-    inset: 0;
-    margin: 0;
-    opacity: 0;
-    cursor: pointer;
-}
-
-.choice span {
-    display: inline-block;
-    padding: 1rem 1.8rem;
-    font-size: 1.4rem;
-    line-height: 1.3;
-    color: var(--text);
-    background: var(--bg);
-    border: 1px solid var(--line);
-    border-radius: 99rem;
-    transition: border-color 0.2s, background 0.2s, color 0.2s;
-}
-
-.choice label:hover span {
-    border-color: var(--gold);
-}
-
-.choice input:checked + span {
-    color: var(--on-gold);
-    background: var(--gold-grad);
-    border-color: transparent;
-    font-weight: 600;
-}
-
-.choice input:focus-visible + span {
-    outline: 2px solid var(--gold);
-    outline-offset: 2px;
-}
-
-/* Thông tin liên hệ: nhãn rõ ràng phía trên ô, chữ 16px (iPhone không tự phóng to khi gõ) */
-.contact-form__contact {
+.cf-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1.8rem 1.6rem;
-    padding-top: 2.8rem;
-    border-top: 1px solid var(--line);
+    gap: 1.2rem;
+}
+
+.field {
+    position: relative;
+    min-width: 0;
 }
 
 .field--wide {
     grid-column: 1 / -1;
 }
 
-.field label {
-    display: block;
-    margin-bottom: 0.8rem;
-    font-size: 1.4rem;
+/* Nhãn nằm trong ô, phía trên chữ gõ; không chặn chuột → bấm vào đâu trong ô cũng mở/gõ được ngay */
+.field--pill > label {
+    position: absolute;
+    z-index: 1;
+    top: 1rem;
+    left: 2.4rem;
+    right: 4.8rem;
+    overflow: hidden;
+    font-size: 1.1rem;
     font-weight: 600;
-    color: var(--text);
-}
-
-.field small {
-    font-weight: 400;
+    letter-spacing: 0.08em;
+    line-height: 1.4;
+    text-transform: uppercase;
+    white-space: nowrap;
+    text-overflow: ellipsis;
     color: var(--muted);
+    pointer-events: none;
+    transition: color 0.2s;
 }
 
-.field input,
-.field textarea {
+.field__req {
+    color: var(--gold);
+}
+
+.field--pill input,
+.field--pill select,
+.field--pill textarea {
+    display: block;
     width: 100%;
-    padding: 1.4rem 1.6rem;
+    height: 6rem;
+    padding: 2.5rem 2.4rem 0.8rem;
     font-size: 1.6rem;
+    line-height: 1.6;
     color: var(--text);
     background: var(--bg);
     border: 1px solid var(--line);
-    border-radius: 0;
+    border-radius: 99rem;
     transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.field--pill select {
+    padding-right: 4.8rem;
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: pointer;
+    text-overflow: ellipsis;
+}
+
+/* Chưa chọn → chữ "Chọn" mờ như gợi ý */
+.field--pill select:has(> option[value=""]:checked) {
+    color: var(--muted);
+}
+
+.field--pill option {
+    color: var(--text);
+    background: var(--surface);
+}
+
+.field__chev {
+    position: absolute;
+    top: 50%;
+    right: 2rem;
+    width: 1.8rem;
+    height: 1.8rem;
+    margin-top: -0.9rem;
+    fill: none;
+    stroke: var(--text);
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    pointer-events: none;
+}
+
+.field--area textarea {
+    height: auto;
+    min-height: 13rem;
+    padding-top: 3.4rem;
+    border-radius: 2.4rem;
+    resize: vertical;
+}
+
+.field--area > label {
+    top: 1.4rem;
 }
 
 .field ::placeholder {
@@ -1371,42 +1392,74 @@ body,
     opacity: 0.6;
 }
 
-.field textarea {
-    min-height: 8rem;
-    resize: vertical;
+.field--pill:hover input,
+.field--pill:hover select,
+.field--pill:hover textarea {
+    border-color: var(--gold);
 }
 
-.field input:focus,
-.field textarea:focus {
+.field--pill input:focus,
+.field--pill select:focus,
+.field--pill textarea:focus {
     outline: none;
     border-color: var(--gold);
-    box-shadow: 0 0 0 3px rgba(201, 162, 74, 0.18);
+    box-shadow: 0 0 0 3px rgba(201, 162, 74, 0.2);
+}
+
+.field--pill:focus-within > label {
+    color: var(--gold);
 }
 
 .field.is-invalid input {
-    border-color: #e5735c;
+    border-color: var(--danger);
+}
+
+.field.is-invalid > label {
+    color: var(--danger);
 }
 
 .field__error {
-    margin-top: 0.6rem;
+    margin: 0.6rem 0 0 2.4rem;
     font-size: 1.3rem;
-    color: #e5735c;
+    color: var(--danger);
 }
 
 .field:not(.is-invalid) .field__error {
     display: none;
 }
 
+/* Cuối form: ghi chú bên trái, nút Gửi đi bo tròn bên phải */
+.contact-form__foot {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.6rem 2.4rem;
+}
+
 .contact-form__submit {
-    padding-block: 2rem;
+    padding: 1.7rem 3.6rem;
     font-size: 1.5rem;
+    border-radius: 99rem;
+}
+
+.contact-form__submit span {
+    display: inline-block;
+    margin-left: 0.6rem;
+    transition: transform 0.3s var(--ease);
+}
+
+.contact-form__submit:hover span {
+    transform: translateX(0.4rem);
 }
 
 .contact-form__alt {
-    margin-top: -1.2rem;
-    font-size: 1.4rem;
-    text-align: center;
+    font-size: 1.3rem;
     color: var(--muted);
+}
+
+.contact-form__alt > span {
+    color: var(--gold);
 }
 
 .contact-form__alt a {
@@ -1905,6 +1958,14 @@ body,
     right: max(1.6rem, env(safe-area-inset-right));
     bottom: max(1.6rem, env(safe-area-inset-bottom));
     z-index: 90; /* dưới header/menu mobile (100) */
+    transition: opacity 0.3s, transform 0.3s var(--ease), visibility 0.3s;
+}
+
+/* Đang xem form liên hệ (đã có sẵn nút Gọi/Zalo): ẩn cụm nút nổi để không che mũi tên ô chọn — site.js gắn class */
+.fab.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(2rem);
 }
 
 .fab ul {
@@ -2597,8 +2658,15 @@ body,
         padding: 2.8rem 2rem;
     }
 
-    .contact-form__contact {
+    /* Điện thoại: mỗi ô một hàng, nút Gửi đi rộng hết hàng (dễ chạm) */
+    .cf-grid {
         grid-template-columns: 1fr;
+    }
+
+    .contact-form__foot {
+        flex-direction: column-reverse;
+        align-items: stretch;
+        text-align: center;
     }
 
     /* Hai nút Gọi / Zalo rộng hết hàng, xếp chồng: dễ bấm, không gãy chữ */
@@ -2641,10 +2709,6 @@ body,
         top: auto;
         bottom: 1.6rem;
         transform: none;
-    }
-
-    .choice span {
-        padding: 0.9rem 1.4rem;
     }
 
     /* Nút xếp dọc cố định: font thật hay font dự phòng đều không làm nút đổi hàng → bố cục không nhảy */
@@ -2866,6 +2930,24 @@ body,
 .footer {
     content-visibility: auto;
     contain-intrinsic-size: auto 900px;
+}
+
+/* Khu liên hệ (form) cao hơn hẳn 900px: chỗ giữ phải ≥ chiều cao thật, nếu không lúc chưa dựng, form tràn đè
+   lên chân trang (Lighthouse báo nút chân trang "bị che"). Đo thật: 1081 / 1622 / 1833–1915px */
+.cta {
+    contain-intrinsic-size: auto 1120px;
+}
+
+@media (max-width: 991px) {
+    .cta {
+        contain-intrinsic-size: auto 1680px;
+    }
+}
+
+@media (max-width: 599px) {
+    .cta {
+        contain-intrinsic-size: auto 1960px;
+    }
 }
 
 /* Lưới dự án trang chủ chiếm ~nửa DOM: thẻ ngoài màn hình chưa dựng. Thẻ nổi bật (span 2 hàng) luôn ở màn đầu → giữ nguyên.

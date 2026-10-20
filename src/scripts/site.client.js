@@ -379,6 +379,15 @@
         return src;
     })();
 
+    // Điện thoại: cụm nút nổi (Gọi/Zalo…) che mép phải ô nhập & mũi tên ô chọn → ẩn khi form liên hệ đang trên màn hình
+    var fab = document.querySelector(".fab");
+    var contactForm = document.querySelector("form[data-contact]");
+    if (fab && contactForm && window.IntersectionObserver) {
+        new IntersectionObserver(function (entries) {
+            fab.classList.toggle("is-hidden", entries[0].isIntersecting && window.matchMedia("(max-width: 991px)").matches);
+        }, { rootMargin: "0px 0px -15% 0px" }).observe(contactForm);
+    }
+
     document.querySelectorAll("form[data-contact]").forEach(function (form) {
         var status = form.querySelector(".contact-form__status");
         var button = form.querySelector('button[type="submit"]');
@@ -417,15 +426,17 @@
                 markInvalid(phone, phone.value.trim() ? "Số điện thoại chưa đúng (9–15 chữ số)." : "Vui lòng nhập số điện thoại để Athens gọi lại.");
                 bad.push(phone);
             }
+            var email = form.elements.email; // không bắt buộc — chỉ báo khi đã gõ mà sai
+            if (email && email.value.trim() && !email.checkValidity()) { markInvalid(email, "Email chưa đúng (vd: ten@email.com)."); bad.push(email); }
             if (bad.length) { say(""); bad[0].focus(); return; }
 
             var d = new FormData(form);
             form.elements.source.value = visitSource;
             // Nhãn tiếng Việt cho từng ô — dùng làm nội dung thư gửi về Athens
             var fields = [
-                ["name", "Họ tên"], ["phone", "Điện thoại/Zalo"], ["type", "Quan tâm"], ["service", "Cần"],
-                ["budget", "Ngân sách"], ["timeline", "Dự định bắt đầu"], ["location", "Địa điểm"],
-                ["message", "Ghi chú"],
+                ["name", "Họ tên"], ["phone", "Điện thoại/Zalo"], ["email", "Email"], ["type", "Công trình"],
+                ["service", "Dịch vụ"], ["budget", "Mức đầu tư"], ["timeline", "Dự định bắt đầu"], ["location", "Địa điểm"],
+                ["referral", "Biết Athens qua"], ["message", "Ghi chú"],
             ];
             var data = {};
             fields.forEach(function (f) { data[f[0]] = (d.get(f[0]) || "").trim(); });
