@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
     <url>
         <loc>https://huanlv620.github.io/athensholdingjsc/</loc>
-        <lastmod>2026-10-16</lastmod>
+        <lastmod>2026-10-20</lastmod>
         <priority>1.0</priority>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/og/home.jpg</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/home/1-sm.webp</image:loc></image:image>
@@ -12,8 +12,67 @@
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/home/5-sm.webp</image:loc></image:image>
     </url>
     <url>
+        <loc>https://huanlv620.github.io/athensholdingjsc/thi-cong.html</loc>
+        <lastmod>2026-10-20</lastmod>
+        <priority>0.7</priority>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/albums/khoi-cong/1-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/albums/khoi-cong/2-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/albums/khoi-cong/3-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/albums/khoi-cong/4-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/albums/khoi-cong/5-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/albums/khoi-cong/6-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/albums/khoi-cong/7-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/albums/khoi-cong/8-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/albums/khoi-cong/9-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/albums/khoi-cong/10-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/albums/khoi-cong/11-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/albums/khoi-cong/12-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/albums/khoi-cong/13-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/albums/khoi-cong/14-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/albums/khoi-cong/15-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/albums/khoi-cong/16-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/albums/khoi-cong/17-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/albums/khoi-cong/18-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/albums/khoi-cong/19-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/albums/khoi-cong/20-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/albums/khoi-cong/21-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/albums/khoi-cong/22-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/albums/khoi-cong/23-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/albums/khoi-cong/24-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/albums/khoi-cong/25-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/albums/khoi-cong/26-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/albums/khoi-cong/27-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/albums/khoi-cong/28-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/albums/khoi-cong/29-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/albums/khoi-cong/30-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/albums/khoi-cong/31-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/albums/khoi-cong/32-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/albums/cong-truong/1-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/albums/cong-truong/2-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/albums/cong-truong/3-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/albums/cong-truong/4-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/albums/cong-truong/5-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/albums/cong-truong/6-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/albums/cong-truong/7-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/albums/cong-truong/8-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/albums/cong-truong/9-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/albums/cong-truong/10-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/albums/cong-truong/11-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/albums/cong-truong/12-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/albums/cong-truong/13-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/albums/cong-truong/14-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/albums/cong-truong/15-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/albums/cong-truong/16-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/albums/cong-truong/17-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/albums/cong-truong/18-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/albums/cong-truong/19-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/albums/cong-truong/20-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/albums/cong-truong/21-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/albums/cong-truong/22-sm.webp</image:loc></image:image>
+    </url>
+    <url>
         <loc>https://huanlv620.github.io/athensholdingjsc/du-an/villa-nhiet-doi-mat-nuoc.html</loc>
-        <lastmod>2026-10-16</lastmod>
+        <lastmod>2026-10-19</lastmod>
         <priority>0.8</priority>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-nhiet-doi-mat-nuoc/1-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-nhiet-doi-mat-nuoc/2-sm.webp</image:loc></image:image>
@@ -24,10 +83,41 @@
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-nhiet-doi-mat-nuoc/7-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-nhiet-doi-mat-nuoc/8-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-nhiet-doi-mat-nuoc/9-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-nhiet-doi-mat-nuoc/10-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-nhiet-doi-mat-nuoc/11-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-nhiet-doi-mat-nuoc/12-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-nhiet-doi-mat-nuoc/13-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-nhiet-doi-mat-nuoc/14-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-nhiet-doi-mat-nuoc/15-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-nhiet-doi-mat-nuoc/16-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-nhiet-doi-mat-nuoc/17-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-nhiet-doi-mat-nuoc/18-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-nhiet-doi-mat-nuoc/19-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-nhiet-doi-mat-nuoc/20-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-nhiet-doi-mat-nuoc/21-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-nhiet-doi-mat-nuoc/22-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-nhiet-doi-mat-nuoc/23-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-nhiet-doi-mat-nuoc/24-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-nhiet-doi-mat-nuoc/25-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-nhiet-doi-mat-nuoc/26-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-nhiet-doi-mat-nuoc/27-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-nhiet-doi-mat-nuoc/28-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-nhiet-doi-mat-nuoc/29-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-nhiet-doi-mat-nuoc/30-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-nhiet-doi-mat-nuoc/31-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-nhiet-doi-mat-nuoc/32-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-nhiet-doi-mat-nuoc/33-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-nhiet-doi-mat-nuoc/34-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-nhiet-doi-mat-nuoc/35-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-nhiet-doi-mat-nuoc/36-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-nhiet-doi-mat-nuoc/37-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-nhiet-doi-mat-nuoc/38-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-nhiet-doi-mat-nuoc/39-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-nhiet-doi-mat-nuoc/40-sm.webp</image:loc></image:image>
     </url>
     <url>
         <loc>https://huanlv620.github.io/athensholdingjsc/du-an/biet-thu-son-thuy.html</loc>
-        <lastmod>2026-10-16</lastmod>
+        <lastmod>2026-10-19</lastmod>
         <priority>0.8</priority>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-son-thuy/1-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-son-thuy/2-sm.webp</image:loc></image:image>
@@ -37,10 +127,16 @@
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-son-thuy/6-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-son-thuy/7-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-son-thuy/8-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-son-thuy/9-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-son-thuy/10-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-son-thuy/11-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-son-thuy/12-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-son-thuy/13-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-son-thuy/14-sm.webp</image:loc></image:image>
     </url>
     <url>
         <loc>https://huanlv620.github.io/athensholdingjsc/du-an/biet-thu-rung-thong.html</loc>
-        <lastmod>2026-10-16</lastmod>
+        <lastmod>2026-10-19</lastmod>
         <priority>0.8</priority>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-rung-thong/1-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-rung-thong/2-sm.webp</image:loc></image:image>
@@ -50,10 +146,14 @@
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-rung-thong/6-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-rung-thong/7-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-rung-thong/8-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-rung-thong/9-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-rung-thong/10-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-rung-thong/11-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-rung-thong/12-sm.webp</image:loc></image:image>
     </url>
     <url>
         <loc>https://huanlv620.github.io/athensholdingjsc/du-an/biet-thu-doi-may.html</loc>
-        <lastmod>2026-10-16</lastmod>
+        <lastmod>2026-10-19</lastmod>
         <priority>0.8</priority>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-doi-may/1-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-doi-may/2-sm.webp</image:loc></image:image>
@@ -63,10 +163,13 @@
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-doi-may/6-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-doi-may/7-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-doi-may/8-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-doi-may/9-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-doi-may/10-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-doi-may/11-sm.webp</image:loc></image:image>
     </url>
     <url>
         <loc>https://huanlv620.github.io/athensholdingjsc/du-an/biet-thu-mai-nhat.html</loc>
-        <lastmod>2026-10-16</lastmod>
+        <lastmod>2026-10-19</lastmod>
         <priority>0.8</priority>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-mai-nhat/1-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-mai-nhat/2-sm.webp</image:loc></image:image>
@@ -74,20 +177,24 @@
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-mai-nhat/4-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-mai-nhat/5-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-mai-nhat/6-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-mai-nhat/7-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-mai-nhat/8-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-mai-nhat/9-sm.webp</image:loc></image:image>
     </url>
     <url>
         <loc>https://huanlv620.github.io/athensholdingjsc/du-an/biet-thu-da-go.html</loc>
-        <lastmod>2026-10-16</lastmod>
+        <lastmod>2026-10-19</lastmod>
         <priority>0.8</priority>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-da-go/1-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-da-go/2-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-da-go/3-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-da-go/4-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-da-go/5-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-da-go/6-sm.webp</image:loc></image:image>
     </url>
     <url>
         <loc>https://huanlv620.github.io/athensholdingjsc/du-an/villa-vuon-tung.html</loc>
-        <lastmod>2026-10-16</lastmod>
+        <lastmod>2026-10-19</lastmod>
         <priority>0.8</priority>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-vuon-tung/1-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-vuon-tung/2-sm.webp</image:loc></image:image>
@@ -97,7 +204,7 @@
     </url>
     <url>
         <loc>https://huanlv620.github.io/athensholdingjsc/du-an/biet-thu-toi-gian.html</loc>
-        <lastmod>2026-10-16</lastmod>
+        <lastmod>2026-10-19</lastmod>
         <priority>0.8</priority>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-toi-gian/1-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-toi-gian/2-sm.webp</image:loc></image:image>
@@ -107,10 +214,32 @@
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-toi-gian/6-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-toi-gian/7-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-toi-gian/8-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-toi-gian/9-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-toi-gian/10-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-toi-gian/11-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-toi-gian/12-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-toi-gian/13-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-toi-gian/14-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-toi-gian/15-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-toi-gian/16-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-toi-gian/17-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-toi-gian/18-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-toi-gian/19-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-toi-gian/20-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-toi-gian/21-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-toi-gian/22-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-toi-gian/23-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-toi-gian/24-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-toi-gian/25-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-toi-gian/26-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-toi-gian/27-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-toi-gian/28-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-toi-gian/29-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-toi-gian/30-sm.webp</image:loc></image:image>
     </url>
     <url>
         <loc>https://huanlv620.github.io/athensholdingjsc/du-an/biet-thu-nhiet-doi-hien-dai.html</loc>
-        <lastmod>2026-10-16</lastmod>
+        <lastmod>2026-10-19</lastmod>
         <priority>0.8</priority>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-nhiet-doi-hien-dai/1-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-nhiet-doi-hien-dai/2-sm.webp</image:loc></image:image>
@@ -120,29 +249,39 @@
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-nhiet-doi-hien-dai/6-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-nhiet-doi-hien-dai/7-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-nhiet-doi-hien-dai/8-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-nhiet-doi-hien-dai/9-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-nhiet-doi-hien-dai/10-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-nhiet-doi-hien-dai/11-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-nhiet-doi-hien-dai/12-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-nhiet-doi-hien-dai/13-sm.webp</image:loc></image:image>
     </url>
     <url>
         <loc>https://huanlv620.github.io/athensholdingjsc/du-an/biet-thu-ba-tang-mai-lech.html</loc>
-        <lastmod>2026-10-16</lastmod>
+        <lastmod>2026-10-19</lastmod>
         <priority>0.8</priority>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-ba-tang-mai-lech/1-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-ba-tang-mai-lech/2-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-ba-tang-mai-lech/3-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-ba-tang-mai-lech/4-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-ba-tang-mai-lech/5-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/biet-thu-ba-tang-mai-lech/6-sm.webp</image:loc></image:image>
     </url>
     <url>
         <loc>https://huanlv620.github.io/athensholdingjsc/du-an/villa-tang-bac.html</loc>
-        <lastmod>2026-10-16</lastmod>
+        <lastmod>2026-10-19</lastmod>
         <priority>0.8</priority>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-tang-bac/1-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-tang-bac/2-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-tang-bac/3-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-tang-bac/4-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-tang-bac/5-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-tang-bac/6-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-tang-bac/7-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-tang-bac/8-sm.webp</image:loc></image:image>
     </url>
     <url>
         <loc>https://huanlv620.github.io/athensholdingjsc/du-an/villa-mai-go.html</loc>
-        <lastmod>2026-10-16</lastmod>
+        <lastmod>2026-10-19</lastmod>
         <priority>0.8</priority>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-mai-go/1-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-mai-go/2-sm.webp</image:loc></image:image>
@@ -151,7 +290,7 @@
     </url>
     <url>
         <loc>https://huanlv620.github.io/athensholdingjsc/du-an/tuyen-tap-biet-thu-hien-dai.html</loc>
-        <lastmod>2026-10-16</lastmod>
+        <lastmod>2026-10-19</lastmod>
         <priority>0.8</priority>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-biet-thu-hien-dai/1-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-biet-thu-hien-dai/2-sm.webp</image:loc></image:image>
@@ -160,10 +299,38 @@
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-biet-thu-hien-dai/5-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-biet-thu-hien-dai/6-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-biet-thu-hien-dai/7-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-biet-thu-hien-dai/8-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-biet-thu-hien-dai/9-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-biet-thu-hien-dai/10-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-biet-thu-hien-dai/11-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-biet-thu-hien-dai/12-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-biet-thu-hien-dai/13-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-biet-thu-hien-dai/14-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-biet-thu-hien-dai/15-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-biet-thu-hien-dai/16-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-biet-thu-hien-dai/17-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-biet-thu-hien-dai/18-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-biet-thu-hien-dai/19-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-biet-thu-hien-dai/20-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-biet-thu-hien-dai/21-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-biet-thu-hien-dai/22-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-biet-thu-hien-dai/23-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-biet-thu-hien-dai/24-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-biet-thu-hien-dai/25-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-biet-thu-hien-dai/26-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-biet-thu-hien-dai/27-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-biet-thu-hien-dai/28-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-biet-thu-hien-dai/29-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-biet-thu-hien-dai/30-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-biet-thu-hien-dai/31-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-biet-thu-hien-dai/32-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-biet-thu-hien-dai/33-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-biet-thu-hien-dai/34-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-biet-thu-hien-dai/35-sm.webp</image:loc></image:image>
     </url>
     <url>
         <loc>https://huanlv620.github.io/athensholdingjsc/du-an/nha-pho-gach-thong-gio.html</loc>
-        <lastmod>2026-10-16</lastmod>
+        <lastmod>2026-10-19</lastmod>
         <priority>0.8</priority>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/nha-pho-gach-thong-gio/1-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/nha-pho-gach-thong-gio/2-sm.webp</image:loc></image:image>
@@ -173,10 +340,19 @@
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/nha-pho-gach-thong-gio/6-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/nha-pho-gach-thong-gio/7-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/nha-pho-gach-thong-gio/8-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/nha-pho-gach-thong-gio/9-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/nha-pho-gach-thong-gio/10-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/nha-pho-gach-thong-gio/11-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/nha-pho-gach-thong-gio/12-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/nha-pho-gach-thong-gio/13-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/nha-pho-gach-thong-gio/14-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/nha-pho-gach-thong-gio/15-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/nha-pho-gach-thong-gio/16-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/nha-pho-gach-thong-gio/17-sm.webp</image:loc></image:image>
     </url>
     <url>
         <loc>https://huanlv620.github.io/athensholdingjsc/du-an/nha-pho-lam-da.html</loc>
-        <lastmod>2026-10-16</lastmod>
+        <lastmod>2026-10-19</lastmod>
         <priority>0.8</priority>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/nha-pho-lam-da/1-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/nha-pho-lam-da/2-sm.webp</image:loc></image:image>
@@ -188,7 +364,7 @@
     </url>
     <url>
         <loc>https://huanlv620.github.io/athensholdingjsc/du-an/nha-pho-trang-uon-luon.html</loc>
-        <lastmod>2026-10-16</lastmod>
+        <lastmod>2026-10-19</lastmod>
         <priority>0.8</priority>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/nha-pho-trang-uon-luon/1-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/nha-pho-trang-uon-luon/2-sm.webp</image:loc></image:image>
@@ -198,20 +374,32 @@
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/nha-pho-trang-uon-luon/6-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/nha-pho-trang-uon-luon/7-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/nha-pho-trang-uon-luon/8-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/nha-pho-trang-uon-luon/9-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/nha-pho-trang-uon-luon/10-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/nha-pho-trang-uon-luon/11-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/nha-pho-trang-uon-luon/12-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/nha-pho-trang-uon-luon/13-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/nha-pho-trang-uon-luon/14-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/nha-pho-trang-uon-luon/15-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/nha-pho-trang-uon-luon/16-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/nha-pho-trang-uon-luon/17-sm.webp</image:loc></image:image>
     </url>
     <url>
         <loc>https://huanlv620.github.io/athensholdingjsc/du-an/nha-pho-mai-vom.html</loc>
-        <lastmod>2026-10-16</lastmod>
+        <lastmod>2026-10-19</lastmod>
         <priority>0.8</priority>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/nha-pho-mai-vom/1-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/nha-pho-mai-vom/2-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/nha-pho-mai-vom/3-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/nha-pho-mai-vom/4-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/nha-pho-mai-vom/5-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/nha-pho-mai-vom/6-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/nha-pho-mai-vom/7-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/nha-pho-mai-vom/8-sm.webp</image:loc></image:image>
     </url>
     <url>
         <loc>https://huanlv620.github.io/athensholdingjsc/du-an/tam-hop-vien.html</loc>
-        <lastmod>2026-10-16</lastmod>
+        <lastmod>2026-10-19</lastmod>
         <priority>0.8</priority>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tam-hop-vien/1-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tam-hop-vien/2-sm.webp</image:loc></image:image>
@@ -221,10 +409,31 @@
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tam-hop-vien/6-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tam-hop-vien/7-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tam-hop-vien/8-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tam-hop-vien/9-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tam-hop-vien/10-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tam-hop-vien/11-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tam-hop-vien/12-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tam-hop-vien/13-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tam-hop-vien/14-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tam-hop-vien/15-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tam-hop-vien/16-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tam-hop-vien/17-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tam-hop-vien/18-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tam-hop-vien/19-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tam-hop-vien/20-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tam-hop-vien/21-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tam-hop-vien/22-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tam-hop-vien/23-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tam-hop-vien/24-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tam-hop-vien/25-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tam-hop-vien/26-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tam-hop-vien/27-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tam-hop-vien/28-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tam-hop-vien/29-sm.webp</image:loc></image:image>
     </url>
     <url>
         <loc>https://huanlv620.github.io/athensholdingjsc/du-an/nha-vuon-phong-cach-nhat.html</loc>
-        <lastmod>2026-10-16</lastmod>
+        <lastmod>2026-10-19</lastmod>
         <priority>0.8</priority>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/nha-vuon-phong-cach-nhat/1-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/nha-vuon-phong-cach-nhat/2-sm.webp</image:loc></image:image>
@@ -235,7 +444,7 @@
     </url>
     <url>
         <loc>https://huanlv620.github.io/athensholdingjsc/du-an/nha-vuon-bonsai.html</loc>
-        <lastmod>2026-10-16</lastmod>
+        <lastmod>2026-10-19</lastmod>
         <priority>0.8</priority>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/nha-vuon-bonsai/1-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/nha-vuon-bonsai/2-sm.webp</image:loc></image:image>
@@ -243,10 +452,12 @@
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/nha-vuon-bonsai/4-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/nha-vuon-bonsai/5-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/nha-vuon-bonsai/6-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/nha-vuon-bonsai/7-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/nha-vuon-bonsai/8-sm.webp</image:loc></image:image>
     </url>
     <url>
         <loc>https://huanlv620.github.io/athensholdingjsc/du-an/tuyen-tap-nha-vuon.html</loc>
-        <lastmod>2026-10-16</lastmod>
+        <lastmod>2026-10-19</lastmod>
         <priority>0.8</priority>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-nha-vuon/1-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-nha-vuon/2-sm.webp</image:loc></image:image>
@@ -254,20 +465,33 @@
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-nha-vuon/4-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-nha-vuon/5-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-nha-vuon/6-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-nha-vuon/7-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-nha-vuon/8-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-nha-vuon/9-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-nha-vuon/10-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-nha-vuon/11-sm.webp</image:loc></image:image>
     </url>
     <url>
         <loc>https://huanlv620.github.io/athensholdingjsc/du-an/lau-dai-tan-co-dien.html</loc>
-        <lastmod>2026-10-16</lastmod>
+        <lastmod>2026-10-19</lastmod>
         <priority>0.8</priority>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/lau-dai-tan-co-dien/1-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/lau-dai-tan-co-dien/2-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/lau-dai-tan-co-dien/3-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/lau-dai-tan-co-dien/4-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/lau-dai-tan-co-dien/5-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/lau-dai-tan-co-dien/6-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/lau-dai-tan-co-dien/7-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/lau-dai-tan-co-dien/8-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/lau-dai-tan-co-dien/9-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/lau-dai-tan-co-dien/10-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/lau-dai-tan-co-dien/11-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/lau-dai-tan-co-dien/12-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/lau-dai-tan-co-dien/13-sm.webp</image:loc></image:image>
     </url>
     <url>
         <loc>https://huanlv620.github.io/athensholdingjsc/du-an/dinh-thu-go-co-dien.html</loc>
-        <lastmod>2026-10-16</lastmod>
+        <lastmod>2026-10-19</lastmod>
         <priority>0.8</priority>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/dinh-thu-go-co-dien/1-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/dinh-thu-go-co-dien/2-sm.webp</image:loc></image:image>
@@ -277,10 +501,27 @@
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/dinh-thu-go-co-dien/6-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/dinh-thu-go-co-dien/7-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/dinh-thu-go-co-dien/8-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/dinh-thu-go-co-dien/9-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/dinh-thu-go-co-dien/10-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/dinh-thu-go-co-dien/11-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/dinh-thu-go-co-dien/12-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/dinh-thu-go-co-dien/13-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/dinh-thu-go-co-dien/14-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/dinh-thu-go-co-dien/15-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/dinh-thu-go-co-dien/16-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/dinh-thu-go-co-dien/17-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/dinh-thu-go-co-dien/18-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/dinh-thu-go-co-dien/19-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/dinh-thu-go-co-dien/20-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/dinh-thu-go-co-dien/21-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/dinh-thu-go-co-dien/22-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/dinh-thu-go-co-dien/23-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/dinh-thu-go-co-dien/24-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/dinh-thu-go-co-dien/25-sm.webp</image:loc></image:image>
     </url>
     <url>
         <loc>https://huanlv620.github.io/athensholdingjsc/du-an/villa-prosperous.html</loc>
-        <lastmod>2026-10-16</lastmod>
+        <lastmod>2026-10-19</lastmod>
         <priority>0.8</priority>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-prosperous/1-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-prosperous/2-sm.webp</image:loc></image:image>
@@ -291,10 +532,49 @@
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-prosperous/7-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-prosperous/8-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-prosperous/9-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-prosperous/10-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-prosperous/11-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-prosperous/12-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-prosperous/13-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-prosperous/14-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-prosperous/15-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-prosperous/16-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-prosperous/17-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-prosperous/18-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-prosperous/19-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-prosperous/20-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-prosperous/21-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-prosperous/22-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-prosperous/23-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-prosperous/24-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-prosperous/25-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-prosperous/26-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-prosperous/27-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-prosperous/28-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-prosperous/29-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-prosperous/30-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-prosperous/31-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-prosperous/32-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-prosperous/33-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-prosperous/34-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-prosperous/35-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-prosperous/36-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-prosperous/37-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-prosperous/38-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-prosperous/39-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-prosperous/40-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-prosperous/41-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-prosperous/42-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-prosperous/43-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-prosperous/44-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-prosperous/45-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-prosperous/46-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-prosperous/47-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/villa-prosperous/48-sm.webp</image:loc></image:image>
     </url>
     <url>
         <loc>https://huanlv620.github.io/athensholdingjsc/du-an/dinh-thu-tan-co-dien.html</loc>
-        <lastmod>2026-10-16</lastmod>
+        <lastmod>2026-10-19</lastmod>
         <priority>0.8</priority>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/dinh-thu-tan-co-dien/1-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/dinh-thu-tan-co-dien/2-sm.webp</image:loc></image:image>
@@ -305,10 +585,25 @@
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/dinh-thu-tan-co-dien/7-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/dinh-thu-tan-co-dien/8-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/dinh-thu-tan-co-dien/9-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/dinh-thu-tan-co-dien/10-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/dinh-thu-tan-co-dien/11-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/dinh-thu-tan-co-dien/12-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/dinh-thu-tan-co-dien/13-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/dinh-thu-tan-co-dien/14-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/dinh-thu-tan-co-dien/15-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/dinh-thu-tan-co-dien/16-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/dinh-thu-tan-co-dien/17-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/dinh-thu-tan-co-dien/18-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/dinh-thu-tan-co-dien/19-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/dinh-thu-tan-co-dien/20-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/dinh-thu-tan-co-dien/21-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/dinh-thu-tan-co-dien/22-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/dinh-thu-tan-co-dien/23-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/dinh-thu-tan-co-dien/24-sm.webp</image:loc></image:image>
     </url>
     <url>
         <loc>https://huanlv620.github.io/athensholdingjsc/du-an/tuyen-tap-lau-dai.html</loc>
-        <lastmod>2026-10-16</lastmod>
+        <lastmod>2026-10-19</lastmod>
         <priority>0.8</priority>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-lau-dai/1-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-lau-dai/2-sm.webp</image:loc></image:image>
@@ -319,10 +614,46 @@
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-lau-dai/7-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-lau-dai/8-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-lau-dai/9-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-lau-dai/10-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-lau-dai/11-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-lau-dai/12-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-lau-dai/13-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-lau-dai/14-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-lau-dai/15-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-lau-dai/16-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-lau-dai/17-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-lau-dai/18-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-lau-dai/19-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-lau-dai/20-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-lau-dai/21-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-lau-dai/22-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-lau-dai/23-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-lau-dai/24-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-lau-dai/25-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-lau-dai/26-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-lau-dai/27-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-lau-dai/28-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-lau-dai/29-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-lau-dai/30-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-lau-dai/31-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-lau-dai/32-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-lau-dai/33-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-lau-dai/34-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-lau-dai/35-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-lau-dai/36-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-lau-dai/37-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-lau-dai/38-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-lau-dai/39-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-lau-dai/40-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-lau-dai/41-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-lau-dai/42-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-lau-dai/43-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-lau-dai/44-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/tuyen-tap-lau-dai/45-sm.webp</image:loc></image:image>
     </url>
     <url>
         <loc>https://huanlv620.github.io/athensholdingjsc/du-an/noi-that-go-oc-cho.html</loc>
-        <lastmod>2026-10-16</lastmod>
+        <lastmod>2026-10-19</lastmod>
         <priority>0.8</priority>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-go-oc-cho/1-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-go-oc-cho/2-sm.webp</image:loc></image:image>
@@ -332,10 +663,32 @@
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-go-oc-cho/6-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-go-oc-cho/7-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-go-oc-cho/8-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-go-oc-cho/9-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-go-oc-cho/10-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-go-oc-cho/11-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-go-oc-cho/12-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-go-oc-cho/13-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-go-oc-cho/14-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-go-oc-cho/15-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-go-oc-cho/16-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-go-oc-cho/17-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-go-oc-cho/18-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-go-oc-cho/19-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-go-oc-cho/20-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-go-oc-cho/21-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-go-oc-cho/22-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-go-oc-cho/23-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-go-oc-cho/24-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-go-oc-cho/25-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-go-oc-cho/26-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-go-oc-cho/27-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-go-oc-cho/28-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-go-oc-cho/29-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-go-oc-cho/30-sm.webp</image:loc></image:image>
     </url>
     <url>
         <loc>https://huanlv620.github.io/athensholdingjsc/du-an/noi-that-vom-cong.html</loc>
-        <lastmod>2026-10-16</lastmod>
+        <lastmod>2026-10-19</lastmod>
         <priority>0.8</priority>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-vom-cong/1-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-vom-cong/2-sm.webp</image:loc></image:image>
@@ -343,10 +696,28 @@
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-vom-cong/4-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-vom-cong/5-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-vom-cong/6-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-vom-cong/7-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-vom-cong/8-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-vom-cong/9-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-vom-cong/10-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-vom-cong/11-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-vom-cong/12-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-vom-cong/13-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-vom-cong/14-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-vom-cong/15-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-vom-cong/16-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-vom-cong/17-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-vom-cong/18-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-vom-cong/19-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-vom-cong/20-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-vom-cong/21-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-vom-cong/22-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-vom-cong/23-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-vom-cong/24-sm.webp</image:loc></image:image>
     </url>
     <url>
         <loc>https://huanlv620.github.io/athensholdingjsc/du-an/noi-that-sapphire.html</loc>
-        <lastmod>2026-10-16</lastmod>
+        <lastmod>2026-10-19</lastmod>
         <priority>0.8</priority>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-sapphire/1-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-sapphire/2-sm.webp</image:loc></image:image>
@@ -355,10 +726,44 @@
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-sapphire/5-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-sapphire/6-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-sapphire/7-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-sapphire/8-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-sapphire/9-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-sapphire/10-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-sapphire/11-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-sapphire/12-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-sapphire/13-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-sapphire/14-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-sapphire/15-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-sapphire/16-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-sapphire/17-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-sapphire/18-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-sapphire/19-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-sapphire/20-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-sapphire/21-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-sapphire/22-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-sapphire/23-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-sapphire/24-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-sapphire/25-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-sapphire/26-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-sapphire/27-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-sapphire/28-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-sapphire/29-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-sapphire/30-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-sapphire/31-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-sapphire/32-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-sapphire/33-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-sapphire/34-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-sapphire/35-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-sapphire/36-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-sapphire/37-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-sapphire/38-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-sapphire/39-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-sapphire/40-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-sapphire/41-sm.webp</image:loc></image:image>
     </url>
     <url>
         <loc>https://huanlv620.github.io/athensholdingjsc/du-an/noi-that-go-tu-nhien.html</loc>
-        <lastmod>2026-10-16</lastmod>
+        <lastmod>2026-10-19</lastmod>
         <priority>0.8</priority>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-go-tu-nhien/1-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-go-tu-nhien/2-sm.webp</image:loc></image:image>
@@ -366,10 +771,31 @@
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-go-tu-nhien/4-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-go-tu-nhien/5-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-go-tu-nhien/6-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-go-tu-nhien/7-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-go-tu-nhien/8-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-go-tu-nhien/9-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-go-tu-nhien/10-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-go-tu-nhien/11-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-go-tu-nhien/12-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-go-tu-nhien/13-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-go-tu-nhien/14-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-go-tu-nhien/15-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-go-tu-nhien/16-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-go-tu-nhien/17-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-go-tu-nhien/18-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-go-tu-nhien/19-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-go-tu-nhien/20-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-go-tu-nhien/21-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-go-tu-nhien/22-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-go-tu-nhien/23-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-go-tu-nhien/24-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-go-tu-nhien/25-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-go-tu-nhien/26-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-go-tu-nhien/27-sm.webp</image:loc></image:image>
     </url>
     <url>
         <loc>https://huanlv620.github.io/athensholdingjsc/du-an/noi-that-penthouse-go.html</loc>
-        <lastmod>2026-10-16</lastmod>
+        <lastmod>2026-10-19</lastmod>
         <priority>0.8</priority>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-penthouse-go/1-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-penthouse-go/2-sm.webp</image:loc></image:image>
@@ -377,10 +803,37 @@
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-penthouse-go/4-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-penthouse-go/5-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-penthouse-go/6-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-penthouse-go/7-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-penthouse-go/8-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-penthouse-go/9-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-penthouse-go/10-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-penthouse-go/11-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-penthouse-go/12-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-penthouse-go/13-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-penthouse-go/14-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-penthouse-go/15-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-penthouse-go/16-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-penthouse-go/17-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-penthouse-go/18-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-penthouse-go/19-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-penthouse-go/20-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-penthouse-go/21-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-penthouse-go/22-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-penthouse-go/23-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-penthouse-go/24-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-penthouse-go/25-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-penthouse-go/26-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-penthouse-go/27-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-penthouse-go/28-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-penthouse-go/29-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-penthouse-go/30-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-penthouse-go/31-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-penthouse-go/32-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-penthouse-go/33-sm.webp</image:loc></image:image>
     </url>
     <url>
         <loc>https://huanlv620.github.io/athensholdingjsc/du-an/noi-that-champagne.html</loc>
-        <lastmod>2026-10-16</lastmod>
+        <lastmod>2026-10-19</lastmod>
         <priority>0.8</priority>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-champagne/1-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-champagne/2-sm.webp</image:loc></image:image>
@@ -388,10 +841,22 @@
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-champagne/4-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-champagne/5-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-champagne/6-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-champagne/7-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-champagne/8-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-champagne/9-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-champagne/10-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-champagne/11-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-champagne/12-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-champagne/13-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-champagne/14-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-champagne/15-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-champagne/16-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-champagne/17-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-champagne/18-sm.webp</image:loc></image:image>
     </url>
     <url>
         <loc>https://huanlv620.github.io/athensholdingjsc/du-an/noi-that-hien-dai-xam.html</loc>
-        <lastmod>2026-10-16</lastmod>
+        <lastmod>2026-10-19</lastmod>
         <priority>0.8</priority>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-hien-dai-xam/1-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-hien-dai-xam/2-sm.webp</image:loc></image:image>
@@ -399,10 +864,23 @@
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-hien-dai-xam/4-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-hien-dai-xam/5-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-hien-dai-xam/6-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-hien-dai-xam/7-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-hien-dai-xam/8-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-hien-dai-xam/9-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-hien-dai-xam/10-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-hien-dai-xam/11-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-hien-dai-xam/12-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-hien-dai-xam/13-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-hien-dai-xam/14-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-hien-dai-xam/15-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-hien-dai-xam/16-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-hien-dai-xam/17-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-hien-dai-xam/18-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/noi-that-hien-dai-xam/19-sm.webp</image:loc></image:image>
     </url>
     <url>
         <loc>https://huanlv620.github.io/athensholdingjsc/du-an/eco-resort-dong-que.html</loc>
-        <lastmod>2026-10-16</lastmod>
+        <lastmod>2026-10-19</lastmod>
         <priority>0.8</priority>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/eco-resort-dong-que/1-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/eco-resort-dong-que/2-sm.webp</image:loc></image:image>
@@ -411,10 +889,18 @@
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/eco-resort-dong-que/5-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/eco-resort-dong-que/6-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/eco-resort-dong-que/7-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/eco-resort-dong-que/8-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/eco-resort-dong-que/9-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/eco-resort-dong-que/10-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/eco-resort-dong-que/11-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/eco-resort-dong-que/12-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/eco-resort-dong-que/13-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/eco-resort-dong-que/14-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/eco-resort-dong-que/15-sm.webp</image:loc></image:image>
     </url>
     <url>
         <loc>https://huanlv620.github.io/athensholdingjsc/du-an/resort-ruong-bac-thang.html</loc>
-        <lastmod>2026-10-16</lastmod>
+        <lastmod>2026-10-19</lastmod>
         <priority>0.8</priority>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/resort-ruong-bac-thang/1-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/resort-ruong-bac-thang/2-sm.webp</image:loc></image:image>
@@ -422,10 +908,21 @@
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/resort-ruong-bac-thang/4-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/resort-ruong-bac-thang/5-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/resort-ruong-bac-thang/6-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/resort-ruong-bac-thang/7-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/resort-ruong-bac-thang/8-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/resort-ruong-bac-thang/9-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/resort-ruong-bac-thang/10-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/resort-ruong-bac-thang/11-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/resort-ruong-bac-thang/12-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/resort-ruong-bac-thang/13-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/resort-ruong-bac-thang/14-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/resort-ruong-bac-thang/15-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/resort-ruong-bac-thang/16-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/resort-ruong-bac-thang/17-sm.webp</image:loc></image:image>
     </url>
     <url>
         <loc>https://huanlv620.github.io/athensholdingjsc/du-an/khach-san-tan-co-dien.html</loc>
-        <lastmod>2026-10-16</lastmod>
+        <lastmod>2026-10-19</lastmod>
         <priority>0.8</priority>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/khach-san-tan-co-dien/1-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/khach-san-tan-co-dien/2-sm.webp</image:loc></image:image>
@@ -433,5 +930,9 @@
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/khach-san-tan-co-dien/4-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/khach-san-tan-co-dien/5-sm.webp</image:loc></image:image>
         <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/khach-san-tan-co-dien/6-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/khach-san-tan-co-dien/7-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/khach-san-tan-co-dien/8-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/khach-san-tan-co-dien/9-sm.webp</image:loc></image:image>
+        <image:image><image:loc>https://huanlv620.github.io/athensholdingjsc/assets/imgs/projects/khach-san-tan-co-dien/10-sm.webp</image:loc></image:image>
     </url>
 </urlset>

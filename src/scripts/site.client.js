@@ -1,7 +1,7 @@
 /* Script chung của website — build.mjs ghép SITE_CONFIG vào đầu file này rồi xuất ra assets/js/site.js
    (tải defer, không chặn hiển thị). Trang vẫn dùng được khi tắt JS: slider/bộ lọc/menu chạy bằng CSS.
-   1. Menu mobile   2. Ảnh slider hoãn tải   3. Slider trang chủ tự chạy   4. Video tải chậm
-   5. Tìm kiếm      6. Form liên hệ          7. Google Analytics (nếu cấu hình) */
+   1. Menu mobile   2. Ảnh slider hoãn tải   3. Slider trang chủ tự chạy   4. Video tải chậm + album ảnh
+   5. Tìm kiếm      6. Form liên hệ          7. Google Analytics + pixel quảng cáo (nếu cấu hình) */
 (function () {
     "use strict";
     var script = document.currentScript || document.querySelector('script[src*="site.js"]');
@@ -59,9 +59,19 @@
         loadSlide(s[i]);
         loadSlide(s[(i + 1) % s.length]);
     }
+    // Dải ảnh nhỏ: cuộn ngang để ảnh đang xem luôn nằm giữa (dự án có tới vài chục ảnh)
+    function revealThumb(slider) {
+        var strip = slider.querySelector(".slider__thumbs");
+        var thumb = strip && strip.children[currentIndex(slider)];
+        if (!thumb) return;
+        strip.scrollTo({
+            left: thumb.offsetLeft - strip.offsetLeft - (strip.clientWidth - thumb.clientWidth) / 2,
+            behavior: reduceMotion ? "auto" : "smooth",
+        });
+    }
     var sliders = document.querySelectorAll(".slider");
     sliders.forEach(function (slider) {
-        slider.addEventListener("change", function () { prime(slider); });
+        slider.addEventListener("change", function () { prime(slider); revealThumb(slider); });
         // Di chuột / chạm vào slider → chuẩn bị luôn ảnh trước & sau
         slider.addEventListener("pointerenter", function () {
             var s = slidesOf(slider), i = currentIndex(slider);
@@ -116,6 +126,84 @@
         var p = video.play();
         if (p && p.catch) p.catch(function () { video.setAttribute("data-blocked", ""); }); // trình duyệt chặn tự phát → người xem bấm play
     });
+
+    // Chỉ một video phát tại một thời điểm: bấm phát video khác → video đang phát tự dừng
+    document.addEventListener("play", function (e) {
+        document.querySelectorAll(".video video").forEach(function (v) {
+            if (v !== e.target && !v.paused) v.pause();
+        });
+    }, true);
+
+    /* ---------- 4b. Album ảnh (trang Thi công): thu gọn + trình xem ảnh phóng to ---------- */
+    document.querySelectorAll(".gallery[data-more]").forEach(function (list) {
+        list.classList.add("is-collapsed");
+        var btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "btn btn--ghost gallery__more";
+        btn.textContent = list.dataset.more;
+        btn.addEventListener("click", function () {
+            list.classList.remove("is-collapsed");
+            btn.remove();
+        });
+        list.after(btn);
+    });
+
+    var lightboxLinks = document.querySelectorAll("a[data-lightbox]");
+    if (lightboxLinks.length && window.HTMLDialogElement) {
+        var icon = function (d) { return '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="' + d + '"/></svg>'; };
+        var box = document.createElement("dialog");
+        box.className = "lightbox";
+        box.setAttribute("aria-label", "Xem ảnh");
+        box.innerHTML =
+            '<figure class="lightbox__figure"><img alt=""><figcaption class="lightbox__caption"><span></span><p></p></figcaption></figure>' +
+            '<button type="button" class="lightbox__btn lightbox__close" aria-label="Đóng">' + icon("M6 6l12 12M18 6 6 18") + "</button>" +
+            '<button type="button" class="lightbox__btn lightbox__prev" aria-label="Ảnh trước">' + icon("M15 5l-7 7 7 7") + "</button>" +
+            '<button type="button" class="lightbox__btn lightbox__next" aria-label="Ảnh tiếp theo">' + icon("M9 5l7 7-7 7") + "</button>";
+        document.body.appendChild(box);
+        var boxImg = box.querySelector("img");
+        var boxCount = box.querySelector(".lightbox__caption span");
+        var boxText = box.querySelector(".lightbox__caption p");
+        var group = [], at = 0;
+        var show = function (i) {
+            at = (i + group.length) % group.length;
+            var a = group[at];
+            if (boxImg.getAttribute("src") !== a.getAttribute("href")) boxImg.classList.add("is-loading");
+            boxImg.src = a.href;
+            boxImg.alt = a.dataset.caption;
+            boxText.textContent = a.dataset.caption;
+            boxCount.textContent = (at + 1) + " / " + group.length;
+            // Tải trước ảnh kế tiếp để bấm "tiếp" là hiện ngay
+            new Image().src = group[(at + 1) % group.length].href;
+        };
+        lightboxLinks.forEach(function (a) {
+            a.addEventListener("click", function (e) {
+                e.preventDefault();
+                group = Array.prototype.slice.call(document.querySelectorAll('a[data-lightbox="' + a.dataset.lightbox + '"]'));
+                show(group.indexOf(a));
+                box.showModal();
+            });
+        });
+        box.querySelector(".lightbox__close").addEventListener("click", function () { box.close(); });
+        box.querySelector(".lightbox__prev").addEventListener("click", function () { show(at - 1); });
+        box.querySelector(".lightbox__next").addEventListener("click", function () { show(at + 1); });
+        box.addEventListener("click", function (e) { if (e.target === box || e.target.classList.contains("lightbox__figure")) box.close(); });
+        box.addEventListener("keydown", function (e) {
+            if (e.key === "ArrowLeft") show(at - 1);
+            if (e.key === "ArrowRight") show(at + 1);
+        });
+        // Vuốt ngang trên điện thoại
+        var startX = null;
+        box.addEventListener("pointerdown", function (e) { startX = e.clientX; });
+        box.addEventListener("pointerup", function (e) {
+            if (startX === null) return;
+            var dx = e.clientX - startX;
+            if (Math.abs(dx) > 50) show(at + (dx < 0 ? 1 : -1));
+            startX = null;
+        });
+        boxImg.addEventListener("load", function () { boxImg.classList.remove("is-loading"); });
+        boxImg.addEventListener("error", function () { boxImg.classList.remove("is-loading"); });
+        box.addEventListener("close", function () { boxImg.removeAttribute("src"); });
+    }
 
     /* ---------- 5. Tìm kiếm tức thì (chỉ mục chỉ tải khi mở ô tìm kiếm) ---------- */
     (function () {
@@ -221,8 +309,18 @@
             setTimeout(function () { input.focus(); }, 50);
         }
 
+        // Nút xoá riêng (thay nút × mặc định của trình duyệt): chỉ hiện khi đã gõ
+        var clear = form.querySelector(".search__clear");
+        function syncClear() { if (clear) clear.hidden = !input.value; }
+        if (clear) clear.addEventListener("click", function () {
+            input.value = "";
+            syncClear();
+            render();
+            input.focus();
+        });
+
         input.addEventListener("focus", loadIndex);
-        input.addEventListener("input", render);
+        input.addEventListener("input", function () { syncClear(); render(); });
         input.addEventListener("keydown", function (e) {
             if (e.key === "ArrowDown") { e.preventDefault(); setActive(active + 1); }
             else if (e.key === "ArrowUp") { e.preventDefault(); setActive(active - 1); }
@@ -249,6 +347,25 @@
     })();
 
     /* ---------- 6. Form liên hệ ---------- */
+    // Nguồn khách: không hỏi mà tự nhận từ link quảng cáo (utm_*, fbclid, gclid, ttclid) hoặc trang dẫn tới.
+    // Lưu theo phiên → khách vào từ quảng cáo rồi xem vài trang mới gửi form vẫn giữ đúng nguồn.
+    var visitSource = (function () {
+        var KEY = "athens-source";
+        try { var saved = sessionStorage.getItem(KEY); if (saved) return saved; } catch (e) {}
+        var q = new URLSearchParams(location.search), src = "";
+        if (q.get("utm_source")) src = [q.get("utm_source"), q.get("utm_medium"), q.get("utm_campaign")].filter(Boolean).join(" / ");
+        else if (q.get("fbclid")) src = "Quảng cáo Facebook";
+        else if (q.get("gclid")) src = "Quảng cáo Google";
+        else if (q.get("ttclid")) src = "Quảng cáo TikTok";
+        else if (document.referrer) {
+            var host = new URL(document.referrer).hostname;
+            if (host !== location.hostname) src = host.replace(/^(www|m|l|lm)\./, "");
+        }
+        src = src || "Truy cập trực tiếp";
+        try { sessionStorage.setItem(KEY, src); } catch (e) {}
+        return src;
+    })();
+
     document.querySelectorAll("form[data-contact]").forEach(function (form) {
         var status = form.querySelector(".contact-form__status");
         var button = form.querySelector('button[type="submit"]');
@@ -256,22 +373,53 @@
             status.textContent = msg;
             status.className = "contact-form__status" + (ok ? " is-ok" : ok === false ? " is-error" : "");
         }
+        // Báo lỗi ngay dưới ô nhập sai; gõ lại là lỗi biến mất
+        function markInvalid(input, msg) {
+            var field = input.closest(".field");
+            var err = field.querySelector(".field__error");
+            if (!err) {
+                err = document.createElement("p");
+                err.className = "field__error";
+                err.id = input.id + "-error";
+                field.appendChild(err);
+                input.setAttribute("aria-describedby", err.id);
+            }
+            err.textContent = msg;
+            field.classList.add("is-invalid");
+            input.setAttribute("aria-invalid", "true");
+        }
+        form.addEventListener("input", function (e) {
+            var field = e.target.closest(".field.is-invalid");
+            if (field && e.target.checkValidity()) {
+                field.classList.remove("is-invalid");
+                e.target.removeAttribute("aria-invalid");
+            }
+        });
         form.addEventListener("submit", function (e) {
             e.preventDefault();
-            if (!form.checkValidity()) {
-                var bad = form.querySelector(":invalid");
-                say(bad && bad.name === "phone" ? "Vui lòng nhập số điện thoại hợp lệ (9–15 chữ số)." : "Vui lòng nhập họ tên và số điện thoại.", false);
-                if (bad) bad.focus();
-                return;
+            var name = form.elements.name, phone = form.elements.phone;
+            var bad = [];
+            if (!name.value.trim()) { markInvalid(name, "Vui lòng cho Athens biết cách xưng hô."); bad.push(name); }
+            if (!phone.checkValidity()) {
+                markInvalid(phone, phone.value.trim() ? "Số điện thoại chưa đúng (9–15 chữ số)." : "Vui lòng nhập số điện thoại để Athens gọi lại.");
+                bad.push(phone);
             }
+            if (bad.length) { say(""); bad[0].focus(); return; }
+
             var d = new FormData(form);
-            var data = {
-                name: d.get("name"),
-                phone: d.get("phone"),
-                need: d.get("need"),
-                message: d.get("message"),
-                page: location.href,
-            };
+            form.elements.source.value = visitSource;
+            // Nhãn tiếng Việt cho từng ô — dùng làm nội dung thư gửi về Athens
+            var fields = [
+                ["name", "Họ tên"], ["phone", "Điện thoại/Zalo"], ["type", "Quan tâm"], ["service", "Cần"],
+                ["budget", "Ngân sách"], ["timeline", "Dự định bắt đầu"], ["location", "Địa điểm"],
+                ["message", "Ghi chú"],
+            ];
+            var data = {};
+            fields.forEach(function (f) { data[f[0]] = (d.get(f[0]) || "").trim(); });
+            var leadName = data.type || data.service; // gửi kèm sự kiện Lead cho nền tảng quảng cáo
+            // Chỉ liệt kê ô đã điền → thư nhận được đọc ngay không cần đoán
+            var lines = fields.filter(function (f) { return data[f[0]]; }).map(function (f) { return f[1] + ": " + data[f[0]]; });
+            lines.push("Nguồn: " + visitSource);
             if (SITE_CONFIG.formEndpoint) {
                 // Gửi thẳng tới dịch vụ form (vd Formspree) — khách không cần mở email
                 button.disabled = true;
@@ -279,37 +427,131 @@
                 fetch(SITE_CONFIG.formEndpoint, {
                     method: "POST",
                     headers: { "Content-Type": "application/json", Accept: "application/json" },
-                    body: JSON.stringify(data),
+                    body: JSON.stringify({
+                        _subject: "Yêu cầu tư vấn – " + data.name + (leadName ? " – " + leadName : ""),
+                        "Nội dung": lines.join("\n"),
+                        "Gửi từ trang": location.href,
+                    }),
                 })
                     .then(function (r) {
                         if (!r.ok) throw new Error(r.status);
-                        form.reset();
-                        say("Đã gửi! Athens sẽ liên hệ lại với bạn trong thời gian sớm nhất.", true);
+                        showThanks(form, data);
+                        trackLead(leadName);
                     })
-                    .catch(function () { say("Chưa gửi được. Vui lòng gọi hoặc nhắn Zalo cho chúng tôi.", false); })
-                    .then(function () { button.disabled = false; });
+                    .catch(function () {
+                        say("Chưa gửi được do lỗi kết nối. Vui lòng thử lại hoặc gọi / nhắn Zalo cho Athens.", false);
+                        button.disabled = false;
+                    });
                 return;
             }
             // Chưa cấu hình dịch vụ form → mở ứng dụng email với nội dung soạn sẵn
-            var body = "Họ tên: " + data.name + "\nĐiện thoại/Zalo: " + data.phone + "\nNhu cầu: " + data.need + "\n\n" + (data.message || "") + "\n\n— Gửi từ: " + data.page;
+            var body = lines.join("\n") + "\n\n— Gửi từ: " + location.href;
             location.href = "mailto:" + SITE_CONFIG.email + "?subject=" + encodeURIComponent("Yêu cầu tư vấn – " + data.name) + "&body=" + encodeURIComponent(body);
-            say("Đang mở ứng dụng email… Nếu không thấy, hãy gọi hoặc nhắn Zalo cho chúng tôi.", true);
+            say("Đang mở ứng dụng email… Nếu không thấy, hãy gọi hoặc nhắn Zalo cho Athens.", true);
+            trackLead(leadName);
         });
     });
+    // Gửi xong: thay form bằng lời cảm ơn rõ ràng (khách biết chắc đã gửi, không bấm gửi lặp lại)
+    function showThanks(form, data) {
+        var box = document.createElement("div");
+        box.className = "contact-form__done";
+        box.setAttribute("role", "status");
+        box.tabIndex = -1;
+        var title = document.createElement("p");
+        title.className = "contact-form__title";
+        title.textContent = "Cảm ơn " + data.name + "!";
+        var text = document.createElement("p");
+        text.textContent = "Athens đã nhận yêu cầu và sẽ gọi lại cho bạn qua số " + data.phone + " trong thời gian sớm nhất.";
+        box.appendChild(title);
+        box.appendChild(text);
+        form.replaceChildren(box);
+        box.focus();
+    }
 
-    /* ---------- 7. Google Analytics: chỉ tải khi có mã, sau khi trang đã hiện xong ---------- */
-    if (SITE_CONFIG.analyticsId) {
-        window.addEventListener("load", function () {
-            idle(function () {
-                var s = document.createElement("script");
-                s.async = true;
-                s.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(SITE_CONFIG.analyticsId);
-                document.head.appendChild(s);
-                window.dataLayer = window.dataLayer || [];
-                window.gtag = function () { window.dataLayer.push(arguments); };
-                window.gtag("js", new Date());
-                window.gtag("config", SITE_CONFIG.analyticsId);
-            });
+    /* ---------- 7. Google Analytics + pixel quảng cáo (Meta, TikTok, Google Ads): chỉ tải khi có mã ----------
+       Hàm stub được tạo ngay để sự kiện gọi sớm vẫn vào hàng đợi; file script thật tải sau khi trang hiện xong.
+       Pixel quảng cáo tải ngay khi `load` (không đợi rảnh) để không mất lượt xem của khách thoát nhanh. */
+    function addScript(src) {
+        var s = document.createElement("script");
+        s.async = true;
+        s.src = src;
+        document.head.appendChild(s);
+    }
+    function afterLoad(fn) {
+        if (document.readyState === "complete") fn();
+        else window.addEventListener("load", fn);
+    }
+    var gtagId = SITE_CONFIG.analyticsId || SITE_CONFIG.googleAdsId;
+    if (gtagId) {
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function () { window.dataLayer.push(arguments); };
+        window.gtag("js", new Date());
+        if (SITE_CONFIG.analyticsId) window.gtag("config", SITE_CONFIG.analyticsId);
+        if (SITE_CONFIG.googleAdsId) window.gtag("config", SITE_CONFIG.googleAdsId);
+        afterLoad(function () {
+            var load = function () { addScript("https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(gtagId)); };
+            if (SITE_CONFIG.googleAdsId) load(); else idle(load);
+        });
+    }
+    if (SITE_CONFIG.fbPixelId) {
+        var fbq = (window.fbq = window._fbq = function () {
+            fbq.callMethod ? fbq.callMethod.apply(fbq, arguments) : fbq.queue.push(arguments);
+        });
+        fbq.push = fbq;
+        fbq.loaded = true;
+        fbq.version = "2.0";
+        fbq.queue = [];
+        fbq("init", SITE_CONFIG.fbPixelId);
+        fbq("track", "PageView");
+        afterLoad(function () { addScript("https://connect.facebook.net/en_US/fbevents.js"); });
+    }
+    if (SITE_CONFIG.tiktokPixelId) {
+        // Stub chính thức của TikTok, rút gọn: lưu lệnh vào hàng đợi cho tới khi events.js tải xong
+        var ttq = (window.ttq = window.ttq || []);
+        window.TiktokAnalyticsObject = "ttq";
+        ttq.methods = ["page", "track", "identify", "instances", "debug", "on", "off", "once", "ready", "alias", "group", "enableCookie", "disableCookie", "holdConsent", "revokeConsent", "grantConsent"];
+        ttq.setAndDefer = function (t, m) { t[m] = function () { t.push([m].concat(Array.prototype.slice.call(arguments, 0))); }; };
+        ttq.methods.forEach(function (m) { ttq.setAndDefer(ttq, m); });
+        ttq.instance = function (id) {
+            var e = ttq._i[id] || [];
+            ttq.methods.forEach(function (m) { ttq.setAndDefer(e, m); });
+            return e;
+        };
+        var ttId = SITE_CONFIG.tiktokPixelId;
+        var ttSrc = "https://analytics.tiktok.com/i18n/pixel/events.js";
+        ttq._i = ttq._i || {};
+        ttq._i[ttId] = [];
+        ttq._i[ttId]._u = ttSrc;
+        ttq._t = ttq._t || {};
+        ttq._t[ttId] = +new Date();
+        ttq._o = ttq._o || {};
+        ttq._o[ttId] = {};
+        ttq.page();
+        afterLoad(function () { addScript(ttSrc + "?sdkid=" + encodeURIComponent(ttId) + "&lib=ttq"); });
+    }
+
+    // Sự kiện chuyển đổi gửi tới mọi nền tảng đã gắn
+    function trackLead(need) {
+        if (window.fbq) window.fbq("track", "Lead", { content_name: need || "" });
+        if (window.ttq) window.ttq.track("SubmitForm", { content_name: need || "" });
+        if (window.gtag) {
+            if (SITE_CONFIG.analyticsId) window.gtag("event", "generate_lead", { lead_source: need || "" });
+            if (SITE_CONFIG.googleAdsLead) window.gtag("event", "conversion", { send_to: SITE_CONFIG.googleAdsLead });
+        }
+    }
+    function trackContact(method) {
+        if (window.fbq) window.fbq("track", "Contact", { content_name: method });
+        if (window.ttq) window.ttq.track("Contact", { content_name: method });
+        if (window.gtag && SITE_CONFIG.analyticsId) window.gtag("event", "contact", { method: method });
+    }
+    if (window.fbq || window.ttq || window.gtag) {
+        document.addEventListener("click", function (e) {
+            var a = e.target.closest && e.target.closest("a[href]");
+            if (!a) return;
+            var href = a.getAttribute("href");
+            if (href.indexOf("tel:") === 0) trackContact("phone");
+            else if (href.indexOf("zalo.me") !== -1) trackContact("zalo");
+            else if (href.indexOf("m.me/") !== -1 || href.indexOf("messenger.com") !== -1) trackContact("messenger");
         });
     }
 })();

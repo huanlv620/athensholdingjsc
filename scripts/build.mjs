@@ -5,15 +5,21 @@
 import fs from "fs";
 import path from "path";
 import { createHash } from "crypto";
+import { fileURLToPath } from "url";
 import { minify as minifyJs } from "terser";
-import { SITE, ADDRESS_TEXT, PROJECTS, CAT_FILTERS, HOME_SLIDES, SITE_PHOTOS, VIDEOS, REDIRECTS } from "../src/data.mjs";
-import { PROJECT_VARIANTS, THUMB_VARIANTS, HOME_VARIANTS, SITE_VARIANTS, OG_SIZE, WEBP_MAX_WIDTH } from "./image-sizes.mjs";
-import { STYLES, CLIENT_JS, STATIC, IMAGES_MANIFEST, LASTMOD_FILE, DIST, DIST_ASSETS, DIST_IMGS, DIST_JS } from "./paths.mjs";
+import subsetFont from "subset-font";
+import { SITE, ADDRESS_TEXT, PROJECTS, CAT_FILTERS, HOME_SLIDES, ALBUMS, VIDEOS, VIDEO_GROUPS, REDIRECTS } from "../src/data.mjs";
+import { PROJECT_VARIANTS, THUMB_VARIANTS, HOME_VARIANTS, SITE_VARIANTS, ALBUM_THUMB_VARIANTS, POSTER_VARIANTS, OG_SIZE, WEBP_MAX_WIDTH } from "./image-sizes.mjs";
+import { ROOT, STYLES, CLIENT_JS, STATIC, IMAGES_MANIFEST, LASTMOD_FILE, DIST, DIST_ASSETS, DIST_IMGS, DIST_JS, DIST_VIDEOS } from "./paths.mjs";
 
 const SITE_URL = (process.env.SITE_URL || SITE.url).replace(/\/+$/, "");
 // Đường dẫn gốc của website trên máy chủ: "/" khi có tên miền riêng, "/athensholdingjsc/" trên GitHub Pages
 const BASE_PATH = new URL(SITE_URL + "/").pathname;
 const IMAGES = JSON.parse(fs.readFileSync(IMAGES_MANIFEST, "utf8"));
+// Danh sách ảnh từng dự án do images.mjs tính (mọi ảnh trong thư mục nguồn, trừ `skip`)
+for (const p of PROJECTS) if (IMAGES.lists?.[p.slug]) p.imgs = IMAGES.lists[p.slug];
+// Album ảnh thực tế (khởi công, công trường) — cũng do images.mjs tính
+const ALBUM = Object.fromEntries(ALBUMS.map((a) => [a.key, { ...a, imgs: IMAGES.albumLists?.[a.key] ?? a.imgs }]));
 // Ngày theo giờ Việt Nam (toISOString là UTC → build trước 7h sáng sẽ ra ngày hôm trước)
 const TODAY = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Ho_Chi_Minh" }).format(new Date());
 const isPortrait = ({ w, h }) => h / w > 0.85;
@@ -46,11 +52,12 @@ function minifyCss(css) {
         .trim();
 }
 
-// CSS phụ thuộc dữ liệu: slider (số ảnh) + bộ lọc (danh mục)
-function dynamicCss() {
-    const max = Math.max(HOME_SLIDES.length, ...PROJECTS.map((p) => p.imgs.length));
+// CSS phụ thuộc dữ liệu, sinh RIÊNG cho từng trang: slider đúng số ảnh của trang + bộ lọc (chỉ trang chủ).
+// Trước đây mọi trang mang quy tắc cho slider 48 ảnh (~460 selector) → điện thoại khựng lúc mở trang.
+function dynamicCss(max, withFilter) {
     const each = (fn) => Array.from({ length: max }, (_, i) => fn(i + 1)).join(",");
     const rules = [];
+    if (max < 1) return "";
     for (let i = 2; i <= max; i++) rules.push(`.s-${i}:checked~.slider__viewport .slider__track{transform:translateX(-${(i - 1) * 100}%)}`);
     rules.push(`${each((i) => `.s-${i}:checked~.slider__nav .slider__arrows:nth-child(${i})`)}{display:flex}`);
     rules.push(`${each((i) => `.s-${i}:checked~.slider__bar .slider__current span:nth-child(${i})`)}{display:inline}`);
@@ -61,6 +68,7 @@ function dynamicCss() {
     rules.push(`${each((i) => `.slider--hero>.s-${i}:checked~.slider__viewport .slider__slide:nth-child(${i}) .hero__caption`)}{opacity:1;transform:none}`);
     rules.push(`${each((i) => `.slider--hero>.s-${i}:checked~.slider__bar .slider__dots label:nth-child(${i})`)}{background:#e6c77d}`);
 
+    if (!withFilter) return rules.join("");
     const keys = CAT_FILTERS.map(([k]) => k);
     rules.push(`${keys.map((k) => `#f-${k}:checked~.filter__tabs label[for="f-${k}"]`).join(",")}{color:var(--gold)}`);
     rules.push(`${keys.map((k) => `#f-${k}:checked~.filter__tabs label[for="f-${k}"]::after`).join(",")}{transform:scaleX(1)}`);
@@ -70,9 +78,33 @@ function dynamicCss() {
     return rules.join("");
 }
 
-const CSS = minifyCss(["reset.css", "base.css", "style.css"].map((f) => fs.readFileSync(path.join(STYLES, f), "utf8")).join("\n")) + dynamicCss();
+/* ---------- Font: chỉ giữ ký tự website cần (font tiêu đề nằm trên đường găng LCP) ----------
+   Giữ trọn bảng chữ tiếng Việt + ASCII để khách gõ gì vào form cũng đúng font, cộng mọi ký tự có trong
+   nội dung (data.mjs, build.mjs, chú thích ảnh). Font gốc đầy đủ vẫn ở src/static/fonts/. */
+const range = (a, b) => Array.from({ length: b - a + 1 }, (_, i) => String.fromCodePoint(a + i)).join("");
+const FONT_TEXT = [
+    range(0x20, 0x7e),
+    "ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝàáâãèéêìíòóôõùúý",
+    range(0x102, 0x103), range(0x110, 0x111), range(0x128, 0x129), range(0x168, 0x169),
+    range(0x1a0, 0x1a1), range(0x1af, 0x1b0), range(0x1ea0, 0x1ef9),
+    "̣̀́̃̉", // dấu thanh dạng tổ hợp (một số bàn phím gõ kiểu này)
+    "–—‘’“”…•→←·₫©",
+    ...[path.join(ROOT, "src", "data.mjs"), fileURLToPath(import.meta.url), IMAGES_MANIFEST].map((f) => fs.readFileSync(f, "utf8").normalize("NFC")),
+].join("");
+const FONT_DIR = path.join(DIST_ASSETS, "fonts");
+const FONT_V = {}; // tên file → mã nội dung, gắn ?v= để cache 1 năm mà vẫn cập nhật được
+fs.mkdirSync(FONT_DIR, { recursive: true });
+for (const f of fs.readdirSync(path.join(STATIC, "fonts")).filter((f) => f.endsWith(".woff2"))) {
+    const out = await subsetFont(fs.readFileSync(path.join(STATIC, "fonts", f)), FONT_TEXT, { targetFormat: "woff2" });
+    fs.writeFileSync(path.join(FONT_DIR, f), out);
+    FONT_V[f] = hash(out);
+}
+const fontUrl = (base, f) => `${base}assets/fonts/${f}?v=${FONT_V[f]}`;
+
+const CSS = minifyCss(["reset.css", "base.css", "style.css"].map((f) => fs.readFileSync(path.join(STYLES, f), "utf8")).join("\n"));
 // CSS gốc trỏ font bằng "../fonts/" (như thể nằm trong assets/css/) → khi nhúng vào HTML phải đổi theo vị trí trang
-const cssFor = (base) => CSS.replaceAll('url("../fonts/', 'url("' + base + 'assets/fonts/');
+const cssFor = (base, slides = 0, filter = false) =>
+    (CSS + dynamicCss(slides, filter)).replace(/url\("\.\.\/fonts\/([^"]+)"\)/g, (_, f) => `url("${fontUrl(base, f)}")`);
 
 /* =========================================================
    JS: site.js (nhỏ, tải defer) + search-index.js (chỉ tải khi mở ô tìm kiếm)
@@ -86,7 +118,7 @@ const SEARCH_INDEX = [
         img: `assets/imgs/projects/${p.slug}/1-xs.webp`,
     })),
     { name: "Dịch vụ thiết kế & thi công", cat: "Trang chủ", keys: "dich vu kien truc noi that canh quan thi cong tron goi", url: "#dich-vu" },
-    { name: "Thi công thực tế", cat: "Trang chủ", keys: "cong truong video ban giao hinh anh", url: "#thi-cong" },
+    { name: "Thi công & Xưởng sản xuất", cat: "Trang", keys: "thi cong cong truong xuong san xuat noi that khoi cong dong tho video ban giao hinh anh", url: "thi-cong.html" },
     { name: "Liên hệ", cat: "Trang chủ", keys: `lien he dia chi so dien thoai zalo email form tu van ${SITE.phone} ${SITE.email}`, url: "#lien-he" },
 ];
 fs.mkdirSync(DIST_JS, { recursive: true });
@@ -97,6 +129,10 @@ const SITE_CONFIG = {
     email: SITE.email,
     formEndpoint: SITE.formEndpoint,
     analyticsId: SITE.analyticsId,
+    fbPixelId: SITE.fbPixelId,
+    tiktokPixelId: SITE.tiktokPixelId,
+    googleAdsId: SITE.googleAdsId,
+    googleAdsLead: SITE.googleAdsLead,
 };
 // Nén JS bằng terser: bỏ comment/khoảng trắng, rút gọn tên biến
 const siteSource = `var SITE_CONFIG = ${JSON.stringify(SITE_CONFIG)};\n${fs.readFileSync(CLIENT_JS, "utf8")}`;
@@ -154,7 +190,7 @@ function picture({ stem, variants, size, sizes, alt = "", cls = "", lazy = true,
 /* =========================================================
    Khung chung: head / header / CTA / footer
    ========================================================= */
-function head({ title, desc, canonical, og, ogType = "website", base, jsonld, preload, noindex = false }) {
+function head({ title, desc, canonical, og, ogType = "website", base, jsonld, preload, noindex = false, slides = 0, filter = false }) {
     return `<!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -173,8 +209,8 @@ function head({ title, desc, canonical, og, ogType = "website", base, jsonld, pr
     <!-- Tải trước: ảnh LCP (AVIF; trình duyệt không hỗ trợ sẽ bỏ qua) + font tiêu đề (dòng chữ lớn đầu trang là LCP).
          Font nội dung không preload để khỏi tranh băng thông; chữ hiện ngay bằng font dự phòng đã căn kích thước. -->
     ${preload ? `<link rel="preload" as="image" type="image/avif" imagesrcset="${srcsetOf(preload.stem, realVariants(preload.variants, preload.size), "avif")}" imagesizes="${preload.sizes}" fetchpriority="high">` : ""}
-    <link rel="preload" as="font" type="font/woff2" href="${base}assets/fonts/noto-serif-display-latin.woff2" crossorigin>
-    <link rel="preload" as="font" type="font/woff2" href="${base}assets/fonts/noto-serif-display-vietnamese.woff2" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="${fontUrl(base, "noto-serif-display-latin.woff2")}" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="${fontUrl(base, "noto-serif-display-vietnamese.woff2")}" crossorigin>
 
     <!-- Theme sáng/tối: áp dụng lựa chọn đã lưu trước khi vẽ trang (tránh nháy màu) -->
     <script>
@@ -193,7 +229,7 @@ function head({ title, desc, canonical, og, ogType = "website", base, jsonld, pr
     </script>
 
     <!-- CSS nhúng (nguồn: assets/css/reset.css, base.css, style.css) -->
-    <style>${cssFor(base)}</style>
+    <style>${cssFor(base, slides, filter)}</style>
 
     ${canonical ? `<link rel="canonical" href="${canonical}">\n    <link rel="alternate" hreflang="vi" href="${canonical}">\n    <link rel="alternate" hreflang="x-default" href="${canonical}">` : ""}
     <link rel="icon" href="${base}favicon.ico" sizes="48x48">
@@ -271,7 +307,7 @@ function header({ base, active }) {
                         </div>
                     </li>
                     ${link(`${home}#dich-vu`, "Dịch vụ", "services")}
-                    ${link(`${home}#thi-cong`, "Thi công", "build")}
+                    ${link(`${base}thi-cong.html`, "Thi công", "build")}
                     ${link(`${home}#ve-athens`, "Về Athens", "about")}
                     ${link(`${home}#lien-he`, "Liên hệ", "contact")}
                 </ul>
@@ -288,7 +324,11 @@ function header({ base, active }) {
                 </label>
                 <form class="search" id="site-search" role="search" action="${home}#du-an" method="get">
                     <label for="q" class="sr-only">Tìm kiếm dự án</label>
-                    <input type="search" id="q" name="q" placeholder="Tìm dự án: biệt thự, nội thất…">
+                    <div class="search__field">
+                        <svg class="search__glass" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+                        <input type="search" id="q" name="q" placeholder="Tìm dự án: biệt thự, nội thất…" enterkeyhint="search">
+                        <button type="button" class="search__clear" aria-label="Xoá nội dung tìm kiếm" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+                    </div>
                 </form>
             </div>
         </div>
@@ -330,9 +370,40 @@ function fab() {
     </nav>`;
 }
 
-const NEEDS = ["Thiết kế kiến trúc", "Thiết kế nội thất", "Thiết kế + thi công trọn gói", "Cảnh quan sân vườn", "Khác"];
+// Form tư vấn: câu hỏi dạng nút bấm chọn (thấy hết lựa chọn, 1 chạm là xong) — chỉ bắt buộc tên + SĐT.
+// Nguồn khách (Facebook, Google…) không hỏi mà tự ghi nhận từ link quảng cáo — xem site.client.js
+const FORM_CHOICES = [
+    { name: "type", q: "Bạn đang quan tâm", opts: ["Biệt thự", "Lâu đài – Tân cổ điển", "Nhà phố", "Nhà vườn", "Nội thất", "Resort – Khách sạn"] },
+    { name: "service", q: "Bạn cần Athens", opts: ["Thiết kế", "Thi công", "Thiết kế + thi công trọn gói", "Cải tạo"] },
+    { name: "budget", q: "Ngân sách dự kiến", opts: ["Dưới 500 triệu", "500 triệu – 1 tỷ", "1 – 2 tỷ", "2 – 3 tỷ", "3 – 5 tỷ", "Trên 5 tỷ", "Chưa rõ"] },
+    { name: "timeline", q: "Dự định bắt đầu", opts: ["Trong 3 tháng", "3 – 6 tháng", "Sau 6 tháng", "Đang tham khảo"] },
+];
+// Trang dự án → chọn sẵn loại công trình tương ứng danh mục
+const CAT_TO_FORM = {
+    villa: { type: "Biệt thự" },
+    classic: { type: "Lâu đài – Tân cổ điển" },
+    garden: { type: "Nhà vườn" },
+    townhouse: { type: "Nhà phố" },
+    interior: { type: "Nội thất" },
+    resort: { type: "Resort – Khách sạn" },
+};
 
-function cta(level = "h2", subject = "") {
+// Nhóm nút chọn: radio thật (bàn phím, trình đọc màn hình dùng được) trang trí thành nút bo tròn
+function choiceGroup({ name, q, opts }, picked = "") {
+    return `<fieldset class="choice">
+                        <legend>${q}</legend>
+                        <div class="choice__opts">
+                            ${opts
+                                .map(
+                                    (o) =>
+                                        `<label><input type="radio" name="${name}" value="${esc(o)}"${o === picked ? " checked" : ""}><span>${esc(o)}</span></label>`
+                                )
+                                .join("\n                            ")}
+                        </div>
+                    </fieldset>`;
+}
+
+function cta(level = "h2", subject = "", preset = {}) {
     return `        <!-- ============ LIÊN HỆ ============ -->
         <section class="cta" id="lien-he" aria-labelledby="cta-heading">
             <div class="container cta__inner">
@@ -356,27 +427,41 @@ function cta(level = "h2", subject = "") {
 
                 <!-- Form tư vấn: gửi qua formEndpoint (nếu cấu hình) hoặc mở email soạn sẵn — xem site.client.js -->
                 <form class="contact-form" action="mailto:${SITE.email}" method="post" enctype="text/plain" data-contact novalidate>
-                    <p class="contact-form__title">Nhận tư vấn miễn phí</p>
-                    <div class="field">
-                        <label for="cf-name">Họ tên</label>
-                        <input id="cf-name" name="name" autocomplete="name" required>
+                    <div class="contact-form__head">
+                        <p class="contact-form__title">Nhận tư vấn miễn phí</p>
+                        <p class="contact-form__lead">Chọn nhanh vài thông tin, kiến trúc sư Athens sẽ gọi lại tư vấn phương án và dự toán sơ bộ.</p>
+                        <ul class="contact-form__perks">
+                            <li>Miễn phí</li>
+                            <li>Không ràng buộc</li>
+                            <li>Bảo mật thông tin</li>
+                        </ul>
                     </div>
-                    <div class="field">
-                        <label for="cf-phone">Số điện thoại / Zalo</label>
-                        <input id="cf-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" pattern="[0-9 .+]{9,15}" required>
+
+                    ${FORM_CHOICES.map((g) => choiceGroup(g, preset[g.name])).join("\n\n                    ")}
+
+                    <div class="contact-form__contact">
+                        <div class="field">
+                            <label for="cf-name">Họ và tên</label>
+                            <input id="cf-name" name="name" autocomplete="name" placeholder="Nguyễn Văn A" required>
+                        </div>
+                        <div class="field">
+                            <label for="cf-phone">Số điện thoại / Zalo</label>
+                            <input id="cf-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="09xx xxx xxx" pattern="[0-9 .+]{9,15}" required>
+                        </div>
+                        <div class="field field--wide">
+                            <label for="cf-location">Địa điểm xây dựng <small>(không bắt buộc)</small></label>
+                            <input id="cf-location" name="location" autocomplete="address-level1" placeholder="VD: Quỳnh Lưu, Nghệ An">
+                        </div>
+                        <div class="field field--wide">
+                            <label for="cf-msg">Ghi chú <small>(không bắt buộc)</small></label>
+                            <textarea id="cf-msg" name="message" rows="2" placeholder="Diện tích đất, số tầng, phong cách yêu thích…">${esc(subject)}</textarea>
+                        </div>
                     </div>
-                    <div class="field">
-                        <label for="cf-need">Nhu cầu</label>
-                        <select id="cf-need" name="need">
-                            ${NEEDS.map((n) => `<option>${n}</option>`).join("")}
-                        </select>
-                    </div>
-                    <div class="field">
-                        <label for="cf-msg">Lời nhắn <small>(không bắt buộc)</small></label>
-                        <textarea id="cf-msg" name="message" rows="3">${esc(subject)}</textarea>
-                    </div>
-                    <button type="submit" class="btn btn--block">Gửi yêu cầu</button>
+                    <input type="hidden" name="source">
+
+                    <button type="submit" class="btn btn--block contact-form__submit">Nhận tư vấn miễn phí <span aria-hidden="true">→</span></button>
                     <p class="contact-form__status" role="status" aria-live="polite"></p>
+                    <p class="contact-form__alt">Cần gấp? Gọi <a href="tel:${SITE.phoneHref}">${SITE.phone}</a> hoặc <a href="${SITE.zalo}" target="_blank" rel="noopener">nhắn Zalo</a></p>
                 </form>
             </div>
         </section>`;
@@ -430,7 +515,8 @@ function slider({ id, label, slides, variant = "", thumbs = true, overlay = "", 
             return `<div class="slider__arrows" aria-hidden="true"><label for="${id}-${prev}" class="slider__arrow slider__arrow--prev" title="Ảnh trước"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></label><label for="${id}-${next}" class="slider__arrow slider__arrow--next" title="Ảnh tiếp theo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></label></div>`;
         })
         .join("\n                    ");
-    const dots = slides.map((_, i) => `<label for="${id}-${i + 1}" title="Ảnh ${i + 1}"></label>`).join("");
+    // Nhiều ảnh thì bỏ chấm (tràn hàng) — đã có bộ đếm + dải ảnh nhỏ để chọn
+    const dots = n <= 12 ? slides.map((_, i) => `<label for="${id}-${i + 1}" title="Ảnh ${i + 1}"></label>`).join("") : "";
     const counter = slides.map((_, i) => `<span>${pad(i + 1)}</span>`).join("");
     const thumbList = thumbs
         ? `
@@ -526,16 +612,32 @@ const SERVICES = [
     { title: "Thiết kế kiến trúc", text: "Biệt thự, nhà phố, nhà vườn, lâu đài tân cổ điển và khu nghỉ dưỡng — may đo theo khu đất và gia chủ.", img: ["projects", "biet-thu-rung-thong", 1] },
     { title: "Thiết kế nội thất", text: "Từ hiện đại tối giản đến Đông Dương, tân cổ điển — đồng bộ từ vật liệu, ánh sáng đến đồ rời.", img: ["projects", "noi-that-go-oc-cho", 1] },
     { title: "Cảnh quan sân vườn", text: "Hồ cá koi, non bộ, vườn Nhật, hồ bơi tràn — đưa thiên nhiên vào từng không gian sống.", img: ["projects", "tam-hop-vien", 2] },
-    { title: "Thi công trọn gói", text: "Đội ngũ kỹ sư giám sát tại công trường, bàn giao chìa khóa trao tay đúng tiến độ.", img: ["site", "thi-cong", 1] },
+    { title: "Thi công trọn gói", text: "Đội ngũ kỹ sư giám sát tại công trường, bàn giao chìa khóa trao tay đúng tiến độ.", img: ["albums", "cong-truong", 1] },
 ];
 
-// Ảnh nền thẻ dịch vụ: lấy lại ảnh dự án / ảnh thi công đã xuất
+// Ảnh nền thẻ dịch vụ: lấy lại ảnh dự án / ảnh album thi công đã xuất
 function serviceImg([kind, dir, n], base) {
     const isProject = kind === "projects";
-    const size = isProject ? IMAGES.projects[dir][n - 1] : IMAGES.site[n - 1];
+    const size = IMAGES[kind][dir][n - 1];
     const variants = isProject ? PROJECT_VARIANTS.slice(0, 2) : SITE_VARIANTS.slice(0, 1);
-    const stem = `${base}assets/imgs/${isProject ? `projects/${dir}` : dir}/${n}`;
+    const stem = `${base}assets/imgs/${kind}/${dir}/${n}`;
     return picture({ stem, variants, size, sizes: "(max-width: 599px) 92vw, (max-width: 1199px) 46vw, 300px" });
+}
+
+// Thẻ video: ban đầu chỉ là ảnh bìa (lazy) + nút phát; bấm mới tải video (site.client.js).
+// Không có JS thì liên kết vẫn mở thẳng file video.
+// Cỡ ảnh bìa theo lưới .videos: điện thoại 2,25 thẻ/màn (~42vw), máy tính bảng 3,3 thẻ (~28vw), máy tính 4–5 cột (≤290px)
+const POSTER_SIZES = "(max-width: 599px) 42vw, (max-width: 991px) 28vw, (max-width: 1199px) 23vw, 290px";
+function videoCard(v, base) {
+    const stem = `${base}assets/videos/${v.file}`;
+    const set = (ext) => POSTER_VARIANTS.map(([suffix, w]) => `${stem}${suffix}.${ext} ${w}w`).join(", ");
+    return `<figure class="video">
+                        <a class="video__facade" href="${stem}.mp4" data-video aria-label="Phát video: ${esc(v.title)}">
+                            <picture><source type="image/avif" srcset="${set("avif")}" sizes="${POSTER_SIZES}"><img src="${stem}.webp" srcset="${set("webp")}" sizes="${POSTER_SIZES}" alt="" width="540" height="960" loading="lazy" decoding="async"></picture>
+                            <span class="video__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+                        </a>
+                        <figcaption><span>${VIDEO_GROUPS[v.group]}</span>${esc(v.title)}</figcaption>
+                    </figure>`;
 }
 
 function buildHome() {
@@ -568,28 +670,22 @@ function buildHome() {
     const filterInputs = CAT_FILTERS.map(([k], i) => `<input type="radio" name="filter" id="f-${k}" class="filter__input"${i === 0 ? " checked" : ""}>`).join("\n                    ");
     const filterTabs = CAT_FILTERS.map(([k, l]) => `<label for="f-${k}">${l}</label>`).join("\n                        ");
 
-    const photos = SITE_PHOTOS.imgs
+    // Trang chủ chỉ hiện phần tóm tắt: 6 ảnh đầu album công trường + video đánh dấu home — đầy đủ ở thi-cong.html
+    const photos = ALBUM["cong-truong"].imgs
+        .slice(0, 6)
         .map(([, alt], i) => {
             const sizes = i === 0 ? "(max-width: 991px) 100vw, 800px" : "(max-width: 991px) 50vw, 400px";
             return `<li>
                         <figure>
-                            ${picture({ stem: `${base}assets/imgs/thi-cong/${i + 1}`, variants: SITE_VARIANTS, size: IMAGES.site[i], sizes, alt })}
+                            ${picture({ stem: `${base}assets/imgs/albums/cong-truong/${i + 1}`, variants: [...ALBUM_THUMB_VARIANTS, ...SITE_VARIANTS], size: IMAGES.albums["cong-truong"][i], sizes, alt })}
                             <figcaption aria-hidden="true">${esc(alt)}</figcaption>
                         </figure>
                     </li>`;
         })
         .join("\n                    ");
-    const videos = VIDEOS.map(
-        // Tải chậm: ban đầu chỉ là ảnh bìa (lazy) + nút phát; bấm mới tải video (site.client.js).
-        // Không có JS thì liên kết vẫn mở thẳng file video.
-        (v) => `<figure class="video">
-                        <a class="video__facade" href="${base}assets/videos/${v.file}.mp4" data-video aria-label="Phát video: ${esc(v.title)}">
-                            <img src="${base}assets/videos/${v.file}.webp" alt="" width="540" height="960" loading="lazy" decoding="async">
-                            <span class="video__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></span>
-                        </a>
-                        <figcaption><span>Video thực tế</span>${esc(v.title)}</figcaption>
-                    </figure>`
-    ).join("\n                    ");
+    const videos = VIDEOS.filter((v) => v.home)
+        .map((v) => videoCard(v, base))
+        .join("\n                    ");
 
     const jsonld = {
         "@context": "https://schema.org",
@@ -612,6 +708,8 @@ function buildHome() {
         og: { url: `${SITE_URL}/assets/imgs/og/home.jpg`, alt: HOME_SLIDES[0].alt },
         base,
         preload: heroSlides[0],
+        slides: HOME_SLIDES.length,
+        filter: true,
         jsonld,
     })}
 ${header({ base, active: "home" })}
@@ -637,9 +735,12 @@ ${header({ base, active: "home" })}
                         ${filterTabs}
                     </div>
 
+                    <!-- Tab "Tất cả": chỉ hiện vài dự án đầu, bấm "Xem tất cả" mới hiện đủ (CSS thuần, không cần JS) -->
+                    <input type="checkbox" id="f-more" class="filter__input">
                     <ul class="grid">
                         ${PROJECTS.map((p, i) => card(p, base, { featured: i === 0 })).join("\n                        ")}
                     </ul>
+                    <label for="f-more" class="btn btn--ghost filter__more">Xem tất cả ${PROJECTS.length} dự án</label>
                 </div>
             </div>
         </section>
@@ -701,7 +802,7 @@ ${header({ base, active: "home" })}
                         <p class="eyebrow">Công trường</p>
                         <h2 id="build-heading" class="section-title">Thi công thực tế<span class="gold">.</span></h2>
                     </div>
-                    <p class="section-lead">Hình ảnh và video ghi lại tại công trường và các buổi bàn giao nhà cho gia chủ.</p>
+                    <p class="section-lead">Hình ảnh và video ghi lại tại xưởng sản xuất, công trường và các buổi bàn giao nhà cho gia chủ.</p>
                 </div>
                 <ul class="photos">
                     ${photos}
@@ -709,6 +810,7 @@ ${header({ base, active: "home" })}
                 <div class="videos">
                     ${videos}
                 </div>
+                <p class="build__more"><a href="${base}thi-cong.html" class="btn btn--ghost">Xem toàn bộ: xưởng, khởi công, công trường →</a></p>
             </div>
         </section>
 
@@ -772,6 +874,7 @@ function buildProject(p, idx) {
         ogType: "article",
         base,
         preload: slides[0],
+        slides: slides.length,
         jsonld,
     })}
 ${header({ base, active: "project" })}
@@ -852,7 +955,7 @@ ${header({ base, active: "project" })}
             </div>
         </section>
 
-${cta("h2", `Tôi quan tâm dự án tương tự "${p.name}".`)}
+${cta("h2", `Tôi quan tâm dự án tương tự "${p.name}".`, CAT_TO_FORM[p.cats[0]])}
     </main>
 ${footer(base)}`;
     writePage(path.join(DIST, "du-an", `${p.slug}.html`), html, url);
@@ -862,6 +965,114 @@ ${footer(base)}`;
    404 + chuyển hướng trang cũ
    ========================================================= */
 // 404 có thể hiện ở bất kỳ đường dẫn nào → dùng đường dẫn tuyệt đối từ gốc website (BASE_PATH)
+/* =========================================================
+   TRANG THI CÔNG & XƯỞNG — hành trình một công trình: xưởng → khởi công → công trường → bàn giao
+   Nội dung lấy từ VIDEOS (theo group) + ALBUMS trong data.mjs
+   ========================================================= */
+const STAGES = [
+    { key: "xuong", title: "Xưởng sản xuất", lead: "Nội thất gỗ được Athens gia công tại xưởng riêng với dây chuyền máy CNC — kiểm soát chất lượng từng tấm ván trước khi lắp đặt tại nhà gia chủ." },
+    { key: "khoi-cong", title: "Lễ khởi công – động thổ", lead: "Mỗi công trình bắt đầu bằng lễ động thổ trang trọng cùng gia chủ. Kỹ sư Athens có mặt từ ngày đầu tiên và theo sát đến ngày bàn giao.", album: "khoi-cong" },
+    { key: "cong-truong", title: "Công trường", lead: "Từ đào móng, đổ bê tông đến hoàn thiện — kỹ sư giám sát trực tiếp, đúng bản vẽ và đúng tiến độ đã cam kết.", album: "cong-truong" },
+    { key: "ban-giao", title: "Bàn giao", lead: "Khoảnh khắc trao chìa khóa — ngôi nhà hoàn thiện đúng như bản thiết kế gia chủ đã duyệt." },
+];
+const GALLERY_PREVIEW = 12; // số ảnh hiện sẵn mỗi album, còn lại bấm "Xem thêm"
+
+// Lưới ảnh album: mỗi ảnh là liên kết tới bản lớn → site.client.js mở trình xem ảnh (lightbox)
+function gallery(album, base) {
+    const items = album.imgs
+        .map(([, alt], i) => {
+            const stem = `${base}assets/imgs/albums/${album.key}/${i + 1}`;
+            return `<li${i >= GALLERY_PREVIEW ? " data-extra" : ""}><a href="${stem}.avif" data-lightbox="${album.key}" data-caption="${esc(alt)}">
+                            ${picture({ stem, variants: [...ALBUM_THUMB_VARIANTS, ...SITE_VARIANTS.slice(0, 1)], size: IMAGES.albums[album.key][i], sizes: "(max-width: 599px) 50vw, (max-width: 991px) 33vw, 300px", alt })}
+                        </a></li>`;
+        })
+        .join("\n                        ");
+    const more = album.imgs.length - GALLERY_PREVIEW;
+    return `<ul class="gallery"${more > 0 ? ` data-more="Xem thêm ${more} ảnh"` : ""}>
+                        ${items}
+                    </ul>`;
+}
+
+function buildConstruction() {
+    const base = "./";
+    const url = `${SITE_URL}/thi-cong.html`;
+    const cover = ALBUM["khoi-cong"];
+    const sections = STAGES.map((st, n) => {
+        const vids = VIDEOS.filter((v) => v.group === st.key);
+        const album = st.album && ALBUM[st.album];
+        const counts = [vids.length && `${vids.length} video`, album && `${album.imgs.length} ảnh`].filter(Boolean).join(" · ");
+        return `<section class="stage" id="${st.key}" aria-labelledby="${st.key}-heading">
+                <div class="container">
+                    <div class="build__head">
+                        <div>
+                            <p class="eyebrow">${pad(n + 1)} — ${counts}</p>
+                            <h2 id="${st.key}-heading" class="section-title">${st.title}<span class="gold">.</span></h2>
+                        </div>
+                        <p class="section-lead">${st.lead}</p>
+                    </div>
+                    ${vids.length ? `<div class="videos">\n                        ${vids.map((v) => videoCard(v, base)).join("\n                        ")}\n                    </div>` : ""}
+                    ${album ? gallery(album, base) : ""}
+                    ${st.key === "ban-giao" ? `<p class="build__more"><a href="${base}#du-an" class="btn btn--ghost">Xem các dự án đã hoàn thiện →</a></p>` : ""}
+                </div>
+            </section>`;
+    }).join("\n\n            ");
+
+    const jsonld = {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "BreadcrumbList",
+                itemListElement: [
+                    { "@type": "ListItem", position: 1, name: "Trang chủ", item: `${SITE_URL}/` },
+                    { "@type": "ListItem", position: 2, name: "Thi công & Xưởng", item: url },
+                ],
+            },
+            ...VIDEOS.map((v) => ({
+                "@type": "VideoObject",
+                name: v.title,
+                description: `${VIDEO_GROUPS[v.group]} — ${v.title}. Video thực tế của ${SITE.name}.`,
+                thumbnailUrl: `${SITE_URL}/assets/videos/${v.file}.webp`,
+                contentUrl: `${SITE_URL}/assets/videos/${v.file}.mp4`,
+                uploadDate: fs.statSync(path.join(DIST_VIDEOS, `${v.file}.mp4`)).mtime.toISOString().slice(0, 10), // ngày nén video — ổn định giữa các lần build
+            })),
+        ],
+    };
+
+    const html = `${head({
+        title: `Thi công & Xưởng sản xuất – Hình ảnh, video thực tế | ${SITE.name}`,
+        desc: `Xưởng nội thất, lễ khởi công, công trường và bàn giao thực tế của ${SITE.name}: ${VIDEOS.length} video, ${ALBUMS.reduce((n, a) => n + ALBUM[a.key].imgs.length, 0)} ảnh tại Nghệ An.`,
+        canonical: url,
+        og: { url: `${SITE_URL}/assets/imgs/albums/khoi-cong/1-sm.webp`, alt: cover.imgs[0][1] },
+        base,
+        jsonld,
+    })}
+${header({ base, active: "build" })}
+    <main id="noi-dung">
+        <header class="project__head">
+            <div class="container">
+                <nav class="breadcrumb" aria-label="Breadcrumb">
+                    <ol>
+                        <li><a href="${base}">Trang chủ</a></li>
+                        <li aria-current="page">Thi công & Xưởng</li>
+                    </ol>
+                </nav>
+                <p class="eyebrow">Thi công thực tế</p>
+                <h1 class="project__title">Từ xưởng đến công trình<span class="gold">.</span></h1>
+                <p class="project__lead">Không chỉ thiết kế — Athens tự sản xuất nội thất và trực tiếp thi công. Hình ảnh, video dưới đây được ghi lại tại xưởng và công trường thật của chúng tôi.</p>
+                <nav class="stage-nav" aria-label="Các giai đoạn">
+                    ${STAGES.map((st, n) => `<a href="#${st.key}"><span>${pad(n + 1)}</span>${st.title}</a>`).join("\n                    ")}
+                </nav>
+            </div>
+        </header>
+
+            ${sections}
+
+${cta()}
+    </main>
+${footer(base)}`;
+    writePage(path.join(DIST, "thi-cong.html"), html, url);
+}
+
 function build404() {
     const base = BASE_PATH;
     const html = `${head({ title: `Không tìm thấy trang | ${SITE.name}`, desc: "Trang bạn tìm không tồn tại hoặc đã được chuyển sang địa chỉ mới. Xem các dự án biệt thự, nhà phố, nội thất của Athens Holding JSC.", base, noindex: true })}
@@ -911,6 +1122,11 @@ function buildRedirects() {
 function buildSeoFiles() {
     const urls = [
         { loc: `${SITE_URL}/`, imgs: [`${SITE_URL}/assets/imgs/og/home.jpg`, ...HOME_SLIDES.map((_, i) => `${SITE_URL}/assets/imgs/home/${i + 1}-sm.webp`)], pr: "1.0" },
+        {
+            loc: `${SITE_URL}/thi-cong.html`,
+            imgs: ALBUMS.flatMap((a) => ALBUM[a.key].imgs.map((_, i) => `${SITE_URL}/assets/imgs/albums/${a.key}/${i + 1}-sm.webp`)),
+            pr: "0.7",
+        },
         ...PROJECTS.map((p) => ({ loc: projectUrl(p), imgs: p.imgs.map((_, i) => `${SITE_URL}/assets/imgs/projects/${p.slug}/${i + 1}-sm.webp`), pr: "0.8" })),
     ];
     const xml = `<?xml version="1.0" encoding="UTF-8"?>
@@ -978,8 +1194,8 @@ ${u.imgs.map((img) => `        <image:image><image:loc>${img}</image:loc></image
 }
 
 /* ---------- Chạy ---------- */
-// Font + logo (src/static/) → assets/
-fs.cpSync(STATIC, DIST_ASSETS, { recursive: true });
+// Logo + giấy phép font (src/static/) → assets/; file .woff2 đã được cắt gọn và ghi ở phần Font phía trên
+fs.cpSync(STATIC, DIST_ASSETS, { recursive: true, filter: (f) => !f.endsWith(".woff2") });
 const projectDir = path.join(DIST, "du-an");
 fs.mkdirSync(projectDir, { recursive: true });
 // Xoá trang không còn trong data.mjs và không nằm trong danh sách chuyển hướng
@@ -987,8 +1203,9 @@ const keep = new Set([...PROJECTS.map((p) => `${p.slug}.html`), ...Object.keys(R
 for (const f of fs.readdirSync(projectDir)) if (f.endsWith(".html") && !keep.has(f)) fs.rmSync(path.join(projectDir, f));
 
 buildHome();
+buildConstruction();
 PROJECTS.forEach(buildProject);
 build404();
 buildRedirects();
 buildSeoFiles();
-console.log(`✓ ${1 + PROJECTS.length} trang + 404 + ${Object.keys(REDIRECTS).length} chuyển hướng · tên miền ${SITE_URL}`);
+console.log(`✓ ${2 + PROJECTS.length} trang + 404 + ${Object.keys(REDIRECTS).length} chuyển hướng · tên miền ${SITE_URL}`);

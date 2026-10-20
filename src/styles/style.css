@@ -335,20 +335,101 @@ body,
     transition: opacity 0.3s, transform 0.3s var(--ease), visibility 0.3s;
 }
 
+/* Một hàng: kính lúp · ô nhập · nút xoá. Focus chỉ đổi màu gạch dưới (không vẽ thêm khung trong khung) */
+.search__field {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    border-bottom: 1px solid var(--line);
+    transition: border-color 0.3s;
+}
+
+.search__field:focus-within {
+    border-color: var(--gold);
+}
+
+.search__glass {
+    flex: none;
+    width: 1.8rem;
+    height: 1.8rem;
+    fill: none;
+    stroke: var(--gold);
+    stroke-width: 2;
+    stroke-linecap: round;
+}
+
 .search input {
-    width: 100%;
+    flex: 1;
+    min-width: 0;
+    padding-block: 0.8rem;
     font-size: 1.5rem;
     color: var(--text);
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.search input:focus-visible {
+    outline: none;
 }
 
 .search input::placeholder {
     color: var(--muted);
 }
 
+/* Nút xoá mặc định của trình duyệt (xanh, mỗi trình duyệt một kiểu) → thay bằng .search__clear */
+.search input::-webkit-search-cancel-button,
+.search input::-webkit-search-decoration {
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.search__clear {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 2.8rem;
+    height: 2.8rem;
+    margin-right: -0.6rem;
+    border-radius: 50%;
+    color: var(--muted);
+    transition: color 0.2s, background 0.2s;
+}
+
+.search__clear[hidden] {
+    display: none;
+}
+
+.search__clear:hover {
+    color: var(--gold);
+    background: var(--glow);
+}
+
+.search__clear svg {
+    width: 1.4rem;
+    height: 1.4rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.2;
+    stroke-linecap: round;
+}
+
 .search-toggle:checked ~ .search {
     opacity: 1;
     visibility: visible;
     transform: none;
+}
+
+/* Điện thoại: cụm nút không sát mép phải (nút menu đứng sau) → neo theo màn hình, trải đều hai bên dưới header.
+   Header trên mobile không có backdrop-filter nên fixed tính theo màn hình */
+@media (max-width: 599px) {
+    .search {
+        position: fixed;
+        top: calc(var(--header-h) + 0.8rem);
+        left: var(--gutter);
+        right: var(--gutter);
+        width: auto;
+        max-width: none;
+    }
 }
 
 .search__results {
@@ -468,7 +549,12 @@ body,
 
 .slider__slide {
     flex: 0 0 100%;
+    /* Ảnh chưa gắn src (hoãn tải) hiện chữ alt → không có min-width:0 thì slide bị giãn rộng hơn khung, chuyển ảnh bị lệch */
+    min-width: 0;
     height: 100%;
+    /* Slide ngoài khung (dự án có tới 40 ảnh) chưa dựng → mở trang nhẹ hơn. Kích thước do khung cha quyết định
+       (.slider__viewport có aspect-ratio / 100svh) nên không cần contain-intrinsic-size */
+    content-visibility: auto;
 }
 
 .slider__slide figure {
@@ -603,6 +689,8 @@ body,
     cursor: pointer;
     opacity: 0.45;
     transition: opacity 0.3s;
+    /* Ảnh nhỏ khuất trong dải cuộn ngang: chưa dựng, chưa tải ảnh (bề rộng do cột lưới, cao theo aspect-ratio) */
+    content-visibility: auto;
 }
 
 .slider__thumbs label::after {
@@ -826,6 +914,25 @@ body,
     gap: 5.6rem 3.2rem;
 }
 
+/* Tab "Tất cả": 9 dự án đầu (đủ 3 hàng) + nút xem tất cả; tab lọc theo loại vẫn hiện đủ */
+#f-all:checked ~ #f-more:not(:checked) ~ .grid > :nth-child(n + 10) {
+    display: none;
+}
+
+.filter__more {
+    display: none;
+}
+
+#f-all:checked ~ #f-more:not(:checked) ~ .filter__more {
+    display: table;
+    margin: 5.6rem auto 0;
+}
+
+#f-more:focus-visible ~ .filter__more {
+    outline: 2px solid var(--gold);
+    outline-offset: 4px;
+}
+
 .card {
     animation: fadeUp 0.6s var(--ease) both;
 }
@@ -1046,14 +1153,15 @@ body,
 
 .cta__inner {
     display: grid;
-    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
     gap: 6.4rem;
     align-items: start;
 }
 
 .cta__title {
     font-family: var(--font-display);
-    font-size: clamp(4.8rem, 8vw, 9.6rem);
+    font-size: clamp(4.8rem, 5.6vw, 7.2rem);
+    white-space: nowrap;
     font-weight: 500;
     line-height: 1.1;
     letter-spacing: -0.02em;
@@ -1120,8 +1228,8 @@ body,
 
 .contact-form {
     display: grid;
-    gap: 1.8rem;
-    padding: 3.2rem;
+    gap: 2.8rem;
+    padding: 4rem;
     background: var(--surface);
     border: 1px solid var(--line);
     border-top: 2px solid var(--gold);
@@ -1129,51 +1237,199 @@ body,
 
 .contact-form__title {
     font-family: var(--font-display);
-    font-size: 2.6rem;
+    font-size: 3rem;
     line-height: 1.2;
+}
+
+.contact-form__lead {
+    margin-top: 0.8rem;
+    font-size: 1.5rem;
+    color: var(--muted);
+}
+
+/* Cam kết ngắn: giảm e ngại khi để lại số điện thoại */
+.contact-form__perks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem 2rem;
+    margin-top: 1.6rem;
+    font-size: 1.3rem;
+    color: var(--text);
+}
+
+.contact-form__perks li::before {
+    content: "✓";
+    margin-right: 0.6rem;
+    font-weight: 700;
+    color: var(--gold);
+}
+
+/* Câu hỏi dạng nút chọn: thấy hết lựa chọn, 1 chạm là xong (thay cho dropdown) */
+.choice {
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.choice legend {
+    margin-bottom: 1rem;
+    padding: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.choice__opts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+}
+
+.choice label {
+    position: relative;
+    cursor: pointer;
+}
+
+/* Radio thật vẫn nằm đó (bàn phím, trình đọc màn hình) — chỉ ẩn hình */
+.choice input {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.choice span {
+    display: inline-block;
+    padding: 1rem 1.8rem;
+    font-size: 1.4rem;
+    line-height: 1.3;
+    color: var(--text);
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 99rem;
+    transition: border-color 0.2s, background 0.2s, color 0.2s;
+}
+
+.choice label:hover span {
+    border-color: var(--gold);
+}
+
+.choice input:checked + span {
+    color: var(--on-gold);
+    background: var(--gold-grad);
+    border-color: transparent;
+    font-weight: 600;
+}
+
+.choice input:focus-visible + span {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+}
+
+/* Thông tin liên hệ: nhãn rõ ràng phía trên ô, chữ 16px (iPhone không tự phóng to khi gõ) */
+.contact-form__contact {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.8rem 1.6rem;
+    padding-top: 2.8rem;
+    border-top: 1px solid var(--line);
+}
+
+.field--wide {
+    grid-column: 1 / -1;
 }
 
 .field label {
     display: block;
-    margin-bottom: 0.6rem;
-    font-size: 1.2rem;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--muted);
+    margin-bottom: 0.8rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--text);
 }
 
 .field small {
-    text-transform: none;
-    letter-spacing: 0;
+    font-weight: 400;
+    color: var(--muted);
 }
 
 .field input,
-.field select,
 .field textarea {
     width: 100%;
-    padding: 1.2rem 1.4rem;
+    padding: 1.4rem 1.6rem;
     font-size: 1.6rem;
     color: var(--text);
     background: var(--bg);
     border: 1px solid var(--line);
     border-radius: 0;
-    transition: border-color 0.3s;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.field ::placeholder {
+    color: var(--muted);
+    opacity: 0.6;
 }
 
 .field textarea {
+    min-height: 8rem;
     resize: vertical;
 }
 
 .field input:focus,
-.field select:focus,
 .field textarea:focus {
     outline: none;
     border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(201, 162, 74, 0.18);
 }
 
-.field select option {
-    color: #111;
+.field.is-invalid input {
+    border-color: #e5735c;
+}
+
+.field__error {
+    margin-top: 0.6rem;
+    font-size: 1.3rem;
+    color: #e5735c;
+}
+
+.field:not(.is-invalid) .field__error {
+    display: none;
+}
+
+.contact-form__submit {
+    padding-block: 2rem;
+    font-size: 1.5rem;
+}
+
+.contact-form__alt {
+    margin-top: -1.2rem;
+    font-size: 1.4rem;
+    text-align: center;
+    color: var(--muted);
+}
+
+.contact-form__alt a {
+    color: var(--gold);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.contact-form__status:empty {
+    display: none;
+}
+
+/* Gửi thành công: lời cảm ơn thay cho form */
+.contact-form__done {
+    padding-block: 4rem;
+    text-align: center;
+    outline: none;
+}
+
+.contact-form__done p + p {
+    margin-top: 1.2rem;
+    font-size: 1.6rem;
+    color: var(--muted);
 }
 
 .contact-form__status {
@@ -1188,6 +1444,196 @@ body,
 
 .contact-form__status.is-error {
     color: #e5735c;
+}
+
+/* ---------- Trang Thi công & Xưởng ---------- */
+.build__more {
+    margin-top: 4.8rem;
+    text-align: center;
+}
+
+/* Thanh chuyển nhanh giữa các giai đoạn */
+.stage-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 3.2rem;
+}
+
+.stage-nav a {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.8rem;
+    padding: 1rem 1.8rem;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--text);
+    border: 1px solid var(--line);
+    border-radius: 99rem;
+    transition: border-color 0.2s, color 0.2s;
+}
+
+.stage-nav a:hover {
+    color: var(--gold);
+    border-color: var(--gold);
+}
+
+.stage-nav span {
+    font-family: var(--font-display);
+    color: var(--gold);
+}
+
+.stage {
+    padding-block: 9.6rem;
+    border-top: 1px solid var(--line);
+    scroll-margin-top: var(--header-h);
+}
+
+.stage:nth-of-type(even) {
+    background: var(--surface);
+}
+
+.stage .videos {
+    margin-top: 0;
+}
+
+.stage .videos + .gallery {
+    margin-top: 4.8rem;
+}
+
+/* Lưới ảnh album: ô đều nhau, bấm mở trình xem ảnh */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.2rem;
+}
+
+.gallery a {
+    display: block;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    background: var(--line);
+    cursor: zoom-in;
+}
+
+.gallery img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s var(--ease);
+}
+
+.gallery a:hover img {
+    transform: scale(1.05);
+}
+
+.gallery a:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+}
+
+/* Thu gọn: JS thêm .is-collapsed (không có JS thì hiện đủ ảnh) */
+.gallery.is-collapsed [data-extra] {
+    display: none;
+}
+
+.gallery__more {
+    display: block;
+    margin: 3.2rem auto 0;
+}
+
+/* Trình xem ảnh phóng to */
+.lightbox {
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    max-height: none;
+    margin: 0;
+    padding: 0;
+    color: #f3eee4;
+    background: rgba(5, 5, 5, 0.94);
+    border: 0;
+}
+
+.lightbox::backdrop {
+    background: rgba(5, 5, 5, 0.94);
+}
+
+.lightbox__figure {
+    display: grid;
+    place-items: center;
+    height: 100%;
+    padding: 6rem 8rem 9rem;
+}
+
+.lightbox__figure img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    user-select: none;
+}
+
+.lightbox__caption {
+    position: absolute;
+    left: 50%;
+    bottom: 3rem;
+    width: min(90%, 80rem);
+    font-size: 1.5rem;
+    text-align: center;
+    transform: translateX(-50%);
+}
+
+.lightbox__caption span {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-size: 1.2rem;
+    letter-spacing: 0.12em;
+    color: #e6c77d;
+}
+
+.lightbox__btn {
+    position: absolute;
+    display: grid;
+    place-items: center;
+    width: 5.2rem;
+    height: 5.2rem;
+    color: #f3eee4;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(230, 199, 125, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.lightbox__btn:hover {
+    background: rgba(230, 199, 125, 0.25);
+}
+
+.lightbox__btn svg {
+    width: 2.2rem;
+    height: 2.2rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+}
+
+.lightbox__close {
+    top: 1.6rem;
+    right: 1.6rem;
+}
+
+.lightbox__prev,
+.lightbox__next {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.lightbox__prev {
+    left: 1.6rem;
+}
+
+.lightbox__next {
+    right: 1.6rem;
 }
 
 /* ---------- Trang 404 ---------- */
@@ -1817,11 +2263,25 @@ body,
     background: linear-gradient(transparent, rgba(0, 0, 0, 0.75));
 }
 
+/* Lưới video: mọi thẻ cùng một cỡ trên cả trang (--cols thẻ/hàng), hàng thiếu tự căn giữa.
+   Máy tính 5/hàng (Bàn giao 5 video = đúng 1 hàng); trang chủ 4 video → 4/hàng cho kín. */
 .videos {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2.4rem;
+    --cols: 5;
+    --gap: 2.4rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4rem var(--gap);
     margin-top: 6.4rem;
+}
+
+.videos > * {
+    flex: 0 0 calc((100% - (var(--cols) - 1) * var(--gap)) / var(--cols));
+    min-width: 0;
+}
+
+.build .videos {
+    --cols: 4;
 }
 
 .video video,
@@ -1831,6 +2291,13 @@ body,
     aspect-ratio: 9 / 16;
     object-fit: cover;
     background: #000;
+}
+
+/* Khi phát: cùng khung 9:16 với ảnh bìa (height:auto để thuộc tính height="960" không kéo dài khung),
+   giữ trọn khung hình — video 3:4 không bị cắt hai bên */
+.video video {
+    height: auto;
+    object-fit: contain;
 }
 
 /* Ảnh bìa video (chưa tải video cho tới khi bấm) */
@@ -1924,6 +2391,10 @@ body,
 }
 
 @media (max-width: 991px) {
+    .gallery {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
     .nav-toggle {
         display: block;
     }
@@ -2054,9 +2525,30 @@ body,
         grid-column: span 2;
     }
 
+    /* Máy tính bảng / điện thoại: một hàng vuốt ngang, chạy sát mép màn hình; luôn ló một phần thẻ kế tiếp
+       để khách biết còn video (--peek = số thẻ nhìn thấy) */
     .videos {
-        grid-template-columns: repeat(3, minmax(22rem, 1fr));
+        --peek: 3.3;
+        --gap: 1.6rem;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        margin-inline: calc(-1 * var(--gutter));
+        padding: 0 var(--gutter) 1.2rem;
+        scroll-padding-inline: var(--gutter);
         overflow-x: auto;
+        overscroll-behavior-x: contain;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+    }
+
+    .videos::-webkit-scrollbar {
+        display: none;
+    }
+
+    .videos > *,
+    .build .videos > * {
+        flex-basis: calc((100% - (var(--peek) - 1) * var(--gap)) / var(--peek));
+        scroll-snap-align: start;
     }
 
     .philosophy__list {
@@ -2102,7 +2594,57 @@ body,
     }
 
     .contact-form {
-        padding: 2.4rem;
+        padding: 2.8rem 2rem;
+    }
+
+    .contact-form__contact {
+        grid-template-columns: 1fr;
+    }
+
+    /* Hai nút Gọi / Zalo rộng hết hàng, xếp chồng: dễ bấm, không gãy chữ */
+    .cta__actions .btn {
+        flex: 1 1 100%;
+    }
+
+    /* Thanh giai đoạn: một hàng vuốt ngang thay vì 3 dòng */
+    .stage-nav {
+        flex-wrap: nowrap;
+        margin-inline: calc(var(--gutter) * -1);
+        padding-inline: var(--gutter);
+        overflow-x: auto;
+        scrollbar-width: none;
+    }
+
+    .stage-nav::-webkit-scrollbar {
+        display: none;
+    }
+
+    .stage-nav a {
+        flex-shrink: 0;
+    }
+
+    .gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.8rem;
+    }
+
+    .stage {
+        padding-block: 7.2rem;
+    }
+
+    .lightbox__figure {
+        padding: 6rem 0 10rem;
+    }
+
+    .lightbox__prev,
+    .lightbox__next {
+        top: auto;
+        bottom: 1.6rem;
+        transform: none;
+    }
+
+    .choice span {
+        padding: 0.9rem 1.4rem;
     }
 
     /* Nút xếp dọc cố định: font thật hay font dự phòng đều không làm nút đổi hàng → bố cục không nhảy */
@@ -2148,6 +2690,11 @@ body,
         grid-row: auto;
     }
 
+    /* Điện thoại: 6 dự án đầu */
+    #f-all:checked ~ #f-more:not(:checked) ~ .grid > :nth-child(n + 7) {
+        display: none;
+    }
+
     #f-all:checked ~ .grid .card--featured .card__media {
         flex: none;
         aspect-ratio: 4 / 3;
@@ -2166,8 +2713,30 @@ body,
         grid-auto-rows: 14rem;
     }
 
+    /* 2 thẻ + mép thẻ thứ 3 */
     .videos {
-        grid-template-columns: repeat(3, 72%);
+        --peek: 2.25;
+        --gap: 1.2rem;
+    }
+
+    .video__play {
+        width: 5.2rem;
+        height: 5.2rem;
+    }
+
+    .video__play svg {
+        width: 2rem;
+        height: 2rem;
+    }
+
+    .video figcaption {
+        margin-top: 1rem;
+        font-size: 1.3rem;
+        line-height: 1.4;
+    }
+
+    .video figcaption span {
+        font-size: 1.05rem;
     }
 
     /* Tab lọc: một hàng, vuốt ngang */
@@ -2266,4 +2835,51 @@ body,
     .footer__end {
         align-items: flex-start;
     }
+}
+
+/* =========================================================
+   Mượt mà
+   ========================================================= */
+/* Chuyển trang mờ dần (Chrome, Edge, Safari 18+); thanh menu đứng yên giữa hai trang */
+@media (prefers-reduced-motion: no-preference) {
+    @view-transition {
+        navigation: auto;
+    }
+
+    ::view-transition-old(root),
+    ::view-transition-new(root) {
+        animation-duration: 0.25s;
+    }
+}
+
+.header {
+    view-transition-name: site-header;
+}
+
+/* Phần nằm dưới màn hình: trình duyệt bỏ qua việc dựng cho tới khi sắp cuộn tới → mở trang nhanh, cuộn nhẹ */
+.services,
+.philosophy,
+.build,
+.cta,
+.related,
+.stage + .stage,
+.footer {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 900px;
+}
+
+/* Lưới dự án trang chủ chiếm ~nửa DOM: thẻ ngoài màn hình chưa dựng. Thẻ nổi bật (span 2 hàng) luôn ở màn đầu → giữ nguyên.
+   Chỉ giữ chỗ chiều cao — chiều rộng do cột lưới quyết định (đặt width ở đây sẽ làm cột 1fr trên mobile bị tràn) */
+.projects .card:not(.card--featured) {
+    content-visibility: auto;
+    contain-intrinsic-height: auto 42rem;
+}
+
+/* Ảnh trong trình xem phóng to hiện dần khi tải xong, không nháy */
+.lightbox__figure img {
+    transition: opacity 0.25s;
+}
+
+.lightbox__figure img.is-loading {
+    opacity: 0;
 }

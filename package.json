@@ -7,11 +7,13 @@
     "videos": "node scripts/videos.mjs",
     "icons": "node scripts/icons.mjs",
     "build": "node scripts/build.mjs",
+    "kiem-tra-anh": "node scripts/audit-images.mjs",
     "preview": "node scripts/serve.mjs",
     "all": "npm run images && npm run videos && npm run icons && npm run build"
   },
   "devDependencies": {
     "sharp": "^0.34.3",
+    "subset-font": "^2.9.0",
     "terser": "^5.51.2"
   },
   "description": "Website Athens Holding JSC — site tĩnh sinh bằng Node (src/ → dist/)",

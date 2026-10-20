@@ -6,6 +6,10 @@ export const PROJECT_VARIANTS = [["-xs", 400], ["-sm", 800], ["-lg", 1200], ["",
 export const THUMB_VARIANTS = [["-t", 240]];
 export const HOME_VARIANTS = [["-sm", 960], ["-lg", 1440], ["", 1920]];
 export const SITE_VARIANTS = [["-sm", 600], ["", 1200]];
+// Lưới ảnh album (hiển thị ~190–300px): bản 400px cho màn hình thường, màn hình mật độ cao vẫn dùng -sm 600px
+export const ALBUM_THUMB_VARIANTS = [["-t", 400]];
+// Ảnh bìa video (khung 9:16, hiển thị ~220–300px): .avif + .webp ở cả hai cỡ — videos.mjs xuất, build.mjs viết srcset
+export const POSTER_VARIANTS = [["-sm", 320], ["", 540]];
 
 // WebP chỉ là dự phòng cho trình duyệt cũ không đọc được AVIF (<5% người dùng) → chỉ xuất ở cỡ ≤ 960px.
 // Cỡ lớn hơn chỉ có AVIF: bớt ~80 MB ảnh mà trình duyệt hiện đại không dùng tới.
