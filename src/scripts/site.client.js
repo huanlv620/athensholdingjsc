@@ -115,6 +115,11 @@
         // Điện thoại: thẻ video chỉ ~150px → xem toàn màn hình. iPhone: bỏ playsinline là Safari tự mở trình phát
         // toàn màn hình của iOS; Android: requestFullscreen ngay trong lần chạm. Máy tính: phát luôn trong thẻ.
         var phone = window.matchMedia("(max-width: 599px)").matches;
+        // Video quay ngang (16:9): phát trong thẻ dọc sẽ chỉ còn một dải nhỏ → máy tính mở khung xem lớn
+        if (link.hasAttribute("data-wide") && !phone && window.HTMLDialogElement) {
+            openWideVideo(link);
+            return;
+        }
         video.src = link.href;
         video.controls = true;
         video.playsInline = !phone;
@@ -139,6 +144,35 @@
             });
         }
     });
+
+    // Khung xem video ngang: tạo một lần, đóng là dừng và nhả video (không tải tiếp ngầm)
+    var wideBox = null;
+    function openWideVideo(link) {
+        if (!wideBox) {
+            wideBox = document.createElement("dialog");
+            wideBox.className = "lightbox lightbox--video";
+            wideBox.innerHTML =
+                '<figure class="lightbox__figure"><video controls playsinline preload="auto"></video><figcaption class="lightbox__caption"><p></p></figcaption></figure>' +
+                '<button type="button" class="lightbox__btn lightbox__close" aria-label="Đóng"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>';
+            document.body.appendChild(wideBox);
+            wideBox.querySelector(".lightbox__close").addEventListener("click", function () { wideBox.close(); });
+            wideBox.addEventListener("click", function (e) { if (e.target === wideBox || e.target.classList.contains("lightbox__figure")) wideBox.close(); });
+            wideBox.addEventListener("close", function () {
+                var v = wideBox.querySelector("video");
+                v.pause();
+                v.removeAttribute("src");
+                v.load();
+            });
+        }
+        var v = wideBox.querySelector("video");
+        var title = link.getAttribute("aria-label").replace("Phát video: ", "");
+        wideBox.setAttribute("aria-label", title);
+        wideBox.querySelector(".lightbox__caption p").textContent = title;
+        v.src = link.href;
+        wideBox.showModal();
+        var p = v.play();
+        if (p && p.catch) p.catch(function () {});
+    }
 
     // Chỉ một video phát tại một thời điểm: bấm phát video khác → video đang phát tự dừng
     document.addEventListener("play", function (e) {

@@ -16,7 +16,7 @@ import path from "path";
 import { createHash } from "crypto";
 import sharp from "sharp";
 import { PROJECTS, HOME_SLIDES, ALBUMS } from "../src/data.mjs";
-import { PROJECT_VARIANTS, THUMB_VARIANTS, HOME_VARIANTS, SITE_VARIANTS, ALBUM_THUMB_VARIANTS, OG_SIZE, WEBP_MAX_WIDTH } from "./image-sizes.mjs";
+import { PROJECT_VARIANTS, THUMB_VARIANTS, HOME_VARIANTS, SITE_VARIANTS, ALBUM_THUMB_VARIANTS, ALBUM_THUMB_ASPECT, OG_SIZE, WEBP_MAX_WIDTH } from "./image-sizes.mjs";
 import { MEDIA, DIST_IMGS, IMAGES_MANIFEST } from "./paths.mjs";
 import { resolveProjectImages } from "./project-images.mjs";
 
@@ -57,7 +57,10 @@ for (const a of ALBUMS) {
     albumLists[a.key] = resolveProjectImages(a, SRC).list;
     albumLists[a.key].forEach(([file], i) => add(`albums/${a.key}`, i, a.src, file, path.join(OUT, "albums", a.key, String(i + 1)), SITE_VARIANTS));
     // Ảnh nhỏ cho lưới album: nhóm việc riêng như thumbs/ của dự án
-    albumLists[a.key].forEach(([file], i) => add(`albumThumbs/${a.key}`, i, a.src, file, path.join(OUT, "albums", a.key, String(i + 1)), ALBUM_THUMB_VARIANTS));
+    albumLists[a.key].forEach(([file], i) => {
+        add(`albumThumbs/${a.key}`, i, a.src, file, path.join(OUT, "albums", a.key, String(i + 1)), ALBUM_THUMB_VARIANTS);
+        jobs.at(-1).crop = ALBUM_THUMB_ASPECT; // cắt giữa ảnh, khớp object-fit: cover của lưới
+    });
 }
 
 if (!fs.existsSync(SRC)) {
@@ -80,7 +83,7 @@ const oldEntry = (group, i) => bucket(old, group)?.[i];
 function hashOf(job) {
     const st = fs.statSync(job.src);
     return createHash("md5")
-        .update(JSON.stringify([path.relative(SRC, job.src), st.size, st.mtimeMs, job.variants, job.q, Boolean(job.og), OG_SIZE]))
+        .update(JSON.stringify([path.relative(SRC, job.src), st.size, st.mtimeMs, job.variants, job.q, Boolean(job.og), OG_SIZE, ...(job.crop ? [job.crop] : [])]))
         .digest("hex")
         .slice(0, 12);
 }
@@ -112,7 +115,11 @@ async function exportImage(job) {
     const { info } = await img.clone().resize({ width: job.variants.at(-1)[1], withoutEnlargement: true }).toBuffer({ resolveWithObject: true });
     await Promise.all(
         variantsOf(job, info.width).flatMap(([suffix, width]) => {
-            const resized = img.clone().resize({ width, withoutEnlargement: true });
+            const resized = img.clone().resize(
+                job.crop
+                    ? { width, height: Math.round(width / job.crop), fit: "cover", position: "centre", withoutEnlargement: true }
+                    : { width, withoutEnlargement: true }
+            );
             return [
                 hasWebp(width) && writeAtomic(resized.clone().webp({ quality: job.q.webp, effort: 5, smartSubsample: true }), `${job.outBase}${suffix}.webp`),
                 writeAtomic(resized.clone().avif({ quality: job.q.avif, effort: 4 }), `${job.outBase}${suffix}.avif`),

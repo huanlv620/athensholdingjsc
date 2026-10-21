@@ -183,6 +183,7 @@ export const MEDIA_IGNORE = {
 // src: đường dẫn trong _nguon-anh/real-life-media · file: tên file web (assets/videos/<file>.mp4 + .webp ảnh bìa)
 // group: phần hiển thị trên trang Thi công & Xưởng — xem VIDEO_GROUPS · home: true = hiện ở trang chủ (nên 4 video)
 // posterAt: giây lấy ảnh bìa (mặc định 3) — chọn khoảnh khắc đẹp nhất của video
+// wide: true = video quay ngang 16:9 → máy tính mở trong khung xem lớn thay vì phát trong thẻ dọc
 // Thêm video: chép file vào _nguon-anh/real-life-media/…, thêm 1 dòng dưới đây rồi chạy `npm run videos` + `npm run build`.
 export const VIDEO_SRC_DIR = "real-life-media";
 export const VIDEO_GROUPS = {
@@ -190,6 +191,7 @@ export const VIDEO_GROUPS = {
     "khoi-cong": "Lễ khởi công",
     "cong-truong": "Công trường",
     "ban-giao": "Bàn giao",
+    "hanh-trinh": "Hành trình công trình",
 };
 export const VIDEOS = [
     // Xưởng sản xuất
@@ -205,11 +207,21 @@ export const VIDEOS = [
     { src: "Video/1792420510915_4555695263351595465_g213370234492359430.mp4", file: "cong-truong-nha-pho-lien-ke", title: "Dãy nhà phố liền kề Athens đang thi công phần thô", group: "cong-truong", posterAt: 12 },
     { src: "Video/Gắng nhanh cho khách cuối năm hoạt động … Xem thêm.mp4", file: "hoan-thien-kip-cuoi-nam", title: "Gấp rút hoàn thiện công trình kịp đưa vào hoạt động cuối năm", group: "cong-truong" },
     // Bàn giao
-    { src: "Video/Bàn giao quán cà phê The La House.mp4", file: "ban-giao-quan-ca-phe-the-la-house", title: "Nghiệm thu, bàn giao quán cà phê The La House", group: "ban-giao", posterAt: 24 },
     { src: "Video/Tác phẩm căn Villa siêu đẹp đầy cảm xúc … Xem thêm.mp4", file: "villa-day-cam-xuc", title: "Tác phẩm villa nội thất gỗ đầy cảm xúc", group: "ban-giao", home: true, posterAt: 16 },
     { src: "Video/Bàn giao trọn gói công trình căn Villa cho Chị H-- Diện Châu … Xem thêm.mp4", file: "ban-giao-villa-dien-chau", title: "Bàn giao trọn gói căn villa tại Diễn Châu", group: "ban-giao", home: true },
+    { src: "Bàn giao/ban-giao-nha-pho-hien-dai.mp4", file: "ban-giao-nha-pho-hien-dai", title: "Bàn giao nhà phố hiện đại tông đen – gỗ sáng", group: "ban-giao", wide: true, posterAt: 41 },
+    { src: "Bàn giao/ban-giao-nha-pho-tran-go.mp4", file: "ban-giao-nha-pho-tran-go", title: "Bàn giao nhà phố trần gỗ giật cấp, nội thất trọn gói", group: "ban-giao", posterAt: 12 },
+    { src: "Bàn giao/ban-giao-noi-that-go-phong-tho.mp4", file: "ban-giao-noi-that-go-phong-tho", title: "Bàn giao nội thất gỗ: tủ rượu, phòng thờ, phòng ngủ", group: "ban-giao", posterAt: 11 },
     { src: "Video/Bàn giao căn biệt thự tân cổ cho khách vào ở … Xem thêm.mp4", file: "ban-giao-biet-thu-tan-co-dien", title: "Bàn giao biệt thự tân cổ điển cho gia chủ", group: "ban-giao" },
+    { src: "Bàn giao/ban-giao-the-las-house-flycam.mp4", file: "ban-giao-quan-ca-phe-the-la-house", title: "Bàn giao quán cà phê The La's House", group: "ban-giao", wide: true, posterAt: 30 },
+    { src: "Bàn giao/hoan-thien-benh-vien-mat-bac-mien-trung.mp4", file: "hoan-thien-benh-vien-mat-bac-mien-trung", title: "Hoàn thiện Bệnh viện Mắt Bắc Miền Trung", group: "ban-giao", posterAt: 8 },
+    { src: "Bàn giao/hoan-thien-nha-xuong-khung-thep.mp4", file: "hoan-thien-nha-xuong-khung-thep", title: "Hoàn thiện nhà xưởng khung thép quy mô lớn", group: "ban-giao", posterAt: 14 },
     { src: "Video/Thả ước mơ … Xem thêm.mp4", file: "tha-uoc-mo", title: "Thả ước mơ — hành trình kiến tạo tổ ấm", group: "ban-giao" },
+    // Hành trình trọn vẹn: một công trình từ ngày đầu đến ngày nhận nhà
+    { src: "Bàn giao/hanh-trinh-villa-mai-nhat.mp4", file: "hanh-trinh-villa-mai-nhat", title: "Villa mái Nhật sân vườn: từ bãi đất trống đến ngày nhận nhà", group: "hanh-trinh", posterAt: 142 },
+    { src: "Bàn giao/hanh-trinh-nha-hai-tang.mp4", file: "hanh-trinh-nha-hai-tang", title: "Nhà hai tầng hiện đại: từ phần móng đến ngày nhận nhà", group: "hanh-trinh", posterAt: 154 },
+    { src: "Bàn giao/hanh-trinh-hop-dong-den-tan-gia.mp4", file: "hanh-trinh-hop-dong-den-tan-gia", title: "Từ ngày ký hợp đồng đến tiệc tân gia", group: "hanh-trinh", posterAt: 102 },
+    { src: "Bàn giao/hanh-trinh-nha-pho-tu-dong-tho.mp4", file: "hanh-trinh-nha-pho-tu-dong-tho", title: "Nhà phố từ lễ động thổ đến hoàn thiện nội thất", group: "hanh-trinh", posterAt: 165 },
 ];
 
 export const PROJECTS = [
@@ -234,46 +246,53 @@ export const PROJECTS = [
             "Đá xanh tự nhiên và gỗ tối đồng bộ từ kiến trúc đến nội thất.",
         ],
         imgs: [
+            // Toàn cảnh & ngoại thất
+            ["1.jpg", "Toàn cảnh biệt thự giữa rừng cây nhìn từ trên cao"],
             ["3.jpg", "Biệt thự soi bóng xuống hồ phản chiếu giữa vườn cây"],
             ["2.jpg", "Mặt hồ tĩnh trước khối nhà mái đua sâu"],
-            ["6.jpg", "Hồ bơi với đài lửa giữa mặt nước"],
-            ["9.jpg", "Chòi nghỉ bên hồ bơi lát gạch xanh"],
-            ["11.jpg", "Phòng khách mở vách kính ra vườn"],
-            ["22.jpg", "Bàn ăn dài dưới đèn chùm cành cây"],
-            ["26.jpg", "Phòng ngủ master tông trắng – gỗ tối"],
-            ["34.jpg", "Phòng tắm đá cẩm thạch xanh"],
-            ["38.jpg", "Lối vào lát đá giữa hàng cọ lúc chiều tối"],
-            ["1.jpg", "Toàn cảnh biệt thự giữa rừng cây nhìn từ trên cao"],
             ["5.jpg", "Mặt tiền nhiều tầng mái đua sâu nhìn từ sàn gỗ ngoài vườn"],
-            ["7.jpg", "Sàn gỗ và ghế tắm nắng bên hồ có đài lửa"],
             ["8.jpg", "Hồ bơi lát gạch xanh dọc khối nhà đá lúc chạng vạng"],
+            ["6.jpg", "Hồ bơi với đài lửa giữa mặt nước"],
+            ["7.jpg", "Sàn gỗ và ghế tắm nắng bên hồ có đài lửa"],
+            ["9.jpg", "Chòi nghỉ bên hồ bơi lát gạch xanh"],
             ["10.jpg", "Chòi nghỉ rèm trắng nhìn ra hồ bơi"],
+            // Cảnh quan & lối đi
+            ["38.jpg", "Lối vào lát đá giữa hàng cọ lúc chiều tối"],
+            ["40.jpg", "Lối vào lát đá giữa hai hàng cây bách"],
+            ["39.jpg", "Lối đá bước giữa thảm cỏ và cây cọ"],
+            ["41.jpg", "Lối đi nội bộ với lam gỗ và cây nhiệt đới"],
+            ["37.jpg", "Góc lửa trại với ghế gỗ dưới tán cây"],
+            // Phòng khách
+            ["11.jpg", "Phòng khách mở vách kính ra vườn"],
             ["12.jpg", "Phòng khách sofa da tối mở trọn ra vườn"],
-            ["13.jpg", "Phòng khách với trần gỗ và quạt trần, vách kính bao quanh"],
+            ["17.jpg", "Không gian sinh hoạt liên thông mở ra vườn nhiệt đới"],
             ["14.jpg", "Phòng khách nối hiên gỗ nhìn ra rừng cây"],
+            ["13.jpg", "Phòng khách với trần gỗ và quạt trần, vách kính bao quanh"],
             ["15.jpg", "Sofa góc và bàn đá đen dưới dãy đèn thả"],
             ["16.jpg", "Phòng khách tường đá đen và tranh trừu tượng"],
-            ["17.jpg", "Không gian sinh hoạt liên thông mở ra vườn nhiệt đới"],
             ["18.jpg", "Kệ trưng bày kim loại và tủ gỗ âm tường"],
             ["19.jpg", "Kệ sách trang trí với bình hoa lan hai bên"],
+            // Bếp & phòng ăn
+            ["22.jpg", "Bàn ăn dài dưới đèn chùm cành cây"],
+            ["23.jpg", "Bàn ăn dài với đèn chùm cành cây nhìn ra vườn"],
             ["20.jpg", "Đảo bếp đá đen nhìn ra hiên gỗ và hồ bơi"],
             ["21.jpg", "Quầy bar đá cẩm thạch đen dưới đèn chùm cành cây"],
-            ["23.jpg", "Bàn ăn dài với đèn chùm cành cây nhìn ra vườn"],
+            // Cầu thang
             ["24.jpg", "Cầu thang gỗ với đèn LED hắt từng bậc"],
             ["25.jpg", "Cầu thang đá đen với dải đèn âm sàn"],
-            ["27.jpg", "Phòng ngủ trần trắng với ghế thư giãn da"],
-            ["28.jpg", "Phòng ngủ có vách lam gỗ ngăn với khu thay đồ"],
+            // Phòng ngủ
+            ["26.jpg", "Phòng ngủ master tông trắng – gỗ tối"],
             ["29.jpg", "Phòng ngủ master nhìn ra vườn qua vách lam"],
             ["30.jpg", "Giường ngủ hướng ra góc kính nhìn cây xanh"],
+            ["27.jpg", "Phòng ngủ trần trắng với ghế thư giãn da"],
+            ["28.jpg", "Phòng ngủ có vách lam gỗ ngăn với khu thay đồ"],
+            // Phòng tắm
+            ["34.jpg", "Phòng tắm đá cẩm thạch xanh"],
             ["31.jpg", "Bồn tắm đá đặt sát vách kính nhìn ra vườn"],
-            ["32.jpg", "Hành lang kính sáng dẫn vào phòng tắm"],
-            ["33.jpg", "Bàn trang điểm đá xanh với đèn bàn ấm"],
-            ["35.jpg", "Lavabo đôi đá cẩm thạch xanh và vòi đồng"],
             ["36.jpg", "Bồn tắm đứng giữa phòng tắm đá xanh"],
-            ["37.jpg", "Góc lửa trại với ghế gỗ dưới tán cây"],
-            ["39.jpg", "Lối đá bước giữa thảm cỏ và cây cọ"],
-            ["40.jpg", "Lối vào lát đá giữa hai hàng cây bách"],
-            ["41.jpg", "Lối đi nội bộ với lam gỗ và cây nhiệt đới"],
+            ["35.jpg", "Lavabo đôi đá cẩm thạch xanh và vòi đồng"],
+            ["33.jpg", "Bàn trang điểm đá xanh với đèn bàn ấm"],
+            ["32.jpg", "Hành lang kính sáng dẫn vào phòng tắm"],
         ],
         // Ảnh trong thư mục nhưng KHÔNG hiển thị: tên file → lý do
         skip: {

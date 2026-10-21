@@ -118,7 +118,7 @@ const SEARCH_INDEX = [
         img: `assets/imgs/projects/${p.slug}/1-xs.webp`,
     })),
     { name: "Dịch vụ thiết kế & thi công", cat: "Trang chủ", keys: "dich vu kien truc noi that canh quan thi cong tron goi", url: "#dich-vu" },
-    { name: "Thi công & Xưởng sản xuất", cat: "Trang", keys: "thi cong cong truong xuong san xuat noi that khoi cong dong tho video ban giao hinh anh", url: "thi-cong.html" },
+    { name: "Thi công & Xưởng sản xuất", cat: "Trang", keys: "thi cong cong truong xuong san xuat noi that khoi cong dong tho video ban giao hanh trinh nhan nha hinh anh", url: "thi-cong.html" },
     { name: "Liên hệ", cat: "Trang chủ", keys: `lien he dia chi so dien thoai zalo email form tu van ${SITE.phone} ${SITE.email}`, url: "#lien-he" },
 ];
 fs.mkdirSync(DIST_JS, { recursive: true });
@@ -652,7 +652,7 @@ function videoCard(v, base) {
     const stem = `${base}assets/videos/${v.file}`;
     const set = (ext) => POSTER_VARIANTS.map(([suffix, w]) => `${stem}${suffix}.${ext} ${w}w`).join(", ");
     return `<figure class="video">
-                        <a class="video__facade" href="${stem}.mp4" data-video aria-label="Phát video: ${esc(v.title)}">
+                        <a class="video__facade" href="${stem}.mp4" data-video${v.wide ? " data-wide" : ""} aria-label="Phát video: ${esc(v.title)}">
                             <picture><source type="image/avif" srcset="${set("avif")}" sizes="${POSTER_SIZES}"><img src="${stem}.webp" srcset="${set("webp")}" sizes="${POSTER_SIZES}" alt="" width="540" height="960" loading="lazy" decoding="async"></picture>
                             <span class="video__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></span>
                         </a>
@@ -697,7 +697,7 @@ function buildHome() {
             const sizes = i === 0 ? "(max-width: 991px) 100vw, 800px" : "(max-width: 991px) 50vw, 400px";
             return `<li>
                         <figure>
-                            ${picture({ stem: `${base}assets/imgs/albums/cong-truong/${i + 1}`, variants: [...ALBUM_THUMB_VARIANTS, ...SITE_VARIANTS], size: IMAGES.albums["cong-truong"][i], sizes, alt })}
+                            ${picture({ stem: `${base}assets/imgs/albums/cong-truong/${i + 1}`, variants: [ALBUM_THUMB_VARIANTS[0], ...SITE_VARIANTS], size: IMAGES.albums["cong-truong"][i], sizes, alt })}
                             <figcaption aria-hidden="true">${esc(alt)}</figcaption>
                         </figure>
                     </li>`;
@@ -994,6 +994,7 @@ const STAGES = [
     { key: "khoi-cong", title: "Lễ khởi công – động thổ", lead: "Mỗi công trình bắt đầu bằng lễ động thổ trang trọng cùng gia chủ. Kỹ sư Athens có mặt từ ngày đầu tiên và theo sát đến ngày bàn giao.", album: "khoi-cong" },
     { key: "cong-truong", title: "Công trường", lead: "Từ đào móng, đổ bê tông đến hoàn thiện — kỹ sư giám sát trực tiếp, đúng bản vẽ và đúng tiến độ đã cam kết.", album: "cong-truong" },
     { key: "ban-giao", title: "Bàn giao", lead: "Khoảnh khắc trao chìa khóa — ngôi nhà hoàn thiện đúng như bản thiết kế gia chủ đã duyệt." },
+    { key: "hanh-trinh", title: "Hành trình trọn vẹn", lead: "Từ bãi đất trống, lễ động thổ, phần thô đến ngày gia chủ dọn về — trọn vẹn một công trình Athens trong vài phút." },
 ];
 const GALLERY_PREVIEW = 12; // số ảnh hiện sẵn mỗi album, còn lại bấm "Xem thêm"
 
@@ -1003,7 +1004,7 @@ function gallery(album, base) {
         .map(([, alt], i) => {
             const stem = `${base}assets/imgs/albums/${album.key}/${i + 1}`;
             return `<li${i >= GALLERY_PREVIEW ? " data-extra" : ""}><a href="${stem}.avif" data-lightbox="${album.key}" data-caption="${esc(alt)}">
-                            ${picture({ stem, variants: [...ALBUM_THUMB_VARIANTS, ...SITE_VARIANTS.slice(0, 1)], size: IMAGES.albums[album.key][i], sizes: "(max-width: 599px) 50vw, (max-width: 991px) 33vw, 300px", alt })}
+                            ${picture({ stem, variants: ALBUM_THUMB_VARIANTS, size: IMAGES.albums[album.key][i], sizes: "(max-width: 599px) 50vw, (max-width: 991px) 33vw, 300px", alt })}
                         </a></li>`;
         })
         .join("\n                        ");
@@ -1032,7 +1033,7 @@ function buildConstruction() {
                     </div>
                     ${vids.length ? `<div class="videos">\n                        ${vids.map((v) => videoCard(v, base)).join("\n                        ")}\n                    </div>` : ""}
                     ${album ? gallery(album, base) : ""}
-                    ${st.key === "ban-giao" ? `<p class="build__more"><a href="${base}#du-an" class="btn btn--ghost">Xem các dự án đã hoàn thiện →</a></p>` : ""}
+                    ${n === STAGES.length - 1 ?`<p class="build__more"><a href="${base}#du-an" class="btn btn--ghost">Xem các dự án đã hoàn thiện →</a></p>` : ""}
                 </div>
             </section>`;
     }).join("\n\n            ");

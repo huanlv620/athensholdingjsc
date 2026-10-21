@@ -105,7 +105,7 @@
     display: flex;
     align-items: center;
     gap: 1.2rem;
-    color: var(--text);
+    color: var(--gold);
     white-space: nowrap;
 }
 
@@ -1689,6 +1689,15 @@ body,
     right: 1.6rem;
 }
 
+/* Khung xem video quay ngang (máy tính) */
+.lightbox--video video {
+    width: min(100%, calc((100vh - 15rem) * 16 / 9));
+    max-height: 100%;
+    aspect-ratio: 16 / 9;
+    background: #000;
+    box-shadow: 0 3rem 8rem rgba(0, 0, 0, 0.6);
+}
+
 /* ---------- Trang 404 ---------- */
 .notfound {
     min-height: 80vh;
@@ -2325,7 +2334,7 @@ body,
 }
 
 /* Lưới video: mọi thẻ cùng một cỡ trên cả trang (--cols thẻ/hàng), hàng thiếu tự căn giữa.
-   Máy tính 5/hàng (Bàn giao 5 video = đúng 1 hàng); trang chủ 4 video → 4/hàng cho kín. */
+   Máy tính 5/hàng (Bàn giao 10 video = đúng 2 hàng); trang chủ 4 video → 4/hàng cho kín. */
 .videos {
     --cols: 5;
     --gap: 2.4rem;
@@ -2401,6 +2410,21 @@ body,
     height: 2.8rem;
     margin-left: 0.4rem;
     fill: #e6c77d;
+}
+
+/* Video quay ngang: nhãn nhỏ báo trước sẽ mở khung xem lớn */
+.video__facade[data-wide]::after {
+    content: "16:9";
+    position: absolute;
+    top: 1.2rem;
+    right: 1.2rem;
+    padding: 0.3rem 0.8rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: #e6c77d;
+    background: rgba(10, 10, 10, 0.6);
+    border: 1px solid rgba(230, 199, 125, 0.5);
 }
 
 .video__facade:hover .video__play,

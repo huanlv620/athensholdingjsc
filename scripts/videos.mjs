@@ -37,7 +37,8 @@ for (const v of VIDEOS) {
     const posterFiles = POSTER_VARIANTS.flatMap(([suffix]) => ["avif", "webp"].map((ext) => path.join(OUT, `${v.file}${suffix}.${ext}`)));
     const at = String(v.posterAt ?? 3); // giây lấy ảnh bìa (posterAt trong data.mjs)
     const mp4Fresh = fs.existsSync(mp4) && fs.statSync(mp4).mtimeMs >= fs.statSync(src).mtimeMs;
-    const posterFresh = posterFiles.every((f) => fs.existsSync(f)) &&(posters[v.file] ?? "3") === at;
+    const posterKey = v.wide ? `${at}w` : at; // đổi posterAt hoặc wide → tạo lại ảnh bìa
+    const posterFresh = posterFiles.every((f) => fs.existsSync(f)) && (posters[v.file] ?? "3") === posterKey;
     if (mp4Fresh && posterFresh && !FORCE) {
         console.log(`= ${v.file} (không đổi)`);
         continue;
@@ -59,15 +60,19 @@ for (const v of VIDEOS) {
     }
 
     const frame = path.join(OUT, `${v.file}.frame.png`);
-    ffmpeg("-ss", at, "-i", mp4, "-frames:v", "1", "-vf", `scale=${POSTER_VARIANTS.at(-1)[1]}:-2`, frame);
+    // Video ngang: giữ nguyên độ phân giải khung hình rồi cắt giữa về 9:16 cho vừa thẻ dọc
+    // (thu nhỏ trước rồi để trình duyệt cắt thì ảnh bìa chỉ cao ~300px → bị phóng to, mờ)
+    ffmpeg("-ss", at, "-i", mp4, "-frames:v", "1", ...(v.wide ? [] : ["-vf", `scale=${POSTER_VARIANTS.at(-1)[1]}:-2`]), frame);
     const trimmed = await sharp(fs.readFileSync(frame)).trim({ background: "#000", threshold: 30 }).toBuffer();
     for (const [suffix, width] of POSTER_VARIANTS) {
-        const img = sharp(trimmed).resize({ width, withoutEnlargement: true });
+        const img = sharp(trimmed).resize(
+            v.wide ? { width, height: Math.round((width * 16) / 9), fit: "cover", position: "centre" } : { width, withoutEnlargement: true }
+        );
         await img.clone().avif({ quality: 50, effort: 4 }).toFile(path.join(OUT, `${v.file}${suffix}.avif`));
         await img.clone().webp({ quality: 72 }).toFile(path.join(OUT, `${v.file}${suffix}.webp`));
     }
     fs.rmSync(frame);
-    posters[v.file] = at;
+    posters[v.file] = posterKey;
     fs.writeFileSync(POSTERS_FILE, JSON.stringify(posters, null, 1) + "\n");
     console.log(`✓ ${v.file} (${(fs.statSync(mp4).size / 1048576).toFixed(1)} MB)`);
 }
