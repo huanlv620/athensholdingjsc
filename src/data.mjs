@@ -43,7 +43,7 @@ export const SITE = {
     analyticsId: "",
     // Mã quảng cáo — để trống = không gắn. Điền xong chạy `npm run build` rồi push.
     // Tự gửi sự kiện: xem trang (mọi trang), Lead khi gửi form liên hệ, Contact khi bấm Gọi / Zalo.
-    fbPixelId: "", //       Meta (Facebook/Instagram) Pixel: Trình quản lý sự kiện → Nguồn dữ liệu, vd "1234567890123456"
+    fbPixelId: "1111035268466507", // Meta (Facebook/Instagram) Pixel: Trình quản lý sự kiện → Nguồn dữ liệu, vd "1234567890123456"
     tiktokPixelId: "", //   TikTok Ads Manager → Tài sản → Sự kiện → Web, vd "CXXXXXXXXXXXXXXXXXXX"
     googleAdsId: "", //     Google Ads → Mục tiêu → Chuyển đổi → Thẻ Google, vd "AW-123456789"
     googleAdsLead: "", //   Nhãn chuyển đổi "Gửi biểu mẫu" dạng "AW-123456789/AbCdEfGh" (để trống = chỉ đo lượt truy cập)
