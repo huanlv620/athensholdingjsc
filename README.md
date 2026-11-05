@@ -57,6 +57,8 @@ Cài lần đầu: `npm install` (Node 20 trở lên).
    `imgs` = danh sách `["tên-file.jpg", "mô tả ảnh"]` — ảnh đầu tiên là ảnh đại diện.
 3. `npm run images` rồi `npm run build`.
 
+**Cập nhật bảng báo giá** → sửa `src/bao-gia.mjs`: `price` là đơn giá trên thẻ (để trống = hiện "Liên hệ báo giá"), `sections` là nội dung trang chi tiết → `npm run build`.
+
 **Đổi/bỏ một trang** → trang cũ nên thêm vào `REDIRECTS` để chuyển hướng, giữ thứ hạng Google.
 
 ## Đưa lên mạng

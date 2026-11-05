@@ -9,6 +9,7 @@ import { fileURLToPath } from "url";
 import { minify as minifyJs } from "terser";
 import subsetFont from "subset-font";
 import { SITE, ADDRESS_TEXT, PROJECTS, CAT_FILTERS, HOME_SLIDES, ALBUMS, VIDEOS, VIDEO_GROUPS, REDIRECTS } from "../src/data.mjs";
+import { PRICING } from "../src/bao-gia.mjs";
 import { PROJECT_VARIANTS, THUMB_VARIANTS, HOME_VARIANTS, SITE_VARIANTS, ALBUM_THUMB_VARIANTS, POSTER_VARIANTS, OG_SIZE, WEBP_MAX_WIDTH } from "./image-sizes.mjs";
 import { ROOT, STYLES, CLIENT_JS, STATIC, IMAGES_MANIFEST, LASTMOD_FILE, DIST, DIST_ASSETS, DIST_IMGS, DIST_JS, DIST_VIDEOS } from "./paths.mjs";
 
@@ -89,7 +90,7 @@ const FONT_TEXT = [
     range(0x1a0, 0x1a1), range(0x1af, 0x1b0), range(0x1ea0, 0x1ef9),
     "̣̀́̃̉", // dấu thanh dạng tổ hợp (một số bàn phím gõ kiểu này)
     "–—‘’“”…•→←·₫©",
-    ...[path.join(ROOT, "src", "data.mjs"), fileURLToPath(import.meta.url), IMAGES_MANIFEST].map((f) => fs.readFileSync(f, "utf8").normalize("NFC")),
+    ...[path.join(ROOT, "src", "data.mjs"), path.join(ROOT, "src", "bao-gia.mjs"), fileURLToPath(import.meta.url), IMAGES_MANIFEST].map((f) => fs.readFileSync(f, "utf8").normalize("NFC")),
 ].join("");
 const FONT_DIR = path.join(DIST_ASSETS, "fonts");
 const FONT_V = {}; // tên file → mã nội dung, gắn ?v= để cache 1 năm mà vẫn cập nhật được
@@ -119,6 +120,8 @@ const SEARCH_INDEX = [
     })),
     { name: "Dịch vụ thiết kế & thi công", cat: "Trang chủ", keys: "dich vu kien truc noi that canh quan thi cong tron goi", url: "#dich-vu" },
     { name: "Thi công & Xưởng sản xuất", cat: "Trang", keys: "thi cong cong truong xuong san xuat noi that khoi cong dong tho video ban giao hanh trinh nhan nha hinh anh", url: "thi-cong.html" },
+    { name: "Báo giá", cat: "Trang", keys: "bao gia bang gia don gia chi phi xay nha tron goi noi that thiet ke cai tao hoan thien phan tho", url: "bao-gia.html" },
+    ...PRICING.map((q) => ({ name: q.label, cat: "Báo giá", keys: `bao gia bang gia don gia chi phi ${q.desc}`, url: `${q.slug}.html` })),
     { name: "Liên hệ", cat: "Trang chủ", keys: `lien he dia chi so dien thoai zalo email form tu van ${SITE.phone} ${SITE.email}`, url: "#lien-he" },
 ];
 fs.mkdirSync(DIST_JS, { recursive: true });
@@ -222,8 +225,11 @@ function head({ title, desc, canonical, og, ogType = "website", base, jsonld, pr
                 var current = root.getAttribute("data-theme") ||
                     (matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
                 var next = current === "light" ? "dark" : "light";
-                root.setAttribute("data-theme", next);
                 try { localStorage.setItem(KEY, next); } catch (e) {}
+                function apply() { root.setAttribute("data-theme", next); }
+                // Đổi màu mờ dần (trình duyệt cũ / người dùng giảm chuyển động: đổi ngay)
+                if (document.startViewTransition && !matchMedia("(prefers-reduced-motion: reduce)").matches) document.startViewTransition(apply);
+                else apply();
             });
         })();
     </script>
@@ -309,6 +315,12 @@ function header({ base, active }) {
                     </li>
                     ${link(`${home}#dich-vu`, "Dịch vụ", "services")}
                     ${link(`${base}thi-cong.html`, "Thi công", "build")}
+                    <li class="nav__item--drop">
+                        <a href="${base}bao-gia.html" class="nav__link${active === "pricing" ? " is-active" : ""}"${active === "pricing" ? ' aria-current="page"' : ""}>Báo giá</a>
+                        <ul class="drop">
+                            ${PRICING.map((q) => `<li><a href="${base}${q.slug}.html">${esc(q.label)}</a></li>`).join("\n                            ")}
+                        </ul>
+                    </li>
                     ${link(`${home}#ve-athens`, "Về Athens", "about")}
                     ${link(`${home}#lien-he`, "Liên hệ", "contact")}
                 </ul>
@@ -1094,6 +1106,173 @@ ${footer(base)}`;
     writePage(path.join(DIST, "thi-cong.html"), html, url);
 }
 
+/* =========================================================
+   TRANG BÁO GIÁ — trang tổng (mỗi thẻ là một hạng mục) + 6 trang chi tiết, dữ liệu ở src/bao-gia.mjs
+   ========================================================= */
+// Bảng giá: trên điện thoại mỗi dòng xếp thành khối, data-label là tên cột hiện trước giá trị (CSS)
+function priceTable({ cols, rows, groups, price }) {
+    const row = (r) =>
+        `<tr>${r.map((c, i) => `<td data-label="${esc(cols[i])}"${i === price ? ' class="ptable__price"' : ""}>${esc(c)}</td>`).join("")}</tr>`;
+    const body = groups
+        ? groups.map((g) => `<tr class="ptable__group"><th colspan="${cols.length}" scope="colgroup">${esc(g.title)}</th></tr>\n${g.rows.map(row).join("\n")}`).join("\n")
+        : rows.map(row).join("\n");
+    return `<div class="ptable-wrap"><table class="ptable">
+                        <thead><tr>${cols.map((c) => `<th scope="col">${esc(c)}</th>`).join("")}</tr></thead>
+                        <tbody>
+                        ${body}
+                        </tbody>
+                    </table></div>`;
+}
+
+function buildPricingDetail(q, idx) {
+    const base = "./";
+    const url = `${SITE_URL}/${q.slug}.html`;
+    const prev = PRICING[(idx - 1 + PRICING.length) % PRICING.length];
+    const next = PRICING[(idx + 1) % PRICING.length];
+    const sections = q.sections
+        .map(
+            (s) => `<section class="qsec">
+                    <h2 class="project__h2">${esc(s.title)}</h2>
+                    ${s.text ? `<p>${esc(s.text)}</p>` : ""}
+                    ${s.list ? `<ul class="checklist">${s.list.map((t) => `<li>${esc(t)}</li>`).join("")}</ul>` : ""}
+                    ${s.steps ? `<ol class="qsteps">${s.steps.map((t) => `<li>${esc(t)}</li>`).join("")}</ol>` : ""}
+                    ${s.table ? priceTable(s.table) : ""}
+                    ${s.note ? `<p class="qsec__note">${esc(s.note)}</p>` : ""}
+                </section>`
+        )
+        .join("\n                ");
+
+    const jsonld = {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "BreadcrumbList",
+                itemListElement: [
+                    { "@type": "ListItem", position: 1, name: "Trang chủ", item: `${SITE_URL}/` },
+                    { "@type": "ListItem", position: 2, name: "Báo giá", item: `${SITE_URL}/bao-gia.html` },
+                    { "@type": "ListItem", position: 3, name: q.label, item: url },
+                ],
+            },
+            ORG,
+        ],
+    };
+
+    const html = `${head({
+        title: `${q.label} | ${SITE.name}`,
+        desc: q.desc,
+        canonical: url,
+        og: { url: `${SITE_URL}/assets/imgs/og/home.jpg`, alt: HOME_SLIDES[0].alt },
+        base,
+        jsonld,
+    })}
+${header({ base, active: "pricing" })}
+    <main id="noi-dung">
+        <header class="project__head">
+            <div class="container">
+                <nav class="breadcrumb" aria-label="Breadcrumb">
+                    <ol>
+                        <li><a href="${base}">Trang chủ</a></li>
+                        <li><a href="${base}bao-gia.html">Báo giá</a></li>
+                        <li aria-current="page">${esc(q.label)}</li>
+                    </ol>
+                </nav>
+                <p class="eyebrow">Báo giá</p>
+                <h1 class="project__title">${esc(q.label)}<span class="gold">.</span></h1>
+                <p class="project__lead">${esc(q.lead)}</p>
+                <p class="qprice"><span>Đơn giá tham khảo</span><strong>${q.price ? `${esc(q.price)} <small>${esc(q.unit)}</small>` : "Theo từng hạng mục"}</strong></p>
+                <nav class="stage-nav" aria-label="Các loại báo giá">
+                    ${PRICING.map((x, i) => `<a href="${base}${x.slug}.html"${x === q ? ' aria-current="page"' : ""}><span>${pad(i + 1)}</span>${esc(x.title)}</a>`).join("\n                    ")}
+                </nav>
+            </div>
+        </header>
+
+        <div class="container qbody">
+                ${sections}
+        </div>
+
+        <nav class="pager container" aria-label="Báo giá khác">
+            <a href="${base}${prev.slug}.html" class="pager__link" rel="prev"><span>← Báo giá trước</span><strong>${esc(prev.label)}</strong></a>
+            <a href="${base}${next.slug}.html" class="pager__link pager__link--next" rel="next"><span>Báo giá tiếp theo →</span><strong>${esc(next.label)}</strong></a>
+        </nav>
+
+${cta("h2", `Tôi cần tư vấn: ${q.label}.`, { service: q.service })}
+    </main>
+${footer(base)}`;
+    writePage(path.join(DIST, `${q.slug}.html`), html, url);
+}
+
+function buildPricing() {
+    const base = "./";
+    const url = `${SITE_URL}/bao-gia.html`;
+    const quotes = PRICING.map(
+        (q) => `<li class="quote">
+                        <a href="${base}${q.slug}.html" class="quote__link">
+                            <div class="quote__sheet" aria-hidden="true">
+                                <p class="quote__company">${SITE.legalName}</p>
+                                <div class="quote__frame">
+                                    <p class="quote__kicker">${esc(q.kicker)}</p>
+                                    <p class="quote__title">${esc(q.title)}</p>
+                                </div>
+                                <p class="quote__price">${q.price ? `${esc(q.price)} <small>${esc(q.unit)}</small>` : "Liên hệ báo giá"}</p>
+                            </div>
+                            <h2 class="quote__label">${esc(q.label)}</h2>
+                            ${q.price ? `<p class="sr-only">Đơn giá ${esc(q.price)} ${esc(q.unit)}</p>` : ""}
+                        </a>
+                    </li>`
+    ).join("\n                    ");
+
+    const jsonld = {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "BreadcrumbList",
+                itemListElement: [
+                    { "@type": "ListItem", position: 1, name: "Trang chủ", item: `${SITE_URL}/` },
+                    { "@type": "ListItem", position: 2, name: "Báo giá", item: url },
+                ],
+            },
+            ORG,
+        ],
+    };
+
+    const html = `${head({
+        title: `Báo giá thiết kế, xây nhà trọn gói, nội thất | ${SITE.name}`,
+        desc: `Bảng báo giá của ${SITE.name}: xây nhà trọn gói, thiết kế, thi công nội thất, cải tạo, phần thô và phần hoàn thiện. Nhận dự toán miễn phí cho công trình của bạn.`,
+        canonical: url,
+        og: { url: `${SITE_URL}/assets/imgs/og/home.jpg`, alt: HOME_SLIDES[0].alt },
+        base,
+        jsonld,
+    })}
+${header({ base, active: "pricing" })}
+    <main id="noi-dung">
+        <header class="project__head">
+            <div class="container">
+                <nav class="breadcrumb" aria-label="Breadcrumb">
+                    <ol>
+                        <li><a href="${base}">Trang chủ</a></li>
+                        <li aria-current="page">Báo giá</li>
+                    </ol>
+                </nav>
+                <p class="eyebrow">Chi phí minh bạch</p>
+                <h1 class="project__title">Báo giá<span class="gold">.</span></h1>
+                <p class="project__lead">Chọn hạng mục để xem bảng giá chi tiết. Athens sẽ tư vấn và lập dự toán theo đúng công trình của bạn. Chi phí thực tế phụ thuộc vào diện tích, địa điểm xây dựng, phong cách thiết kế và vật liệu lựa chọn.</p>
+            </div>
+        </header>
+
+        <section class="quotes" aria-label="Bảng báo giá">
+            <div class="container">
+                <ul class="quotes__grid">
+                    ${quotes}
+                </ul>
+            </div>
+        </section>
+
+${cta()}
+    </main>
+${footer(base)}`;
+    writePage(path.join(DIST, "bao-gia.html"), html, url);
+}
+
 function build404() {
     const base = BASE_PATH;
     const html = `${head({ title: `Không tìm thấy trang | ${SITE.name}`, desc: "Trang bạn tìm không tồn tại hoặc đã được chuyển sang địa chỉ mới. Xem các dự án biệt thự, nhà phố, nội thất của Athens Holding JSC.", base, noindex: true })}
@@ -1148,6 +1327,8 @@ function buildSeoFiles() {
             imgs: ALBUMS.flatMap((a) => ALBUM[a.key].imgs.map((_, i) => `${SITE_URL}/assets/imgs/albums/${a.key}/${i + 1}-sm.webp`)),
             pr: "0.7",
         },
+        { loc: `${SITE_URL}/bao-gia.html`, imgs: [], pr: "0.8" },
+        ...PRICING.map((q) => ({ loc: `${SITE_URL}/${q.slug}.html`, imgs: [], pr: "0.7" })),
         ...PROJECTS.map((p) => ({ loc: projectUrl(p), imgs: p.imgs.map((_, i) => `${SITE_URL}/assets/imgs/projects/${p.slug}/${i + 1}-sm.webp`), pr: "0.8" })),
     ];
     const xml = `<?xml version="1.0" encoding="UTF-8"?>
@@ -1225,8 +1406,10 @@ for (const f of fs.readdirSync(projectDir)) if (f.endsWith(".html") && !keep.has
 
 buildHome();
 buildConstruction();
+buildPricing();
+PRICING.forEach(buildPricingDetail);
 PROJECTS.forEach(buildProject);
 build404();
 buildRedirects();
 buildSeoFiles();
-console.log(`✓ ${2 + PROJECTS.length} trang + 404 + ${Object.keys(REDIRECTS).length} chuyển hướng · tên miền ${SITE_URL}`);
+console.log(`✓ ${3 + PRICING.length + PROJECTS.length} trang + 404 + ${Object.keys(REDIRECTS).length} chuyển hướng · tên miền ${SITE_URL}`);

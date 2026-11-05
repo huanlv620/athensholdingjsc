@@ -159,6 +159,7 @@
     font-size: 1.4rem;
     font-weight: 500;
     letter-spacing: 0.04em;
+    white-space: nowrap;
     color: var(--muted);
     transition: color 0.3s;
 }
@@ -2458,7 +2459,7 @@ body,
    ========================================================= */
 @media (max-width: 1199px) {
     .nav__list {
-        gap: 2.4rem;
+        gap: 2rem;
     }
 
     .mega {
@@ -2988,4 +2989,445 @@ body,
 
 .lightbox__figure img.is-loading {
     opacity: 0;
+}
+
+/* ---------- Trang báo giá ---------- */
+.quotes {
+    padding-block: 2.4rem 9.6rem;
+}
+
+.quotes__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.4rem;
+}
+
+/* Thẻ giữ nền giấy sáng – chữ vàng đồng ở cả hai theme, như tờ báo giá in */
+.quote__link {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    border: 1px solid rgba(128, 99, 32, 0.35);
+    border-radius: 1.6rem;
+    background: linear-gradient(135deg, #fffdf8 55%, #efe8da);
+    color: #1a1611;
+    transition: transform 0.3s var(--ease), border-color 0.3s;
+}
+
+.quote__link::before,
+.quote__link::after {
+    content: "";
+    position: absolute;
+    width: 9rem;
+    height: 9rem;
+    background: var(--gold-grad);
+    pointer-events: none;
+}
+
+.quote__link::before {
+    top: 0;
+    right: 0;
+    clip-path: polygon(45% 0, 100% 0, 100% 55%);
+}
+
+.quote__link::after {
+    top: 42%;
+    left: 0;
+    clip-path: polygon(0 0, 38% 50%, 0 100%);
+}
+
+.quote__link:hover {
+    transform: translateY(-4px);
+    border-color: #c9a24a;
+}
+
+.quote__sheet {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.6rem;
+    padding: 2.4rem 4.8rem;
+    text-align: center;
+}
+
+.quote__company {
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-wrap: balance;
+}
+
+.quote__frame {
+    padding: 1.2rem 2.4rem;
+    border: 1px solid #a5822f;
+    border-radius: 0.4rem;
+    color: #806320;
+}
+
+.quote__kicker {
+    font-size: 1.5rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.quote__title {
+    font-family: var(--font-display);
+    font-size: clamp(2.6rem, 3.2vw, 3.8rem);
+    font-weight: 600;
+    line-height: 1.25;
+    text-transform: uppercase;
+}
+
+.quote__price {
+    padding: 0.8rem 2.4rem;
+    border: 2px solid #a5822f;
+    border-radius: 0.8rem;
+    background: #fff;
+    color: #6f5419;
+    font-size: clamp(1.7rem, 2vw, 2.4rem);
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.quote__price small {
+    font-size: 0.6em;
+    white-space: nowrap;
+}
+
+.quote__label {
+    padding: 1.4rem 2rem;
+    background: #1c1c1c;
+    color: var(--on-image);
+    font-size: 1.7rem;
+    font-weight: 500;
+    line-height: 1.4;
+    text-align: center;
+    transition: background 0.3s, color 0.3s;
+}
+
+.quote__link:hover .quote__label {
+    background: #c9a24a;
+    color: var(--on-gold);
+}
+
+@media (max-width: 767px) {
+    .quotes {
+        padding-block: 1.6rem 6.4rem;
+    }
+
+    .quotes__grid {
+        grid-template-columns: 1fr;
+        gap: 1.6rem;
+    }
+
+    .quote__link::before,
+    .quote__link::after {
+        width: 6.4rem;
+        height: 6.4rem;
+    }
+
+    .quote__sheet {
+        gap: 1.2rem;
+        padding: 2rem 2.4rem;
+    }
+}
+
+/* Menu thả xuống "Báo giá" */
+.nav__item--drop {
+    position: relative;
+}
+
+.drop {
+    position: absolute;
+    top: 100%;
+    left: -2rem;
+    width: 32rem;
+    padding-block: 0.8rem;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-top: 2px solid var(--gold);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-1rem);
+    transition: opacity 0.3s, transform 0.3s var(--ease), visibility 0.3s;
+}
+
+.nav__item--drop:hover .drop,
+.nav__item--drop:focus-within .drop {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+}
+
+.drop a {
+    display: block;
+    padding: 1.1rem 2rem;
+    font-size: 1.4rem;
+    color: var(--text-soft);
+    transition: color 0.2s, background 0.2s;
+}
+
+.drop a:hover {
+    color: var(--gold);
+    background: var(--surface-2);
+}
+
+/* Trang chi tiết báo giá */
+.qprice {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-top: 2.4rem;
+    padding: 1.6rem 2.4rem;
+    border: 1px solid var(--gold);
+    border-radius: 0.8rem;
+}
+
+.qprice span {
+    font-size: 1.3rem;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+}
+
+.qprice strong {
+    font-size: clamp(2.2rem, 3.4vw, 3.2rem);
+    font-weight: 600;
+    line-height: 1.25;
+    color: var(--gold);
+}
+
+.qprice small {
+    font-size: 0.55em;
+    white-space: nowrap;
+}
+
+.stage-nav a[aria-current="page"] {
+    color: var(--gold);
+    border-color: var(--gold);
+}
+
+.qbody {
+    padding-block: 2.4rem 6.4rem;
+}
+
+.qsec + .qsec {
+    margin-top: 5.6rem;
+}
+
+.qsec > p {
+    margin-bottom: 1.6rem;
+    color: var(--text-soft);
+}
+
+.qsec__note {
+    margin-top: 1.6rem;
+    font-size: 1.4rem;
+    color: var(--muted);
+}
+
+.qsteps {
+    display: grid;
+    gap: 1rem;
+    padding-left: 3.2rem;
+    list-style: decimal;
+    color: var(--text-soft);
+}
+
+.qsteps li::marker {
+    font-weight: 600;
+    color: var(--gold);
+}
+
+.ptable {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1.5rem;
+    line-height: 1.5;
+}
+
+.ptable th,
+.ptable td {
+    padding: 1.2rem 1.6rem;
+    border-bottom: 1px solid var(--line);
+    text-align: left;
+    vertical-align: top;
+}
+
+.ptable thead th {
+    font-size: 1.3rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+    border-bottom: 2px solid var(--gold);
+}
+
+.ptable__group th {
+    font-weight: 600;
+    color: var(--gold);
+    background: var(--surface-2);
+}
+
+.ptable td {
+    color: var(--text-soft);
+}
+
+.ptable td:first-child {
+    color: var(--text);
+}
+
+.ptable .ptable__price {
+    font-weight: 600;
+    white-space: nowrap;
+    color: var(--gold);
+}
+
+@media (max-width: 991px) {
+    .nav__item--drop {
+        position: static;
+    }
+
+    .drop {
+        position: static;
+        width: auto;
+        padding: 0 0 1.2rem 1.6rem;
+        background: none;
+        border: none;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+    }
+
+    .drop a {
+        padding: 0.8rem 0;
+    }
+}
+
+/* Điện thoại: bảng nhiều cột khó đọc khi cuộn ngang → mỗi dòng thành một khối, tên cột nằm bên trái */
+@media (max-width: 767px) {
+    .ptable,
+    .ptable tbody,
+    .ptable tr,
+    .ptable th,
+    .ptable td {
+        display: block;
+    }
+
+    .ptable thead {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+    }
+
+    .ptable tbody tr:not(.ptable__group) {
+        padding-block: 1.2rem;
+        border-bottom: 1px solid var(--line);
+    }
+
+    .ptable th,
+    .ptable td {
+        border-bottom: none;
+    }
+
+    .ptable td {
+        display: grid;
+        grid-template-columns: 9rem minmax(0, 1fr);
+        gap: 1.2rem;
+        padding: 0.3rem 0;
+    }
+
+    .ptable td::before {
+        content: attr(data-label);
+        font-size: 1.3rem;
+        color: var(--muted);
+    }
+
+    .ptable td:empty {
+        display: none;
+    }
+
+    .ptable .ptable__price {
+        white-space: normal;
+    }
+
+    .ptable__group th {
+        padding: 1rem 1.2rem;
+    }
+}
+
+/* ---------- Chuyển động khi tương tác & khi cuộn ---------- */
+/* Điện thoại: không có chuột nên :hover bị "kẹt" sau khi chạm → tắt, thay bằng phản hồi lúc đang bấm (:active) */
+@media (hover: none) {
+    .btn:hover {
+        transform: none;
+        box-shadow: none;
+    }
+
+    .quote__link:hover {
+        transform: none;
+        border-color: rgba(128, 99, 32, 0.35);
+    }
+
+    .quote__link:hover .quote__label {
+        background: #1c1c1c;
+        color: var(--on-image);
+    }
+
+    .card__link:hover .card__media img {
+        transform: none;
+        filter: saturate(0.85);
+    }
+
+    .service:hover img,
+    .photos figure:hover img,
+    .gallery a:hover img,
+    .video__facade:hover img {
+        transform: none;
+    }
+}
+
+.btn:active,
+.quote__link:active,
+.fab__btn:active {
+    transform: scale(0.97);
+}
+
+/* Hiện dần khi cuộn: CSS thuần, chạy trên luồng đồ hoạ nên không làm nặng cuộn trang. Trình duyệt chưa hỗ trợ
+   thì nội dung vẫn hiện bình thường, không cần JS. Dùng "translate" thay vì "transform" để không đè hiệu ứng hover.
+   .videos trên điện thoại là dải cuộn ngang → gắn vào cả dải, không gắn từng video. */
+@media screen and (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+        .section-head,
+        .build__head,
+        .services .section-title,
+        .philosophy .section-title,
+        .related .section-title,
+        .card__link,
+        .service,
+        .pillar,
+        .stats li,
+        .photos li,
+        .videos,
+        .gallery li,
+        .quote,
+        .pager {
+            animation: reveal linear both;
+            animation-timeline: view();
+            animation-range: entry 5% entry 60%;
+        }
+    }
+}
+
+@keyframes reveal {
+    from {
+        opacity: 0;
+        translate: 0 2.4rem;
+    }
 }
